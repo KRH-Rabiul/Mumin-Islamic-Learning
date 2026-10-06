@@ -1,0 +1,165 @@
+<!doctype html>
+<!--
+  quran.html - Quran reader
+  Styles : css/base.css, css/nav.css, css/theme.css, css/hero-images.css + the page file in css/pages/
+  Scripts: js/common-nav.js (shared header + theme) then this page's script in js/
+  Edit text here; edit colours in css/theme.css; edit pictures in css/hero-images.css.
+-->
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/images/brand/icon-192.png">
+<link rel="icon" type="image/png" href="assets/images/brand/logo-mark.png">
+<meta name="theme-color" content="#159fc3">
+<meta name="description" content="Mumin — ৩০তম পারা (Juz Amma) কুরআন শিক্ষা">
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<title>Mumin | ৩০তম পারা — Juz Amma</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/pages/quran.css">
+<link rel="stylesheet" href="css/theme.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mumin | ৩০তম পারা — Juz Amma">
+<meta property="og:description" content="Mumin — বাংলা ভাষায় কুরআন, নামাজ, দোয়া-যিকির, হাদিস ও দৈনন্দিন ইসলামী শিক্ষা।">
+<meta property="og:image" content="assets/images/heroes/home-hero.webp">
+  <link rel="stylesheet" href="css/hero-images.css">
+</head>
+<body>
+<!-- Main content: .quran-page #quranMain -->
+<main id="quranMain" class="quran-page">
+  <!-- Section: .quran-page-head -->
+  <section class="quran-page-head">
+    <div class="quran-title-wrap">
+      <div class="quran-book-mark" aria-hidden="true">▱</div>
+      <div>
+        <span class="eyebrow">কুরআন শিক্ষা</span>
+        <h1>৩০তম পারা <span>(Juz Amma)</span></h1>
+        <p>ছোট সূরাগুলো পড়ুন, বুঝুন এবং আমলের চেষ্টা করুন।</p>
+      </div>
+    </div>
+    <div class="quran-head-actions">
+      <a class="quran-full-link" id="fullQuranLink" href="https://www.quranbn.com/" target="_blank" rel="noopener noreferrer">সম্পূর্ণ কুরআন দেখুন <span>↗</span></a>
+      <label class="quran-search"><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg></span><input id="surahSearch" type="search" placeholder="সূরা খুঁজুন (নাম বা নম্বর)…" aria-label="সূরা খুঁজুন"></label>
+      <button class="quran-icon-btn" id="bookmarkView" title="সংরক্ষিত আয়াত">☆</button>
+    </div>
+  </section>
+
+  <div class="quran-breadcrumb">হোম <b>›</b> কুরআন শিক্ষা <b>›</b> ৩০তম পারা</div>
+
+  <!-- Section: .quran-layout -->
+  <section class="quran-layout">
+    <aside class="surah-panel">
+      <div class="panel-head">
+        <div>
+          <span class="eyebrow">৩০তম পারা</span>
+          <h2>সূরাগুলো <small>(মোট ৩৭টি)</small></h2>
+        </div>
+        <div class="progress-box"><span>আপনার অগ্রগতি</span><strong id="progressText">০ / ৩৭ সূরা</strong><div><i id="progressBar"></i></div></div>
+      </div>
+      <div class="surah-filter">
+        <button class="active" data-filter="all">সবগুলো</button>
+        <button data-filter="meccan">মাক্কী</button>
+        <button data-filter="medinan">মাদানী</button>
+        <button data-filter="short">সংক্ষিপ্ত</button>
+        <button data-filter="long">দীর্ঘতর</button>
+      </div>
+      <div id="surahList" class="surah-list" aria-live="polite"></div>
+    </aside>
+
+    <!-- Section: .reader-panel #readerPanel -->
+    <section class="reader-panel" id="readerPanel">
+      <div class="reader-hero" id="readerHero">
+        <div class="reader-hero-overlay"></div>
+        <div class="reader-hero-copy">
+          <div class="surah-number" id="heroNumber">৭৮</div>
+          <div>
+            <div class="arabic-surah-name" id="heroArabic">النَّبَإِ</div>
+            <h2 id="heroBangla">সূরা আন-নাবা</h2>
+            <p id="heroEnglish">An-Naba</p>
+          </div>
+        </div>
+        <div class="reader-hero-actions">
+          <button id="prevSurah" title="আগের সূরা">←</button>
+          <select id="surahSelect" aria-label="সূরা নির্বাচন"></select>
+          <button id="nextSurah" title="পরের সূরা">→</button>
+          <button id="surahBookmark" title="সূরা সংরক্ষণ">☆</button>
+        </div>
+        <div class="reader-meta" id="readerMeta"></div>
+      </div>
+
+      <div class="reader-tabs">
+        <button class="active" data-tab="intro"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-about"/></svg> পরিচিতি</button>
+        <button data-tab="ayahs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-quran"/></svg> আয়াতসমূহ</button>
+        <button data-tab="virtue"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sparkle"/></svg> ফজিলত</button>
+        <button data-tab="source"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-link"/></svg> রেফারেন্স</button>
+      </div>
+
+      <div class="reader-content">
+        <!-- Section: .reader-tab-content #tab-intro -->
+        <section class="reader-tab-content active" id="tab-intro">
+          <div class="info-card intro-card">
+            <div class="info-icon">▱</div>
+            <div><h3 id="introTitle">সূরা আন-নাবা পরিচিতি</h3><div id="introText"></div></div>
+          </div>
+          <div class="learning-card">
+            <span class="learning-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+            <div><h3>এই সূরার মূল শিক্ষা</h3><p id="lessonText">সূরার মূল বিষয় ও শিক্ষা উপরে পরিচিতি অংশে সংক্ষেপে দেওয়া হয়েছে।</p></div>
+          </div>
+        </section>
+
+        <!-- Section: .reader-tab-content #tab-ayahs -->
+        <section class="reader-tab-content" id="tab-ayahs">
+          <div class="ayah-toolbar"><h3>আয়াতসমূহ</h3><div><button id="firstAyah">১–৬</button><select id="ayahJump" aria-label="আয়াত নির্বাচন"></select></div></div>
+          <div id="ayahList" class="ayah-list"></div>
+        </section>
+
+        <!-- Section: .reader-tab-content #tab-virtue -->
+        <section class="reader-tab-content" id="tab-virtue">
+          <div class="empty-source-card" id="virtueTabContent"></div>
+        </section>
+
+        <!-- Section: .reader-tab-content #tab-source -->
+        <section class="reader-tab-content" id="tab-source">
+          <div class="source-grid">
+            <article><b>আরবি পাঠ</b><span>Uthmani Quran text-এর প্রকাশিত dataset; provenance: The Noble Qur'an Encyclopedia.</span><a href="https://github.com/risan/quran-json" target="_blank" rel="noopener">উৎস দেখুন</a></article>
+            <article><b>বাংলা অর্থ</b><span>মুহিউদ্দীন খান-এর বাংলা অনুবাদ; quran-json documentation অনুযায়ী Tanzil source chain থেকে নেওয়া।</span><a href="https://tanzil.net/trans/bn.bengali" target="_blank" rel="noopener">উৎস দেখুন</a></article>
+            <article><b>বাংলা উচ্চারণ</b><span>প্রকাশিত বাংলা উচ্চারণ/প্রতিবর্ণীকরণ source থেকে নেওয়া হয়; অ্যাপ নিজে উচ্চারণ বানায় না।</span><a href="https://quran.hadithbn.com/" target="_blank" rel="noopener">মূল উৎস দেখুন</a></article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </section>
+</main>
+<script src="js/common-nav.js"></script>
+<script src="js/quran.js"></script>
+<script>
+(() => {
+  document.body.classList.add('quran-enter');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    requestAnimationFrame(() => document.body.classList.add('quran-ready'));
+  }
+  document.querySelectorAll('.mumin-topnav a, .quran-breadcrumb a').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || link.target === '_blank' || href.startsWith('http')) return;
+      e.preventDefault();
+      if (reduce) { location.href = href; return; }
+      document.body.classList.remove('quran-ready');
+      document.body.classList.add('quran-leave');
+      setTimeout(() => { location.href = href; }, 220);
+    });
+  });
+  const external = document.getElementById('fullQuranLink');
+  external?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!reduce) {
+      document.body.classList.add('quran-leave');
+      setTimeout(() => window.open(external.href, '_blank', 'noopener,noreferrer'), 180);
+    }
+  });
+})();
+</script>
+</body>
+</html>

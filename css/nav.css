@@ -1,0 +1,270 @@
+/* ==========================================================================
+   nav.css — top navigation bar (built by js/common-nav.js)
+   Desktop bar, mobile layout, active link, theme button.
+   Structure: @layer main = normal styles; @layer overrides = rules that must beat main.
+   Write new styles in "main". Do not use !important (see docs/CSS-GUIDE.md).
+   ========================================================================== */
+@layer main, overrides; /* "overrides" holds the rules that used to depend on the important flag */
+
+@layer main {
+  /* ========================================================================== 
+   Mumin — shared top navigation v38
+   Global rule: one top bar only. No global left sidebar.
+   ========================================================================== */
+  :root {
+    --m-top: 72px;
+    --m-top-mobile: 64px;
+  }
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  /* ---------- Mumin ---------- */
+  .mumin-app,
+  .mumin-app * {
+    box-sizing: border-box;
+  }
+  body.mumin-has-shell {
+    margin: 0;
+    min-height: 100vh;
+  }
+  .mumin-app {
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+    padding-top: var(--m-top);
+  }
+
+  /* ---------- Shared header ---------- */
+  .mumin-topbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1200;
+    width: 100%;
+    height: var(--m-top);
+    min-height: var(--m-top);
+    display: grid;
+    grid-template-columns: minmax(190px, 1fr) auto minmax(190px, 1fr);
+    align-items: center;
+    gap: 24px;
+    padding: 0 clamp(18px, 4vw, 64px);
+    background: rgba(6, 42, 56, 0.97);
+    border-bottom: 1px solid rgba(95, 208, 234, 0.18);
+    box-shadow: 0 7px 26px rgba(12, 65, 84, 0.14);
+    color: var(--color-gray-97);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .mumin-top-brand {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    color: var(--color-gray-97);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .mumin-top-brand img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: var(--color-gray-97);
+    flex: none;
+  }
+  .mumin-top-brand strong {
+    display: block;
+    color: var(--color-gray-100);
+    font-size: 1.2353rem;
+    line-height: 1;
+    font-weight: 900;
+  }
+  .mumin-top-brand small {
+    display: block;
+    margin-top: 4px;
+    color: var(--color-cyan-79);
+    font-size: 0.6471rem;
+    font-weight: 600;
+  }
+
+  .mumin-topnav {
+    justify-self: center;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: max-content;
+    max-width: 100%;
+    height: 100%;
+    gap: 2px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .mumin-topnav::-webkit-scrollbar {
+    display: none;
+  }
+  .mumin-topnav a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 11px;
+    text-decoration: none;
+    font:
+      700 14px/1.2 'Noto Sans Bengali',
+      'Hind Siliguri',
+      system-ui,
+      sans-serif;
+    transition:
+      color 0.22s ease,
+      transform 0.22s ease;
+  }
+  .mumin-topnav a::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 11px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--color-cyan-69);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .mumin-topnav a:hover {
+    transform: translateY(-1px);
+  }
+  .mumin-topnav a.active::after {
+    transform: scaleX(1);
+  }
+
+  .mumin-top-actions {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+  }
+  .mumin-theme {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    flex: none;
+    border: 1px solid rgba(95, 208, 234, 0.26);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--color-cyan-92);
+    cursor: pointer;
+    transition:
+      background 0.22s ease,
+      transform 0.22s ease,
+      border-color 0.22s ease;
+  }
+  .mumin-theme:hover {
+    background: rgba(54, 185, 220, 0.11);
+    border-color: rgba(95, 208, 234, 0.55);
+    transform: rotate(10deg);
+  }
+
+  /* ---------- Motion ---------- */
+
+  @media (max-width: 1240px) {
+    .mumin-topbar {
+      grid-template-columns: 170px minmax(0, 1fr) 70px;
+      gap: 10px;
+      padding-inline: 20px;
+    }
+    .mumin-topnav a {
+      padding-inline: 8px;
+      font-size: 0.7647rem;
+    }
+  }
+  @media (max-width: 900px) {
+    :root {
+      --m-top: 64px;
+    }
+    .mumin-app {
+      padding-top: var(--m-top);
+    }
+    .mumin-topbar {
+      height: var(--m-top);
+      min-height: var(--m-top);
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 8px;
+      padding-inline: 12px;
+    }
+    .mumin-top-brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+    }
+    .mumin-top-brand span {
+      display: none;
+    }
+    .mumin-topnav {
+      justify-self: stretch;
+      justify-content: flex-start;
+      width: 100%;
+      max-width: none;
+      overflow-x: auto;
+    }
+    .mumin-topnav a {
+      padding-inline: 9px;
+      font-size: 0.7647rem;
+    }
+    .mumin-top-actions {
+      justify-self: end;
+    }
+    .mumin-theme {
+      width: 38px;
+      height: 38px;
+    }
+  }
+  @media (max-width: 520px) {
+    .mumin-topbar {
+      padding-inline: 9px;
+    }
+    .mumin-topnav a {
+      padding-inline: 8px;
+      font-size: 0.7353rem;
+    }
+    .mumin-topnav a::after {
+      left: 8px;
+      right: 8px;
+      bottom: 9px;
+    }
+  }
+}
+@layer overrides {
+  /* ---------- Mumin ---------- */
+  body.mumin-has-shell {
+    padding-left: 0;
+  }
+  .mumin-topnav a {
+    color: var(--color-cyan-92);
+  }
+  .mumin-topnav a:hover,
+  .mumin-topnav a.active {
+    color: var(--color-cyan-78-b);
+  }
+  .mumin-menu,
+  .mumin-search,
+  .mumin-install {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mumin-topnav a,
+    .mumin-theme,
+    .mumin-motion-ready .mumin-app,
+    .mumin-motion-ready.mumin-page-ready .mumin-app,
+    .mumin-page-leaving .mumin-app,
+    .mumin-scroll-reveal {
+      transition: none;
+      animation: none;
+    }
+  }
+}

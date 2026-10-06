@@ -1,0 +1,26 @@
+{
+  "name": "Mumin — শিখি • বুঝি • আমল করি",
+  "short_name": "Mumin",
+  "description": "সহজ, পরিচ্ছন্ন ও উৎস-সচেতন ইসলামিক শিক্ষা প্ল্যাটফর্ম।",
+  "lang": "bn",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#061a21",
+  "theme_color": "#061a21",
+  "icons": [
+    {
+      "src": "assets/images/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

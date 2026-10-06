@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!--
+  islam-know.html - Know Islam
+  Styles : css/base.css, css/nav.css, css/theme.css, css/hero-images.css + the page file in css/pages/
+  Scripts: js/common-nav.js (shared header + theme) then this page's script in js/
+  Edit text here; edit colours in css/theme.css; edit pictures in css/hero-images.css.
+-->
+<html lang="bn">
+<head>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/brand/icon-192.png">
+<link rel="icon" type="image/png" href="assets/images/brand/logo-mark.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071c1f">
+  <meta name="description" content="Mumin শিক্ষাপথের Level 01: ইসলামকে জানা। ইসলামের ভিত্তি, তাওহিদ, ঈমান, কুরআন ও সুন্নাহ, আখিরাত এবং দৈনন্দিন জীবনের মৌলিক দিকনির্দেশনা।">
+  <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<title>Mumin | ইসলামকে জানা</title>
+  <link href="css/base.css" rel="stylesheet">
+  <link href="css/nav.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
+  <link href="css/pages/islam-know.css" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mumin | ইসলামকে জানা">
+<meta property="og:description" content="Mumin — বাংলা ভাষায় কুরআন, নামাজ, দোয়া-যিকির, হাদিস ও দৈনন্দিন ইসলামী শিক্ষা।">
+<meta property="og:image" content="assets/images/heroes/home-hero.webp">
+  <link rel="stylesheet" href="css/hero-images.css">
+</head>
+<body class="dark">
+  <!-- Main content: .ik-main -->
+  <main class="ik-main">
+    <!-- Section: .ik-hero -->
+    <section class="ik-hero" aria-labelledby="ik-title">
+      <div class="ik-hero-bg" aria-hidden="true"></div>
+      <div class="ik-hero-overlay" aria-hidden="true"></div>
+      <div class="ik-hero-content">
+        <span class="eyebrow light">LEVEL 01 • ইসলামকে জানা</span>
+        <h1 id="ik-title">ইসলামকে <em>জানা</em></h1>
+        <p>একজন মুসলিমের জন্য প্রয়োজনীয় মৌলিক বিষয়গুলো এক জায়গায়, ধাপে ধাপে। ইসলাম কী, তাওহিদ ও ঈমান কী, কুরআন ও সুন্নাহ কেন প্রয়োজন, ইবাদত ও চরিত্রের সম্পর্ক কী, এবং আখিরাতের জবাবদিহি কীভাবে জীবনকে পরিচালিত করে—এই মডিউলে সেগুলো গুছিয়ে শেখা যাবে।</p>
+        <div class="ik-hero-actions">
+          <a class="primary" href="#islam">শেখা শুরু করুন ↓</a>
+          <a class="hero-link" href="quran.html">কুরআন module দেখুন →</a>
+        </div>
+        <div class="ik-hero-note">উৎসসচেতন শিক্ষামূলক কনটেন্ট • কুরআনের আয়াত ও সহিহ হাদিসের রেফারেন্স দেওয়া হয়েছে • পূর্ণ ফতোয়া বা ফিকহি সিদ্ধান্তের বিকল্প নয়</div>
+      </div>
+      <aside class="ik-hero-card" aria-label="মডিউলের সংক্ষিপ্ত মানচিত্র">
+        <span class="mini-label">এই Level-এ</span>
+        <strong>ভিত্তি → বিশ্বাস → ইবাদত → চরিত্র → আখিরাত</strong>
+        <div class="mini-grid">
+          <span><b>09</b> মূল অধ্যায়</span>
+          <span><b>20+</b> উৎস</span>
+          <span><b>01</b> Beginner flow</span>
+          <span><b>FAQ</b> দ্রুত সহায়তা</span>
+        </div>
+      </aside>
+    </section>
+
+    <nav class="ik-topic-nav" aria-label="এই মডিউলের বিষয়সমূহ">
+      <a href="#islam">ইসলাম</a>
+      <a href="#tawhid">তাওহিদ</a>
+      <a href="#iman">ঈমান</a>
+      <a href="#pillars">৫ স্তম্ভ</a>
+      <a href="#revelation">কুরআন ও সুন্নাহ</a>
+      <a href="#purpose">জীবনের উদ্দেশ্য</a>
+      <a href="#practice">ইবাদত ও চরিত্র</a>
+      <a href="#akhirah">আখিরাত</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <!-- Section: .ik-section #islam -->
+    <section class="ik-section reveal" id="islam">
+      <div class="ik-heading">
+        <div><span class="eyebrow">01 • FOUNDATION</span><h2>ইসলাম কী?</h2><p>ইসলামকে শুধু একটি পরিচয় হিসেবে নয়, আল্লাহর প্রতি আত্মসমর্পণ, তাঁর নির্দেশ গ্রহণ এবং রাসূল ﷺ-এর মাধ্যমে পাওয়া দীন হিসেবে বোঝা শুরু করুন।</p></div>
+      </div>
+      <div class="article-stack">
+        <article class="info-block"><span class="number">০১</span><div><h3>ইসলাম মানে আল্লাহর কাছে আত্মসমর্পণ</h3><p>কুরআনে আল্লাহর কাছে নিজেকে সমর্পণ করে সৎকর্ম করার কথা এসেছে। তাই ইসলামের সঙ্গে বিশ্বাস ও সৎকর্ম উভয়ই সম্পর্কিত।</p><div class="source-line">সূরা আল-বাকারা ২:১১২</div></div></article>
+        <article class="info-block"><span class="number">০২</span><div><h3>ইসলামের ভিত্তি পাঁচটি</h3><p>শাহাদাত, সালাত, যাকাত, হজ এবং রমজানের সাওম ইসলামের পাঁচটি মৌলিক স্তম্ভ হিসেবে সহিহ হাদিসে এসেছে।</p><div class="source-line">সহিহ আল-বুখারি ৮</div></div></article>
+        <article class="info-block"><span class="number">০৩</span><div><h3>ইসলাম শুধু জানা নয়, মানাও</h3><p>একজন মুসলিমের শেখার লক্ষ্য হলো সঠিক বিশ্বাস ও জ্ঞানকে আমল, চরিত্র এবং দৈনন্দিন সিদ্ধান্তে ধীরে ধীরে প্রয়োগ করা।</p><div class="source-line">সাধারণ শিক্ষামূলক ব্যাখ্যা • আমল বিষয়ে বিস্তারিত নির্দেশনা সংশ্লিষ্ট মডিউলে</div></div></article>
+      </div>
+      <div class="wide-note">💡 <strong>Beginner note:</strong> শুরুতেই সবকিছু মুখস্থ করার চাপ নেবেন না। আগে ইসলামের কাঠামো বুঝুন, তারপর একেকটি ভিত্তি আলাদা করে শিখুন।</div>
+    </section>
+
+    <!-- Section: .ik-section #tawhid -->
+    <section class="ik-section reveal" id="tawhid">
+      <div class="ik-heading"><div><span class="eyebrow">02 • TAWHID</span><h2>তাওহিদ: এক আল্লাহর ইবাদত</h2><p>ইসলামের কেন্দ্রীয় শিক্ষা হলো আল্লাহ এক ও অদ্বিতীয় এবং ইবাদত একমাত্র তাঁরই জন্য।</p></div></div>
+      <div class="feature-panel">
+        <div class="feature-art" data-bg="url('assets/images/heroes/quran-study.webp')" role="img" aria-label="কুরআন অধ্যয়নের দৃশ্য"></div>
+        <div class="feature-copy"><span class="feature-kicker">মূল ধারণা</span><h3>আল্লাহর জন্য ইবাদতকে একনিষ্ঠ করা</h3><p>কুরআন জানায়, জিন ও মানুষকে আল্লাহর ইবাদতের জন্য সৃষ্টি করা হয়েছে। তাওহিদের অর্থ তাই শুধু “আল্লাহ আছেন” জানা নয়; বরং ইবাদতের অধিকারী হিসেবে তাঁকেই একমাত্র মানা।</p><p>এর বিপরীত হলো শিরক, অর্থাৎ আল্লাহর সঙ্গে ইবাদতে কাউকে শরিক করা। এই বিষয়টি খুব সংক্ষিপ্তভাবে শেখা হচ্ছে; নির্দিষ্ট ব্যক্তি বা কাজের ওপর হুকুম দেওয়ার জায়গা এটি নয়।</p><div class="source-line">সূরা আয-যারিয়াত ৫১:৫৬ • সূরা লুকমান ৩১:১৩</div><a class="outline-btn" href="https://quran.com/31/13" target="_blank" rel="noopener">আয়াত দেখুন →</a></div>
+      </div>
+      <div class="article-stack compact ik-three">
+        <article class="info-block"><span class="number">১</span><div><h3>আল্লাহ এক</h3><p>সূরা আল-ইখলাসে আল্লাহর একত্ব ও অদ্বিতীয়তার ঘোষণা এসেছে।</p><div class="source-line">সূরা আল-ইখলাস ১১২:১–৪</div></div></article>
+        <article class="info-block"><span class="number">২</span><div><h3>ইবাদত তাঁরই জন্য</h3><p>সালাত, দোয়া, মানত, কুরবানি ইত্যাদি ইবাদতের ক্ষেত্রে আল্লাহর একত্বের শিক্ষা মৌলিক।</p><div class="source-line">শিক্ষামূলক সারাংশ • তাওহিদ বোঝার ভিত্তি</div></div></article>
+        <article class="info-block"><span class="number">৩</span><div><h3>শিরক থেকে বাঁচার শিক্ষা</h3><p>লুকমান (আ.) তাঁর সন্তানকে আল্লাহর সঙ্গে শরিক না করার উপদেশ দেন এবং শিরককে বড় জুলুম হিসেবে উল্লেখ করেন।</p><div class="source-line">সূরা লুকমান ৩১:১৩</div></div></article>
+      </div>
+    </section>
+
+    <!-- Section: .ik-section #iman -->
+    <section class="ik-section reveal" id="iman">
+      <div class="ik-heading"><div><span class="eyebrow">03 • IMAN</span><h2>ঈমান, ইসলাম ও ইহসান</h2><p>জিবরীল (আ.)-এর বিখ্যাত হাদিস দীনকে বিশ্বাস, আমল ও ইহসানের সমন্বিত কাঠামো হিসেবে বুঝতে সাহায্য করে।</p></div></div>
+      <div class="article-stack">
+        <article class="info-block"><span class="number">০১</span><div><h3>ঈমানের ছয়টি বিষয়</h3><p>আল্লাহ, তাঁর ফেরেশতা, তাঁর কিতাবসমূহ, তাঁর রাসূলগণ, আখিরাত এবং তাকদিরের ভালো-মন্দের প্রতি বিশ্বাস ঈমানের অংশ হিসেবে জিবরীল হাদিসে এসেছে।</p><div class="source-line">সহিহ মুসলিম ৮e</div></div></article>
+        <article class="info-block"><span class="number">০২</span><div><h3>ইসলাম: প্রকাশ্য মৌলিক আমল</h3><p>জিবরীল হাদিসে ইসলামকে আল্লাহর ইবাদত, সালাত, যাকাত ও রমজানের সাওমসহ মৌলিক আমলের মাধ্যমে ব্যাখ্যা করা হয়েছে; পূর্ণ বর্ণনা হাদিসে দেখুন।</p><div class="source-line">সহিহ মুসলিম ৮e • সহিহ আল-বুখারি ৮</div></div></article>
+        <article class="info-block"><span class="number">০৩</span><div><h3>ইহসান: আল্লাহ-সচেতন উৎকর্ষ</h3><p>ইহসান হলো এমনভাবে আল্লাহর ইবাদত করা যেন আপনি তাঁকে দেখছেন; তা সম্ভব না হলেও তিনি আপনাকে দেখছেন—এই গভীর সচেতনতা।</p><div class="source-line">সহিহ মুসলিম ৮e</div></div></article>
+      </div>
+      <div class="quote-panel"><span class="quote-mark">“</span><div><h3>শেখার সূত্র</h3><p><strong>বিশ্বাস</strong> সঠিক হলে <strong>আমল</strong> অর্থপূর্ণ হয়, আর <strong>ইহসান</strong> আমলে সচেতনতা ও উৎকর্ষ আনে।</p><small>জিবরীল (আ.)-এর হাদিসের শিক্ষামূলক সারাংশ</small></div></div>
+    </section>
+
+    <!-- Section: .ik-section #pillars -->
+    <section class="ik-section reveal" id="pillars">
+      <div class="ik-heading"><div><span class="eyebrow">04 • FIVE PILLARS</span><h2>ইসলামের পাঁচ স্তম্ভ</h2><p>এগুলো ইসলামের মৌলিক কাঠামো। প্রতিটি স্তম্ভের বিস্তারিত শেখা সংশ্লিষ্ট মডিউলে ধাপে ধাপে করা হবে।</p></div></div>
+      <div class="pillar-grid">
+        <article><span>০১</span><h3>শাহাদাত</h3><p>আল্লাহ ছাড়া কোনো সত্য উপাস্য নেই এবং মুহাম্মদ ﷺ আল্লাহর রাসূল—এই সাক্ষ্য।</p></article>
+        <article><span>০২</span><h3>সালাত</h3><p>নির্ধারিত নামাজ আদায় করা।</p><a href="salah.html">নামাজ শিক্ষা →</a></article>
+        <article><span>০৩</span><h3>যাকাত</h3><p>শরিয়ত নির্ধারিত শর্ত পূরণ হলে ফরজ যাকাত আদায় করা।</p></article>
+        <article><span>০৪</span><h3>সাওম</h3><p>রমজান মাসে ফরজ রোজা পালন করা।</p><a href="ramadan.html">রমজান module →</a></article>
+        <article><span>০৫</span><h3>হজ</h3><p>সামর্থ্য ও শরিয়ত নির্ধারিত শর্ত পূরণ হলে কাবাঘরের হজ করা।</p></article>
+      </div>
+      <div class="source-banner">সহিহ আল-বুখারি ৮ • পাঁচ স্তম্ভের মূল হাদিস</div>
+    </section>
+
+    <!-- Section: .ik-section #revelation -->
+    <section class="ik-section reveal" id="revelation">
+      <div class="ik-heading"><div><span class="eyebrow">05 • QURAN & SUNNAH</span><h2>কুরআন, সুন্নাহ ও রাসূল ﷺ</h2><p>ইসলাম শেখার ক্ষেত্রে কুরআন হলো মূল ওহির গ্রন্থ, আর রাসূল ﷺ-এর সুন্নাহ তাঁর শেখানো ও বাস্তবায়িত পথের গুরুত্বপূর্ণ উৎস।</p></div></div>
+      <div class="feature-panel reverse-mobile">
+        <div class="feature-copy"><span class="feature-kicker">জ্ঞান অর্জনের ভিত্তি</span><h3>কুরআন থেকে শিখুন, রাসূল ﷺ-এর সুন্নাহ থেকে প্রয়োগ বুঝুন</h3><p>কুরআন নিজেকে মানুষকে সবচেয়ে সোজা ও উত্তম পথের দিকে পথনির্দেশকারী হিসেবে পরিচয় করায়। একই সঙ্গে কুরআন রাসূলুল্লাহ ﷺ-কে উত্তম আদর্শ হিসেবে উল্লেখ করে।</p><p>তাই কুরআনের আয়াত বোঝার পাশাপাশি সহিহ সুন্নাহ জানা জরুরি। হাদিসের ক্ষেত্রে উৎস, মান ও প্রেক্ষাপট যাচাই করা উচিত।</p><div class="source-line">সূরা আল-ইসরা ১৭:৯ • সূরা আল-আহযাব ৩৩:২১</div><div class="feature-actions"><a class="outline-btn" href="quran.html">কুরআন module →</a><a class="text-link" href="hadith.html">হাদিস library →</a></div></div>
+        <div class="feature-art" data-bg="url('assets/images/scenes/study-with-books.webp')" role="img" aria-label="কুরআন ও ইসলামী শিক্ষার দৃশ্য"></div>
+      </div>
+      <div class="article-stack compact">
+        <article class="info-block"><span class="number">০১</span><div><h3>কুরআন: পথনির্দেশ</h3><p>কুরআন সবচেয়ে সোজা পথের দিকে পথনির্দেশ করে এবং সৎকর্মশীল মুমিনদের সুসংবাদ দেয়।</p><div class="source-line">সূরা আল-ইসরা ১৭:৯</div></div></article>
+        <article class="info-block"><span class="number">০২</span><div><h3>রাসূল ﷺ: উত্তম আদর্শ</h3><p>রাসূলুল্লাহ ﷺ-এর জীবন কুরআনের শিক্ষাকে বাস্তব জীবনে কীভাবে প্রয়োগ করা যায় তা বোঝার গুরুত্বপূর্ণ আদর্শ।</p><div class="source-line">সূরা আল-আহযাব ৩৩:২১</div></div></article>
+        <article class="info-block"><span class="number">০৩</span><div><h3>হাদিস যাচাইয়ের অভ্যাস</h3><p>কোনো কথা “হাদিস” শুনলেই তা শেয়ার না করে নির্ভরযোগ্য গ্রন্থ ও রেফারেন্স দেখে নিন। মতভেদপূর্ণ বা ফিকহি বিষয়ে যোগ্য আলেমের ব্যাখ্যা নিন।</p><div class="source-line">শিক্ষামূলক যাচাই নীতি • নির্দিষ্ট হাদিসের মান আলাদাভাবে যাচাই করতে হবে</div></div></article>
+      </div>
+    </section>
+
+    <!-- Section: .ik-section #purpose -->
+    <section class="ik-section reveal" id="purpose">
+      <div class="ik-heading"><div><span class="eyebrow">06 • PURPOSE OF LIFE</span><h2>মানুষকে কেন সৃষ্টি করা হয়েছে?</h2><p>ইসলামী দৃষ্টিতে দুনিয়ার জীবন অর্থহীন নয়। মানুষের জীবন ইবাদত, পরীক্ষা, দায়িত্ব এবং আখিরাতের প্রত্যাবর্তনের সঙ্গে যুক্ত।</p></div></div>
+      <div class="article-stack compact">
+        <article class="info-block"><span class="number">০১</span><div><h3>ইবাদত জীবনের কেন্দ্রীয় উদ্দেশ্য</h3><p>কুরআনে বলা হয়েছে, জিন ও মানুষকে আল্লাহর ইবাদতের জন্য সৃষ্টি করা হয়েছে।</p><div class="source-line">সূরা আয-যারিয়াত ৫১:৫৬</div></div></article>
+        <article class="info-block"><span class="number">০২</span><div><h3>দুনিয়া একটি পরীক্ষা</h3><p>আল্লাহ জীবন ও মৃত্যু সৃষ্টি করেছেন মানুষকে পরীক্ষা করার জন্য—কে আমলে উত্তম।</p><div class="source-line">সূরা আল-মুলক ৬৭:২</div></div></article>
+        <article class="info-block"><span class="number">০৩</span><div><h3>নিয়ত গুরুত্বপূর্ণ</h3><p>কাজের মূল্য ও প্রতিদান নিয়তের সঙ্গে সম্পর্কিত—তাই ভালো কাজের সঙ্গে উদ্দেশ্যও শুদ্ধ করার চেষ্টা করতে হয়।</p><div class="source-line">সহিহ আল-বুখারি ১</div></div></article>
+      </div>
+    </section>
+
+    <!-- Section: .ik-section #practice -->
+    <section class="ik-section reveal" id="practice">
+      <div class="ik-heading"><div><span class="eyebrow">07 • PRACTICE & CHARACTER</span><h2>ইবাদত, পবিত্রতা ও চরিত্র</h2><p>ইসলামের শিক্ষা মসজিদে বা নামাজের সময়ের মধ্যে সীমাবদ্ধ নয়। পবিত্রতা, সালাত, তওবা, হালাল-হারাম সম্পর্কে সচেতনতা এবং মানুষের হকও জীবনের অংশ।</p></div></div>
+      <div class="article-stack">
+        <article class="info-block"><span class="number">০১</span><div><h3>পবিত্রতা ও সালাত</h3><p>কুরআন সালাতের আগে ওযু এবং প্রয়োজন অনুযায়ী গোসল বা তায়াম্মুমের বিধান উল্লেখ করে। Mumin-এর নামাজ শিক্ষা মডিউলে এগুলো ধাপে ধাপে শেখানো হবে।</p><div class="source-line">সূরা আল-মায়িদা ৫:৬</div></div></article>
+        <article class="info-block"><span class="number">০২</span><div><h3>সালাত চরিত্রে প্রভাব ফেলতে পারে</h3><p>কুরআন জানায়, প্রতিষ্ঠিত সালাত অশ্লীলতা ও মন্দ কাজ থেকে বিরত রাখতে ভূমিকা রাখে। তাই নামাজ শুধু একটি রুটিন নয়, আত্মশুদ্ধিরও অনুশীলন।</p><div class="source-line">সূরা আল-আনকাবুত ২৯:৪৫</div></div></article>
+        <article class="info-block"><span class="number">০৩</span><div><h3>হালাল, হারাম ও সন্দেহজনক বিষয়</h3><p>সহিহ হাদিসে স্পষ্ট হালাল ও হারামের মাঝখানে সন্দেহজনক বিষয় থাকার কথা এসেছে। নতুন বা জটিল বিষয়ে নিজের অনুমানকে চূড়ান্ত বিধান না বানিয়ে নির্ভরযোগ্য জ্ঞান নিন।</p><div class="source-line">সহিহ আল-বুখারি ৫২</div></div></article>
+        <article class="info-block"><span class="number">০৪</span><div><h3>তওবার দরজা খোলা</h3><p>আল্লাহর রহমত থেকে নিরাশ না হতে কুরআনে বলা হয়েছে। ভুল হলে গুনাহকে স্বাভাবিক না বানিয়ে আল্লাহর দিকে ফিরে আসা, অনুতপ্ত হওয়া এবং সংশোধনের চেষ্টা করা জরুরি।</p><div class="source-line">সূরা আয-যুমার ৩৯:৫৩–৫৪</div></div></article>
+        <article class="info-block"><span class="number">০৫</span><div><h3>বাবা-মা ও মানুষের অধিকার</h3><p>আল্লাহর ইবাদতের নির্দেশের সঙ্গে বাবা-মায়ের প্রতি সদাচরণের নির্দেশ কুরআনে পাশাপাশি এসেছে। মুসলিমের চরিত্রে সম্মান, ন্যায়, সত্যবাদিতা ও মানুষের হক রক্ষার গুরুত্ব তাই মৌলিক।</p><div class="source-line">সূরা আল-ইসরা ১৭:২৩</div></div></article>
+      </div>
+      <div class="action-grid">
+        <a href="salah.html"><span>🕌</span><strong>নামাজ শিক্ষা</strong><small>ওযু থেকে সালাত</small></a>
+        <a href="dua.html"><span>🤲</span><strong>দোয়া ও যিকির</strong><small>দৈনন্দিন আমল</small></a>
+        <a href="daily-life.html"><span>🌿</span><strong>দৈনন্দিন জীবন</strong><small>আচরণ ও অভ্যাস</small></a>
+      </div>
+    </section>
+
+    <!-- Section: .ik-section #akhirah -->
+    <section class="ik-section reveal" id="akhirah">
+      <div class="ik-heading"><div><span class="eyebrow">08 • AKHIRAH</span><h2>দুনিয়ার জীবন শেষ নয়</h2><p>আখিরাতের বিশ্বাস একজন মুসলিমকে নিজের কাজ, সময়, দায়িত্ব এবং সিদ্ধান্তের ব্যাপারে জবাবদিহির কথা মনে করিয়ে দেয়।</p></div></div>
+      <div class="feature-panel">
+        <div class="feature-art" data-bg="url('assets/images/scenes/quran-reading-sunset.webp')" role="img" aria-label="শান্ত সন্ধ্যার ইসলামী পরিবেশ"></div>
+        <div class="feature-copy"><span class="feature-kicker">জবাবদিহি</span><h3>ছোট কাজও অবহেলা করবেন না</h3><p>সূরা আয-যিলযালে অতি সামান্য ভালো ও মন্দ কাজও মানুষের সামনে উপস্থিত হওয়ার কথা এসেছে। এর শিক্ষা হলো নিজের ছোট কাজ, কথা ও অভ্যাসকেও গুরুত্ব দেওয়া।</p><p>আখিরাতের বিশ্বাস ভয় ও আশার ভারসাম্য তৈরি করে: ভুল হলে তওবা, ভালো কাজ হলে কৃতজ্ঞতা এবং প্রতিটি কাজে আল্লাহর সন্তুষ্টি খোঁজার চেষ্টা।</p><div class="source-line">সূরা আয-যিলযাল ৯৯:৭–৮ • সূরা আয-যুমার ৩৯:৫৩</div></div>
+      </div>
+    </section>
+
+    <!-- Section: .ik-section #roadmap -->
+    <section class="ik-section reveal" id="roadmap">
+      <div class="ik-heading"><div><span class="eyebrow">09 • START HERE</span><h2>একজন Beginner কোথা থেকে শুরু করবে?</h2><p>এই Level শেষ করার পর শেখার পথ যেন বাস্তব হয়, তাই একটি ছোট ও চাপমুক্ত sequence।</p></div></div>
+      <div class="roadmap">
+        <div><span>১</span><h3>ঈমানের ভিত্তি</h3><p>তাওহিদ, ঈমানের ছয় বিষয় এবং ইসলাম-ঈমান-ইহসানের কাঠামো বুঝুন।</p></div>
+        <div><span>২</span><h3>পবিত্রতা ও সালাত</h3><p>ওযু, গোসলের প্রয়োজনীয় ধারণা এবং পাঁচ ওয়াক্ত সালাত শিখুন।</p></div>
+        <div><span>৩</span><h3>কুরআন ও দোয়া</h3><p>প্রতিদিন অল্প করে কুরআন পড়ুন, অর্থ বুঝুন এবং প্রয়োজনীয় দোয়া শিখুন।</p></div>
+        <div><span>৪</span><h3>চরিত্র ও জীবন</h3><p>সত্যবাদিতা, বাবা-মায়ের হক, মানুষের সঙ্গে আচরণ ও হালাল-হারাম বিষয়ে সচেতন হন।</p></div>
+        <div><span>৫</span><h3>ধীরে ধীরে গভীরে যান</h3><p>এরপর হাদিস, ফিকহ ও নির্দিষ্ট বিষয়ের বিস্তারিত শিক্ষা যোগ করুন। জটিল বিষয়ে যোগ্য আলেমের সহায়তা নিন।</p></div>
+      </div>
+    </section>
+
+    <!-- Section: .ik-section #faq -->
+    <section class="ik-section reveal" id="faq">
+      <div class="ik-heading"><div><span class="eyebrow">10 • QUESTIONS & ANSWERS</span><h2>সাধারণ প্রশ্ন ও উত্তর</h2><p>Level 01-এর গুরুত্বপূর্ণ beginner প্রশ্নগুলো এক জায়গায়।</p></div></div>
+      <div class="faq-list">
+        <details><summary>ইসলাম ও ঈমান কি একই জিনিস?</summary><p>জিবরীল হাদিসে ইসলাম ও ঈমানকে আলাদা প্রশ্নের মাধ্যমে ব্যাখ্যা করা হয়েছে, এবং ইহসানও আলাদা স্তর হিসেবে এসেছে। তাই শব্দ দুটির অর্থ ও ব্যবহারের প্রেক্ষাপট বোঝা গুরুত্বপূর্ণ।</p><small>সহিহ মুসলিম ৮e</small></details>
+        <details><summary>তাওহিদ কেন এত গুরুত্বপূর্ণ?</summary><p>ইসলামের মৌলিক ভিত্তি আল্লাহর একত্ব ও একমাত্র তাঁর ইবাদতের সঙ্গে সম্পর্কিত। ইসলামের পাঁচ স্তম্ভের হাদিসেও শাহাদাত প্রথমে এসেছে।</p><small>সহিহ আল-বুখারি ৮ • সূরা লুকমান ৩১:১৩</small></details>
+        <details><summary>শিরক বলতে কী বোঝায়?</summary><p>আল্লাহর সঙ্গে ইবাদতে কাউকে শরিক করাকে শিরক বলা হয়। কুরআনে লুকমান (আ.) তাঁর সন্তানকে শিরক থেকে সতর্ক করেছেন।</p><small>সূরা লুকমান ৩১:১৩</small></details>
+        <details><summary>কুরআন পড়লেই কি হাদিসের প্রয়োজন নেই?</summary><p>কুরআন মূল ওহি, আর রাসূল ﷺ-এর সুন্নাহ ইসলামের বাস্তব প্রয়োগ ও ব্যাখ্যা বোঝার গুরুত্বপূর্ণ উৎস। তাই দুটোকে পরস্পর বিচ্ছিন্ন করে শেখা ঠিক নয়।</p><small>সূরা আল-আহযাব ৩৩:২১ • সূরা আল-ইসরা ১৭:৯</small></details>
+        <details><summary>আমি অনেক ভুল করেছি, এখন কি শুরু করতে পারি?</summary><p>হ্যাঁ, আল্লাহর রহমত থেকে নিরাশ না হতে কুরআনে স্পষ্টভাবে বলা হয়েছে। ভুলের পর তওবা করে সংশোধনের পথে ফেরা ইসলামী শিক্ষার গুরুত্বপূর্ণ অংশ।</p><small>সূরা আয-যুমার ৩৯:৫৩–৫৪</small></details>
+        <details><summary>হালাল-হারাম বিষয়ে সন্দেহ হলে কী করব?</summary><p>সহিহ হাদিসে সন্দেহজনক বিষয় এড়িয়ে চলার শিক্ষা এসেছে। জটিল বা ব্যক্তিগত ফিকহি বিষয়ে নিজের অনুমানকে চূড়ান্ত না করে নির্ভরযোগ্য আলেমের ব্যাখ্যা নিন।</p><small>সহিহ আল-বুখারি ৫২</small></details>
+        <details><summary>ইসলাম শেখার জন্য প্রথমে কোন মডিউলগুলো করা উচিত?</summary><p>এই Level-এর পর নামাজ শিক্ষা, কুরআন, দোয়া ও যিকির এবং দৈনন্দিন জীবনের মৌলিক বিষয়গুলো ধাপে ধাপে শেখা একটি বাস্তবসম্মত পথ।</p><small>Mumin Learning Path-এর শিক্ষামূলক sequence</small></details>
+        <details><summary>সবকিছু একসঙ্গে শিখতে না পারলে কি সমস্যা?</summary><p>শেখার ক্ষেত্রে ধারাবাহিকতা গুরুত্বপূর্ণ। অল্প অল্প করে শিখে বুঝে আমল করা এবং ভুল হলে সংশোধন করা দীর্ঘমেয়াদে বেশি কার্যকর শেখার অভ্যাস তৈরি করতে সাহায্য করে।</p><small>শিক্ষামূলক পরামর্শ</small></details>
+      </div>
+    </section>
+
+    <!-- Section: .ik-section -->
+    <section class="ik-section reveal">
+      <div class="reference-panel">
+        <div><span class="eyebrow light">LEVEL 01 • QUICK REFERENCE</span><h2>ইসলামকে জানার ভিত্তি এক নজরে</h2><p>তাওহিদ • ঈমান • ৫ স্তম্ভ • কুরআন • সুন্নাহ • ইবাদত • পবিত্রতা • চরিত্র • তওবা • আখিরাত</p></div>
+        <a class="primary" href="salah.html">পরের ধাপ: নামাজ শিক্ষা →</a>
+      </div>
+    </section>
+  </main>
+  <!-- Footer: .ik-footer -->
+  <footer class="ik-footer"><strong>Mumin</strong><span>Learn. Practice. Grow.</span><small>Level 01 • ইসলামকে জানা • উৎসসচেতন ইসলামিক learning space</small></footer>
+  <script src="js/common-nav.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/islam-know.js"></script>
+</body>
+</html>

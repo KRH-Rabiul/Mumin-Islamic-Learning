@@ -1,0 +1,15 @@
+{
+  "name": "mumin",
+  "private": true,
+  "description": "Mumin - Bangla Islamic learning website (plain HTML/CSS/JS)",
+  "scripts": {
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "report:css": "node tools/css-report.mjs",
+    "build:min": "node tools/minify-css.mjs"
+  },
+  "devDependencies": {
+    "lightningcss": "^1.27.0",
+    "postcss": "^8.4.47",
+    "stylelint": "^16.9.0"
+  }
+}

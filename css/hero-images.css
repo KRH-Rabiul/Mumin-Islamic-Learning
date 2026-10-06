@@ -1,0 +1,209 @@
+/* ==========================================================================
+   hero-images.css  —  every page-specific background image lives here
+   --------------------------------------------------------------------------
+   * This is the ONLY stylesheet that is NOT inside an @layer. Un-layered CSS
+     always beats layered CSS, so these rules win without needing !important.
+   * To change a picture: edit the url() below (paths are relative to /css/).
+   * Image files live in assets/images/{heroes,scenes,brand,namaz,wudu}/.
+   * Legibility gradients (the "shade"/"overlay" rules) keep text readable on
+     top of the photos; the photos themselves stay un-tinted.
+   ========================================================================== */
+
+/* ---------- Home: hero ---------- */
+.home-hero .hero-visual {
+  background: url('../assets/images/heroes/home-hero.webp') center 58% / cover no-repeat;
+  filter: none;
+  opacity: 1;
+}
+.home-hero .hero-shade {
+  background: linear-gradient(
+    90deg,
+    rgba(4, 24, 34, 0.88) 0%,
+    rgba(4, 29, 40, 0.72) 36%,
+    rgba(4, 29, 40, 0.28) 66%,
+    rgba(4, 29, 40, 0.08) 100%
+  );
+}
+.home-hero .hero-copy,
+.home-hero .hero-copy h1,
+.home-hero .hero-copy .hero-lead,
+.home-hero .hero-copy .hero-source {
+  color: #f4fbfd;
+}
+.home-hero .hero-copy h1 em {
+  color: #55d9e8;
+}
+.home-hero .hero-kicker,
+.home-hero .hero-trust {
+  color: #d9f5fa;
+}
+
+/* ---------- Home: module cards (order = order of cards in index.html) ---------- */
+.home-modules .module-grid > .module-card .module-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  filter: none;
+}
+.home-modules .module-grid > .module-card:nth-child(1) .module-image {
+  background-image: url('../assets/images/heroes/quran-study.webp');
+}
+.home-modules .module-grid > .module-card:nth-child(2) .module-image {
+  background-image: url('../assets/images/heroes/hadith.webp');
+}
+.home-modules .module-grid > .module-card:nth-child(3) .module-image {
+  background-image: url('../assets/images/scenes/dua-hands-sunset.webp');
+}
+.home-modules .module-grid > .module-card:nth-child(4) .module-image {
+  background-image: url('../assets/images/scenes/dua-river-mosque.webp');
+}
+.home-modules .module-grid > .module-card:nth-child(5) .module-image {
+  background-image: url('../assets/images/heroes/ramadan.webp');
+}
+.home-modules .module-grid > .module-card:nth-child(6) .module-image {
+  background-image: url('../assets/images/heroes/daily-sunset.webp');
+}
+
+/* ---------- Home: "today's reminder" featured card ---------- */
+.featured-image {
+  background: url('../assets/images/heroes/daily-sunset.webp') center / cover no-repeat;
+}
+
+/* ---------- Home: call-to-action banner ---------- */
+.home-cta .cta-image {
+  background: url('../assets/images/heroes/quran-study.webp') center 60% / cover no-repeat;
+  filter: none;
+  opacity: 1;
+}
+.home-cta .cta-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(4, 24, 34, 0.9) 0%,
+    rgba(4, 29, 40, 0.75) 43%,
+    rgba(4, 29, 40, 0.22) 100%
+  );
+}
+.home-cta .cta-copy,
+.home-cta .cta-copy h2,
+.home-cta .cta-copy p {
+  color: #f4fbfd;
+}
+
+/* ---------- Learning path ---------- */
+.learn-main .hero-art {
+  background: url('../assets/images/scenes/study-with-books.webp') center / cover no-repeat;
+  filter: none;
+  opacity: 1;
+}
+
+/* ---------- Islam-know ---------- */
+.ik-hero .ik-hero-bg {
+  background: url('../assets/images/heroes/quran-study.webp') center / cover no-repeat;
+  filter: none;
+  opacity: 1;
+}
+.ik-hero .ik-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 28, 0.84) 0%,
+    rgba(5, 39, 46, 0.64) 48%,
+    rgba(5, 39, 46, 0.22) 100%
+  );
+}
+
+/* ---------- Ramadan ---------- */
+.ramadan-hero .ramadan-hero-bg {
+  background: url('../assets/images/heroes/ramadan.webp') center / cover no-repeat;
+  filter: none;
+  opacity: 1;
+}
+.ramadan-hero .ramadan-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 28, 27, 0.84) 0%,
+    rgba(6, 47, 43, 0.64) 48%,
+    rgba(6, 47, 43, 0.22) 100%
+  );
+}
+
+/* ---------- Daily life ---------- */
+.life-hero .hero-art {
+  background: url('../assets/images/heroes/daily-life.webp') center / cover no-repeat;
+  filter: none;
+  opacity: 1;
+}
+.life-hero .hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 34, 31, 0.84) 0%,
+    rgba(6, 58, 50, 0.64) 48%,
+    rgba(6, 55, 46, 0.22) 100%
+  );
+}
+
+/* ---------- Hadith ---------- */
+/* Library photo. It is enlarged a little and pinned to the left so the book and the hand
+   sit on the right of the card, away from the text column. */
+.hadith-hero .hero-bg {
+  background: url('../assets/images/heroes/hadith.webp') 0% 38% / 125% auto no-repeat;
+}
+.hadith-hero .hero-shade {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 32, 0.94) 0%,
+    rgba(4, 34, 44, 0.78) 38%,
+    rgba(4, 34, 44, 0.2) 75%,
+    rgba(4, 34, 44, 0.08) 100%
+  );
+}
+/* The shade is dark in BOTH themes, so the text on it is light in both themes. */
+.hadith-hero h1,
+.hadith-hero .hero-lead {
+  color: #f4fbfd;
+}
+.hadith-hero .hero-text,
+.hadith-hero .hero-meta {
+  color: #d9f5fa;
+}
+.hadith-hero .eyebrow {
+  color: #55d9e8;
+}
+
+/* ---------- Dua ---------- */
+.dua-hero-modern .quote-art {
+  background: url('../assets/images/scenes/quran-reading-sunset.webp') center / cover no-repeat;
+  filter: none;
+  opacity: 1;
+}
+.dua-hero-modern .quote-overlay {
+  background:
+    linear-gradient(90deg, rgba(5, 26, 25, 0.72) 0%, rgba(5, 26, 25, 0.4) 48%, rgba(5, 26, 25, 0.12) 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.22), transparent);
+}
+
+/* ---------- Quran reader banner ---------- */
+.reader-hero {
+  background-image: url('../assets/images/heroes/quran-study.webp');
+  background-size: cover;
+  background-position: center 55%;
+  background-repeat: no-repeat;
+}
+
+/* ---------- Small screens: lighter shade so more of the photo shows ---------- */
+@media (max-width: 760px) {
+  .home-hero .hero-shade {
+    background: linear-gradient(90deg, rgba(4, 24, 34, 0.78), rgba(4, 29, 40, 0.48));
+  }
+  .home-cta .cta-overlay {
+    background: linear-gradient(90deg, rgba(4, 24, 34, 0.82), rgba(4, 29, 40, 0.48));
+  }
+  /* Narrow screens: fill the card with the photo (books stay visible) and darken it a bit more. */
+  .hadith-hero .hero-bg {
+    background-size: cover;
+    background-position: 56% center;
+  }
+  .hadith-hero .hero-shade {
+    background: linear-gradient(180deg, rgba(3, 24, 32, 0.9), rgba(4, 34, 44, 0.72));
+  }
+}

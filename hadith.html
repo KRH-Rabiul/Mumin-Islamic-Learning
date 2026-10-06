@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<!--
+  hadith.html - Hadith
+  Styles : css/base.css, css/nav.css, css/theme.css, css/hero-images.css + the page file in css/pages/
+  Scripts: js/common-nav.js (shared header + theme) then this page's script in js/
+  Edit text here; edit colours in css/theme.css; edit pictures in css/hero-images.css.
+-->
+<html lang="bn">
+<head><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/images/brand/icon-192.png">
+<link rel="icon" type="image/png" href="assets/images/brand/logo-mark.png">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Mumin — ছয়টি প্রধান হাদিস গ্রন্থের অধ্যায়ভিত্তিক পাঠ, আরবি ও বাংলা পাশাপাশি।" name="description"/>
+<title>Mumin | হাদিস</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&amp;family=Hind+Siliguri:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="css/base.css" rel="stylesheet"/>
+<link href="css/pages/hadith.css" rel="stylesheet"/>
+<link href="css/nav.css" rel="stylesheet"/><link rel="stylesheet" href="css/theme.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mumin | হাদিস">
+<meta property="og:description" content="Mumin — বাংলা ভাষায় কুরআন, নামাজ, দোয়া-যিকির, হাদিস ও দৈনন্দিন ইসলামী শিক্ষা।">
+<meta property="og:image" content="assets/images/heroes/home-hero.webp">
+  <link rel="stylesheet" href="css/hero-images.css">
+</head>
+<body class="hadith-page">
+<div class="page-glow"></div>
+<!-- Main content: .page -->
+<main class="page">
+
+<!-- Section: hero (compact banner + search) -->
+<section class="hadith-hero">
+<div class="hero-bg"></div><div class="hero-shade"></div>
+<div class="hero-content">
+<span class="eyebrow light">MODULE 6 • HADITH</span>
+<h1>হাদিস</h1>
+<h2 class="hero-lead">নির্ভরযোগ্য গ্রন্থ থেকে হাদিস, আরবি ও বাংলায়</h2>
+<p class="hero-text">ছয়টি প্রধান গ্রন্থের অধ্যায় ধরে হাদিস পড়ুন — আরবি ও বাংলা পাশাপাশি, মান ও রেফারেন্সসহ।</p>
+<div class="hero-search"><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg></span><input autocomplete="off" id="hadithSearch" aria-label="গ্রন্থ বা অধ্যায় খুঁজুন" placeholder="গ্রন্থ বা অধ্যায় খুঁজুন (যেমন: prayer, fasting, বুখারী)…"/><button id="searchBtn" type="button">খুঁজুন</button></div>
+<div class="hero-meta"><span>📚 ৬টি গ্রন্থ</span><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg> আরবি · বাংলা · মান/রেফারেন্স</span></div>
+</div>
+<div class="hero-quote"><span>قال رسول الله ﷺ</span><strong>وَمَا آتَاكُمُ الرَّسُولُ فَخُذُوهُ</strong><small>রাসূল ﷺ যা দিয়েছেন, তা গ্রহণ করো</small><em>সূরা আল-হাশর, ৫৯:৭</em></div>
+</section>
+
+<!-- Section: source note (slim strip) -->
+<section class="gateway-note">
+<div class="note-icon">🔗</div>
+<div><b>উৎস ও যাচাই</b><p>হাদিসের পাঠ খোলা ডেটাসেট থেকে আসে। গুরুত্বপূর্ণ বিষয়ে Sunnah.com-এ মিলিয়ে নিন এবং আলেমের পরামর্শ নিন।</p></div>
+<a class="outline-btn" href="https://sunnah.com/" rel="noopener noreferrer" target="_blank">Sunnah.com ↗</a>
+</section>
+
+<!-- Section: book list (#books) — cards are built by js/hadith.js from data/hadith-data.js -->
+<section class="book-section" id="books">
+<div class="section-heading"><div><span class="eyebrow">প্রধান সংগ্রহ</span><h2>হাদিসের গ্রন্থসমূহ</h2><p>একটি গ্রন্থ বেছে নিন — পেজ রিলোড ছাড়াই অধ্যায় ও হাদিস পড়ুন।</p></div></div>
+<div class="book-grid" id="bookGrid"></div>
+<div class="chapter-results" id="chapterResults" hidden></div>
+<div class="no-result" hidden id="noResult">এই শব্দের সঙ্গে মিলে কোনো গ্রন্থ বা অধ্যায় পাওয়া যায়নি। অধ্যায়ের নাম ইংরেজিতে লিখে দেখুন, অথবা <a href="https://sunnah.com/search" rel="noopener noreferrer" target="_blank">Sunnah.com-এ খুঁজুন ↗</a></div>
+</section>
+
+<!-- Section: reader (#reader) — one chapter of one book; opened with #book/chapter in the address -->
+<section class="reader-section" id="reader" hidden>
+<div class="reader-bar">
+<button class="back-btn" id="backBtn" type="button">← সব গ্রন্থ</button>
+<div class="reader-title"><span class="reader-icon" id="readerIcon"></span><div><h2 id="readerTitle"></h2><p id="readerSub"></p></div></div>
+<a class="outline-btn sunnah-link" id="sunnahLink" href="https://sunnah.com/" rel="noopener noreferrer" target="_blank">Sunnah.com-এ এই অধ্যায় ↗</a>
+</div>
+<div class="reader-tools">
+<label class="tool"><span>অধ্যায়</span><select id="chapterSelect"></select></label>
+<label class="tool"><span>নম্বরে যান</span><span class="tool-row"><input id="jumpInput" inputmode="numeric" autocomplete="off" placeholder="যেমন: 125"/><button id="jumpBtn" type="button">যান</button></span></label>
+<label class="tool grow"><span>এই অধ্যায়ে খুঁজুন</span><input id="filterInput" autocomplete="off" placeholder="বাংলা বা আরবি শব্দ লিখুন…"/></label>
+</div>
+<div class="reader-nav" data-nav="top"><button type="button" data-step="-1">← আগের অধ্যায়</button><span class="ch-info"></span><button type="button" data-step="1">পরের অধ্যায় →</button></div>
+<div class="grade-note" id="gradeNote"></div>
+<div class="hadith-list" id="hadithList"></div>
+<div class="reader-status" id="readerStatus" role="status"></div>
+<div class="more-wrap"><button class="more-btn" id="moreBtn" type="button" hidden>আরও দেখান</button></div>
+<div class="reader-nav" data-nav="bottom"><button type="button" data-step="-1">← আগের অধ্যায়</button><span class="ch-info"></span><button type="button" data-step="1">পরের অধ্যায় →</button></div>
+</section>
+
+<!-- Footer -->
+<footer class="hadith-footer">আরবি ও বাংলা পাঠ: <a href="https://github.com/fawazahmed0/hadith-api" rel="noopener noreferrer" target="_blank">hadith-api (open dataset) ↗</a> · অনুবাদ ও মান তৃতীয়-পক্ষের সংস্করণ থেকে, তাই Sunnah.com-এ মিলিয়ে নিন।</footer>
+</main>
+<div class="toast" id="toast"></div>
+<script src="js/common-nav.js"></script>
+<script src="js/common.js"></script>
+<script src="data/hadith-data.js"></script>
+<script src="js/hadith.js"></script>
+</body>
+</html>

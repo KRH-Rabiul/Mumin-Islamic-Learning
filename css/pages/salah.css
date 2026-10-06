@@ -1,0 +1,811 @@
+/* ==========================================================================
+   salah.css — Namaz lessons (salah.html)
+   Module tabs, lesson sidebar, step cards, image boxes.
+   Structure: @layer main = normal styles; @layer overrides = rules that must beat main.
+   Write new styles in "main". Do not use !important (see docs/CSS-GUIDE.md).
+   ========================================================================== */
+@layer main, overrides; /* "overrides" holds the rules that used to depend on the important flag */
+
+@layer main {
+  /* ======================================================================
+   Mumin | Namaz Module
+   Clean module-only stylesheet. Palette follows the Mumin home blue/cyan
+   direction. No legacy green theme is kept in this file.
+   ====================================================================== */
+
+  .salah-page {
+    --s-bg: var(--color-gray-98);
+    --s-surface: var(--color-gray-100);
+    --s-surface-2: var(--color-gray-97);
+    --s-surface-3: var(--color-gray-100);
+    --s-ink: var(--color-cyan-22);
+    --s-muted: var(--color-cyan-46);
+    --s-line: var(--color-gray-91);
+    --s-accent: var(--color-cyan-60);
+    --s-accent-2: var(--color-cyan-78-b);
+    --s-accent-dark: var(--color-cyan-43);
+    --s-gold: var(--color-cyan-60);
+    background: var(--s-bg);
+    color: var(--s-ink);
+  }
+
+  .salah-page.dark {
+    --s-bg: var(--color-cyan-8);
+    --s-surface: var(--color-cyan-15);
+    --s-surface-2: var(--color-cyan-17);
+    --s-surface-3: #123840;
+    --s-ink: var(--color-gray-97);
+    --s-muted: var(--color-cyan-78);
+    --s-line: #28505a;
+    --s-accent: var(--color-cyan-75);
+    --s-accent-2: var(--color-cyan-86);
+    --s-accent-dark: var(--color-cyan-86);
+    --s-gold: var(--color-cyan-86);
+  }
+
+  .salah-wrap {
+    width: min(1240px, calc(100% - 36px));
+    margin: 0 auto;
+    padding: 28px 0 24px;
+  }
+
+  /* Hero */
+  .salah-hero {
+    overflow: hidden;
+    border: 1px solid rgba(45, 159, 193, 0.28);
+    border-radius: 24px;
+    background: var(--s-surface);
+    box-shadow: 0 20px 55px rgba(17, 67, 82, 0.1);
+  }
+  .salah-hero-image {
+    position: relative;
+    min-height: 330px;
+    background-image: var(--bg);
+    background-position: center;
+    background-size: cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(4, 24, 31, 0.9) 0%,
+      rgba(5, 29, 36, 0.7) 44%,
+      rgba(5, 29, 36, 0.15) 100%
+    );
+  }
+  /* ---------- Salah ---------- */
+  .salah-hero-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    padding: 58px 54px;
+    color: var(--color-gray-100);
+  }
+  .salah-hero-copy .eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+  .salah-hero-copy h1 {
+    margin: 0 0 14px;
+    font-size: clamp(2rem, 4vw, 3.2941rem);
+    line-height: 1.12;
+    color: var(--color-gray-100);
+  }
+  .salah-hero-copy p {
+    max-width: 720px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.9412rem;
+    line-height: 1.9;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 22px;
+  }
+  .hero-badges span {
+    padding: 7px 13px;
+    border: 1px solid rgba(110, 208, 229, 0.32);
+    border-radius: 999px;
+    background: rgba(7, 39, 48, 0.72);
+    color: var(--color-cyan-96);
+    font-size: 0.7647rem;
+    font-weight: 700;
+  }
+
+  /* Module tabs */
+  .module-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .module-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 0 13px 0 0;
+    border: 1px solid var(--s-line);
+    border-radius: 16px;
+    background: var(--s-surface);
+    color: var(--s-ink);
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+    transition: 0.25s ease;
+    box-shadow: 0 8px 24px rgba(18, 72, 86, 0.05);
+  }
+  .module-tab:hover {
+    transform: translateY(-2px);
+    border-color: var(--s-accent);
+  }
+  .module-tab.active {
+    border-color: var(--s-accent);
+    box-shadow: 0 10px 28px rgba(45, 159, 193, 0.14);
+  }
+  .tab-photo {
+    width: 74px;
+    min-width: 74px;
+    height: 64px;
+    background: var(--bg) center/cover no-repeat;
+  }
+  /* ---------- Module ---------- */
+  .module-tab span:nth-child(2) {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+  .module-tab b {
+    font-size: 0.8824rem;
+    color: var(--s-ink);
+  }
+  .module-tab small {
+    font-size: 0.6471rem;
+    color: var(--s-muted);
+    line-height: 1.4;
+  }
+  .module-tab i {
+    margin-left: auto;
+    color: var(--s-accent);
+    font-style: normal;
+    font-size: 1.1765rem;
+  }
+
+  /* Lesson shell */
+  .lesson-shell {
+    display: grid;
+    grid-template-columns: 232px minmax(0, 1fr);
+    min-height: 650px;
+    border: 1px solid var(--s-line);
+    border-radius: 22px;
+    background: var(--s-surface);
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(18, 72, 86, 0.08);
+  }
+  .lesson-sidebar {
+    position: relative;
+    background: var(--s-surface-2);
+    border-right: 1px solid var(--s-line);
+    padding: 20px 12px;
+    overflow: auto;
+  }
+  .lesson-sidebar::after {
+    content: '';
+    position: absolute;
+    top: 110px;
+    right: -1px;
+    width: 2px;
+    height: 150px;
+    background: linear-gradient(180deg, transparent, var(--s-accent), transparent);
+    opacity: 0.65;
+  }
+  .lesson-sidebar-head {
+    padding: 2px 10px 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--s-line);
+  }
+  .lesson-sidebar-head span {
+    font-size: 0.7059rem;
+    font-weight: 800;
+    color: var(--s-accent-dark);
+  }
+  .lesson-sidebar-head h2 {
+    margin: 5px 0 0;
+    font-size: 1.3529rem;
+    color: var(--s-ink);
+  }
+  .lesson-item {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 9px;
+    width: 100%;
+    padding: 10px 8px;
+    margin: 4px 0;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--s-ink);
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  .lesson-item:hover {
+    background: rgba(45, 159, 193, 0.07);
+  }
+  .lesson-item.active {
+    background: var(--s-surface);
+    box-shadow: 0 8px 20px rgba(21, 76, 91, 0.07);
+    outline: 1px solid rgba(45, 159, 193, 0.28);
+  }
+  .lesson-num {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    background: rgba(45, 159, 193, 0.1);
+    color: var(--s-accent-dark);
+    font-size: 0.6471rem;
+    font-weight: 900;
+  }
+  .lesson-item.active .lesson-num {
+    background: var(--s-accent);
+    color: var(--color-gray-100);
+  }
+  .lesson-item b {
+    display: block;
+    font-size: 0.7647rem;
+    line-height: 1.45;
+    color: var(--s-ink);
+  }
+  .lesson-item small {
+    margin-top: 3px;
+    color: var(--s-muted);
+    font-size: 0.5882rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .lesson-main {
+    min-width: 0;
+    background: var(--s-surface);
+  }
+  .lesson-content {
+    padding: 28px 28px 32px;
+  }
+  .lesson-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+  .counter {
+    font-size: 0.7059rem;
+    font-weight: 800;
+    color: var(--s-accent-dark);
+    white-space: nowrap;
+  }
+  /* ---------- Lesson ---------- */
+  .lesson-progress {
+    height: 6px;
+    flex: 1;
+    border-radius: 999px;
+    background: var(--s-surface-2);
+    overflow: hidden;
+  }
+  .lesson-progress span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--s-accent), var(--s-accent-2));
+    transition: width 0.35s ease;
+  }
+  .lesson-title-row {
+    margin-bottom: 18px;
+  }
+  .content-kicker {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--s-accent-dark);
+    font-size: 0.7059rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+  }
+  /* ---------- Lesson ---------- */
+  .lesson-title-row h2 {
+    margin: 0;
+    color: var(--s-ink);
+    font-size: clamp(1.5882rem, 3vw, 2.3529rem);
+    line-height: 1.22;
+  }
+  .lesson-title-row p {
+    margin: 8px 0 0;
+    color: var(--s-muted);
+    font-size: 0.8235rem;
+    line-height: 1.7;
+  }
+
+  .lesson-visual {
+    height: 280px;
+    margin: 0 0 16px;
+    border: 1px solid var(--s-line);
+    border-radius: 18px;
+    background: var(--bg) center/cover no-repeat;
+    box-shadow: 0 12px 30px rgba(18, 72, 86, 0.1);
+  }
+
+  /* Content cards */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .info-card {
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid var(--s-line);
+    border-radius: 15px;
+    background: var(--s-surface-3);
+    color: var(--s-ink);
+    transition: 0.2s ease;
+  }
+  .info-card:hover {
+    transform: translateY(-1px);
+    border-color: rgba(45, 159, 193, 0.45);
+    box-shadow: 0 9px 22px rgba(18, 72, 86, 0.06);
+  }
+  .info-card h3 {
+    margin: 0 0 8px;
+    color: var(--s-ink);
+    font-size: 0.9412rem;
+    line-height: 1.4;
+  }
+  .info-card p {
+    margin: 0;
+    color: var(--s-muted);
+    font-size: 0.7647rem;
+    line-height: 1.85;
+  }
+  .wide-card {
+    grid-column: span 2;
+  }
+  /* ---------- Mini ---------- */
+  .mini-list {
+    display: grid;
+    gap: 11px;
+  }
+  .mini-list > div {
+    padding: 11px 12px;
+    border: 1px solid var(--s-line);
+    border-radius: 11px;
+    background: var(--s-surface);
+  }
+  .mini-list strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--s-ink);
+    font-size: 0.7647rem;
+  }
+  .mini-list p {
+    font-size: 0.7059rem;
+  }
+  .dua-source {
+    display: block;
+    margin-top: 9px;
+    color: var(--s-accent-dark);
+    font-size: 0.6471rem;
+    line-height: 1.5;
+  }
+
+  /* Five daily prayers */
+  .related-topic-intro {
+    margin-bottom: 12px;
+    padding: 16px 18px;
+    border: 1px solid rgba(45, 159, 193, 0.25);
+    border-radius: 15px;
+    background: var(--s-surface-2);
+  }
+  .related-topic-intro p {
+    margin: 0;
+    color: var(--s-muted);
+    font-size: 0.7647rem;
+    line-height: 1.85;
+  }
+  .five-prayer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 9px;
+    margin-bottom: 10px;
+  }
+  /* ---------- Prayer ---------- */
+  .prayer-overview-card {
+    padding: 16px 13px;
+    border: 1px solid var(--s-line);
+    border-radius: 14px;
+    background: var(--s-surface-3);
+    text-align: center;
+  }
+  .prayer-overview-card span {
+    display: block;
+    color: var(--s-accent-dark);
+    font-size: 0.7647rem;
+    font-weight: 900;
+  }
+  .prayer-overview-card strong {
+    display: block;
+    margin: 8px 0 4px;
+    color: var(--s-ink);
+    font-size: 0.7647rem;
+    line-height: 1.55;
+  }
+  .prayer-overview-card small {
+    color: var(--s-muted);
+    font-size: 0.5882rem;
+    line-height: 1.5;
+  }
+
+  /* Salah lesson */
+  .prayer-types {
+    display: grid;
+    gap: 12px;
+  }
+  .prayer-type {
+    padding: 18px;
+    border: 1px solid var(--s-line);
+    border-radius: 16px;
+    background: var(--s-surface-3);
+  }
+  .prayer-type.featured {
+    border-color: rgba(45, 159, 193, 0.35);
+  }
+  .type-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .type-head h3 {
+    margin: 0;
+    color: var(--s-ink);
+    font-size: 1.2941rem;
+  }
+  .rakah-badge {
+    max-width: 300px;
+    padding: 7px 10px;
+    border: 1px solid rgba(45, 159, 193, 0.25);
+    border-radius: 999px;
+    background: var(--s-surface-2);
+    color: var(--s-accent-dark);
+    font-size: 0.6471rem;
+    font-weight: 800;
+    text-align: right;
+  }
+  /* ---------- Step ---------- */
+  .step-list {
+    margin: 0;
+    padding-left: 23px;
+    color: var(--s-ink);
+  }
+  .step-list li {
+    padding: 8px 0 8px 5px;
+    color: var(--s-muted);
+    font-size: 0.7647rem;
+    line-height: 1.8;
+    border-bottom: 1px dashed var(--s-line);
+  }
+  .step-list li:last-child {
+    border-bottom: 0;
+  }
+  .step-list li::marker {
+    color: var(--s-accent);
+    font-weight: 900;
+  }
+  .lesson-note {
+    margin-top: 12px;
+    padding: 11px 12px;
+    border-left: 3px solid var(--s-accent);
+    border-radius: 0 10px 10px 0;
+    background: var(--s-surface-2);
+    color: var(--s-muted);
+    font-size: 0.6471rem;
+    line-height: 1.7;
+  }
+  .lesson-note strong {
+    color: var(--s-ink);
+  }
+  .related-topic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Arabic / dua */
+  .arabic-card .label {
+    margin-bottom: 10px;
+    color: var(--s-accent-dark);
+    font-size: 0.6471rem;
+    font-weight: 900;
+  }
+  .arabic {
+    font-family: Amiri, serif;
+    font-size: 1.5294rem;
+    line-height: 1.9;
+    text-align: right;
+    color: var(--s-ink);
+  }
+  /* ---------- Dua ---------- */
+  .dua-list {
+    display: grid;
+  }
+  .dua-item {
+    padding: 20px;
+    border: 1px solid var(--s-line);
+    border-radius: 16px;
+    background: var(--s-surface-3);
+  }
+  .dua-item h3 {
+    margin: 0;
+    color: var(--s-ink);
+    font-size: 1.2941rem;
+  }
+  .dua-arabic {
+    margin: 16px 0;
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--s-surface-2);
+    font-family: Amiri, serif;
+    font-size: 1.7647rem;
+    line-height: 2;
+    text-align: right;
+    color: var(--s-ink);
+  }
+  .dua-pron,
+  .dua-meaning {
+    margin-top: 11px;
+    color: var(--s-muted);
+    font-size: 0.7647rem;
+    line-height: 1.85;
+  }
+  .dua-pron b,
+  .dua-meaning b {
+    color: var(--s-ink);
+  }
+
+  /* Navigation */
+  .lesson-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--s-line);
+  }
+  .lesson-actions button {
+    min-width: 125px;
+    padding: 10px 15px;
+    border: 1px solid var(--s-line);
+    border-radius: 11px;
+    background: var(--s-surface);
+    color: var(--s-ink);
+    font: inherit;
+    font-size: 0.7059rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  .lesson-actions button:hover:not(:disabled) {
+    border-color: var(--s-accent);
+    color: var(--s-accent-dark);
+    transform: translateY(-1px);
+  }
+  .lesson-actions button.next {
+    border-color: var(--s-accent);
+    background: var(--s-accent);
+    color: var(--color-gray-100);
+  }
+  .lesson-actions button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Source strip / footer */
+  .source-strip {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 14px;
+    padding: 14px 16px;
+    border: 1px solid var(--s-line);
+    border-radius: 14px;
+    background: var(--s-surface);
+    color: var(--s-muted);
+    font-size: 0.6471rem;
+    line-height: 1.7;
+  }
+  .source-strip strong {
+    color: var(--s-gold);
+    white-space: nowrap;
+  }
+  .salah-page .footer {
+    margin-top: 18px;
+    color: var(--s-muted);
+  }
+
+  /* Small motion */
+  .page-enter {
+    animation: salahEnter 0.35s ease both;
+  }
+  .lesson-refresh .lesson-content {
+    animation: salahRefresh 0.28s ease both;
+  }
+  @keyframes salahEnter {
+    from {
+      opacity: 0;
+      transform: translateY(7px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes salahRefresh {
+    from {
+      opacity: 0.35;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1050px) {
+    .salah-wrap {
+      width: min(100% - 24px, 1100px);
+    }
+    .module-tabs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .five-prayer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .lesson-shell {
+      grid-template-columns: 210px minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .salah-wrap {
+      width: calc(100% - 16px);
+      padding-top: 12px;
+    }
+    .salah-hero-image {
+      min-height: 410px;
+    }
+    .salah-hero-copy {
+      padding: 38px 24px;
+    }
+    .salah-hero-copy h1 {
+      font-size: 2rem;
+    }
+    .module-tabs {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .lesson-shell {
+      grid-template-columns: 1fr;
+      border-radius: 18px;
+    }
+    .lesson-sidebar {
+      border-right: 0;
+      border-bottom: 1px solid var(--s-line);
+      max-height: 250px;
+    }
+    .lesson-sidebar::after {
+      display: none;
+    }
+    .lesson-content {
+      padding: 20px 15px 24px;
+    }
+    .lesson-visual {
+      height: 210px;
+    }
+    .info-grid,
+    .related-topic-grid {
+      grid-template-columns: 1fr;
+    }
+    .wide-card {
+      grid-column: auto;
+    }
+    .five-prayer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .type-head {
+      display: grid;
+    }
+    .rakah-badge {
+      max-width: none;
+      text-align: left;
+    }
+    .source-strip {
+      display: grid;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .salah-hero-copy p {
+      font-size: 0.8235rem;
+    }
+    .five-prayer-grid {
+      grid-template-columns: 1fr;
+    }
+    .lesson-title-row h2 {
+      font-size: 1.6471rem;
+    }
+    .lesson-top {
+      gap: 10px;
+    }
+    .counter {
+      font-size: 0.5882rem;
+    }
+    .dua-arabic {
+      font-size: 1.4706rem;
+    }
+  }
+
+  /* Final readability pass: restore the larger, comfortable reading scale for Namaz. */
+  .salah-page {
+    font-size: 1rem;
+  }
+  .salah-page .lesson-item b {
+    font-size: 0.9412rem;
+    line-height: 1.5;
+  }
+  .salah-page .lesson-item small {
+    font-size: 0.7059rem;
+  }
+  .salah-page .lesson-title-row p {
+    font-size: 0.9412rem;
+    line-height: 1.8;
+  }
+  .salah-page .info-card h3 {
+    font-size: 1.0588rem;
+  }
+  .salah-page .info-card p {
+    font-size: 0.8824rem;
+    line-height: 1.9;
+  }
+  .salah-page .mini-list strong {
+    font-size: 0.8824rem;
+  }
+  .salah-page .mini-list p {
+    font-size: 0.8235rem;
+  }
+  .salah-page .step-list li {
+    font-size: 0.8824rem;
+    line-height: 1.9;
+  }
+  .salah-page .lesson-note {
+    font-size: 0.7647rem;
+    line-height: 1.8;
+  }
+  .salah-page .related-topic-intro p {
+    font-size: 0.8824rem;
+  }
+  .salah-page .dua-pron,
+  .salah-page .dua-meaning {
+    font-size: 0.8824rem;
+  }
+  .salah-page .source-strip {
+    font-size: 0.7647rem;
+    line-height: 1.8;
+  }
+}

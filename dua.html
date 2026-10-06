@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<!--
+  dua.html - Dua & Dhikr
+  Styles : css/base.css, css/nav.css, css/theme.css, css/hero-images.css + the page file in css/pages/
+  Scripts: js/common-nav.js (shared header + theme) then this page's script in js/
+  Edit text here; edit colours in css/theme.css; edit pictures in css/hero-images.css.
+-->
+<html lang="bn">
+<head><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/images/brand/icon-192.png">
+<link rel="icon" type="image/png" href="assets/images/brand/logo-mark.png">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Mumin Module 4 — দোয়া ও যিকির। উৎসভিত্তিক দৈনন্দিন দোয়া ও যিকির শিখুন।" name="description"/>
+<title>Mumin | দোয়া ও যিকির</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Hind+Siliguri:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="css/base.css" rel="stylesheet"/>
+<link href="css/pages/dua-page.css" rel="stylesheet"/>
+<link href="css/nav.css" rel="stylesheet"/><link rel="stylesheet" href="css/theme.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mumin | দোয়া ও যিকির">
+<meta property="og:description" content="Mumin — বাংলা ভাষায় কুরআন, নামাজ, দোয়া-যিকির, হাদিস ও দৈনন্দিন ইসলামী শিক্ষা।">
+<meta property="og:image" content="assets/images/heroes/home-hero.webp">
+  <link rel="stylesheet" href="css/hero-images.css">
+</head>
+<body>
+<div class="page-glow"></div>
+<!-- Main content: .page -->
+<main class="page">
+<!-- Main content: .dua-page-main -->
+<main class="dua-page-main">
+<!-- Section: .dua-hero-modern -->
+<section class="dua-hero-modern">
+<div class="hero-copy">
+<div class="hero-icon">🤲</div>
+<span class="eyebrow">MODULE 4 • দোয়া ও যিকির</span>
+<h1>দোয়া ও যিকির</h1>
+<h2>দৈনন্দিন জীবনের প্রতিটি মুহূর্তে আল্লাহকে স্মরণ</h2>
+<p>কুরআন ও নির্ভরযোগ্য হাদিস থেকে নির্বাচিত গুরুত্বপূর্ণ দোয়া ও যিকির। সহজভাবে শিখুন, অর্থ বুঝুন এবং জীবনে আমল করার জন্য প্রয়োজনীয় তথ্য এক জায়গায় পান।</p>
+</div>
+<div class="hero-quote">
+<div class="quote-art"></div>
+<div class="quote-overlay"></div>
+<div class="quote-content"><div class="arabic-quote" dir="rtl" lang="ar">وَاذْكُرُوا اللَّهَ كَثِيرًا</div><p>“আর তোমরা আল্লাহকে বেশি বেশি স্মরণ কর।”</p><small>সূরা আল-আহযাব, ৩৩:৪১</small></div>
+</div>
+</section>
+<div class="dua-toolbar-modern">
+<label class="dua-search-wrap"><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-search"/></svg></span><input aria-label="দোয়া খুঁজুন" id="duaSearch" placeholder="দোয়া খুঁজুন... (যেমন: ঘুম, খাবার, সকাল)" type="search"/></label>
+<button class="dua-clear" id="duaClear">সব ক্যাটাগরি</button>
+</div>
+<!-- Section: .category-section -->
+<section class="category-section">
+<div class="section-label"><span>১</span><div><b>ক্যাটাগরি নির্বাচন করুন</b><small>বিষয় অনুযায়ী দোয়া ও যিকির</small></div></div>
+<div class="dua-category-grid modern-category-grid" id="duaCategoryGrid"></div>
+</section>
+<!-- Section: .study-layout -->
+<section class="study-layout">
+<aside class="dua-list-panel">
+<div class="panel-heading"><div><span class="eyebrow">দোয়ার তালিকা</span><h3 id="duaCategoryTitle">সকাল-সন্ধ্যার যিকির</h3><p id="duaCategoryDesc">প্রতিদিন সকাল ও সন্ধ্যায় পড়ার গুরুত্বপূর্ণ যিকির।</p></div><span class="dua-count" id="duaCount">১০টি</span></div>
+<div class="dua-list" id="duaList"></div>
+</aside>
+<article aria-live="polite" class="dua-detail-panel" id="duaDetailPanel"></article>
+</section>
+</main>
+<!-- Footer: .footer -->
+<footer class="footer"><div><strong>Mumin</strong><span>Learn. Practice. Grow.</span></div><p>একটি শান্ত, ad-free ইসলামিক learning space • তথ্যের ক্ষেত্রে উৎস ও যাচাইকে অগ্রাধিকার দেওয়া হবে।</p></footer>
+</main>
+<div class="toast" id="toast"></div>
+<script src="js/common-nav.js"></script><script src="data/dua-data.js"></script>
+<script src="js/dua-page.js"></script>
+</body>
+</html>

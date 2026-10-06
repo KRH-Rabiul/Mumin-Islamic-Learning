@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<!--
+  salah.html - Namaz lessons
+  Styles : css/base.css, css/nav.css, css/theme.css, css/hero-images.css + the page file in css/pages/
+  Scripts: js/common-nav.js (shared header + theme) then this page's script in js/
+  Edit text here; edit colours in css/theme.css; edit pictures in css/hero-images.css.
+-->
+<html lang="bn">
+<head><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/images/brand/icon-192.png">
+<link rel="icon" type="image/png" href="assets/images/brand/logo-mark.png">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Mumin নামাজ শিক্ষা: ওযু, নামাজের প্রস্তুতি, ২/৩/৪ রাকাতের ধাপ এবং নামাজের প্রয়োজনীয় দোয়া।" name="description"/>
+<title>Mumin | নামাজ শিক্ষা</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="css/base.css" rel="stylesheet"/>
+<link href="css/pages/salah.css" rel="stylesheet"/>
+<link href="css/nav.css" rel="stylesheet"/><link rel="stylesheet" href="css/theme.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mumin | নামাজ শিক্ষা">
+<meta property="og:description" content="Mumin — বাংলা ভাষায় কুরআন, নামাজ, দোয়া-যিকির, হাদিস ও দৈনন্দিন ইসলামী শিক্ষা।">
+<meta property="og:image" content="assets/images/heroes/home-hero.webp">
+  <link rel="stylesheet" href="css/hero-images.css">
+</head>
+<body class="salah-page">
+<div class="page-glow"></div>
+<!-- Main content: .page -->
+<main class="page">
+<!-- Section: .salah-wrap -->
+<section class="salah-wrap">
+<div class="salah-hero">
+<div class="salah-hero-image" data-bg="url('assets/images/namaz/salah-sujood.webp')">
+<div class="hero-overlay"></div>
+<div class="salah-hero-copy"><span class="eyebrow light">নামাজ শিক্ষা</span>
+<h1>নামাজ শেখার সূচনা</h1>
+<p>ওযু থেকে সালাম পর্যন্ত নামাজ শেখার প্রয়োজনীয় বিষয়গুলো ধাপে ধাপে সাজানো হয়েছে। ওযু, প্রস্তুতি, ৫ ওয়াক্ত, ২/৩/৪ রাকাত, বিতর, ভুল সংশোধন, সিজদায়ে সাহু, জামাত, ঈদ, জানাজা ও প্রয়োজনীয় দোয়া এক জায়গায় শেখার সুযোগ থাকবে। এই মডিউলটি হানাফি ফিকহের ভিত্তিতে সাজানো হয়েছে।</p>
+<div class="hero-badges"><span>ওযু</span><span>প্রস্তুতি</span><span>৫ ওয়াক্ত</span><span>দোয়া ও প্রয়োজনীয় বিষয়</span>
+</div>
+</div>
+</div>
+</div>
+<div class="module-tabs" id="moduleTabs">
+<button class="module-tab active" data-module="wudu"><span class="tab-photo" data-bg="url('assets/images/wudu/wudu-hands.webp')"></span><span><b>ওযু শিক্ষা</b><small>১৩টি ধাপে
+              পবিত্রতা</small></span><i>→</i></button>
+<button class="module-tab" data-module="prep"><span class="tab-photo" data-bg="url('assets/images/namaz/salah-sujood.webp')"></span><span><b>নামাজের প্রস্তুতি</b><small>নামাজের আগে
+              কী করবেন</small></span><i>→</i></button>
+<button class="module-tab" data-module="salah"><span class="tab-photo" data-bg="url('assets/images/namaz/salah-sujood.webp')"></span><span><b>নামাজের ধাপ</b><small>২, ৩, ৪ রাকাত
+              ও বিতর</small></span><i>→</i></button>
+<button class="module-tab" data-module="duas"><span class="tab-photo" data-bg="url('assets/images/wudu/wudu-final.webp')"></span><span><b>নামাজের দোয়া</b><small>আরবি • উচ্চারণ •
+              অর্থ</small></span><i>→</i></button>
+</div>
+<!-- Section: .lesson-shell #lessonShell -->
+<section class="lesson-shell" id="lessonShell">
+<aside class="lesson-sidebar" id="lessonSidebar"></aside>
+<article class="lesson-main" id="lessonMain"></article>
+</section>
+<div class="source-strip"><strong>ফিকহি ভিত্তি</strong><span>এই নামাজ মডিউলটি হানাফি ফিকহ অনুসারে সাজানো হয়েছে। কুরআন, সহিহ হাদিস এবং নির্ভরযোগ্য হানাফি ফিকহের গ্রন্থ/শিক্ষা থেকে প্রয়োজনীয় রেফারেন্স দেওয়া হয়েছে। জটিল বা ব্যক্তিগত মাসআলায় স্থানীয় নির্ভরযোগ্য আলেম/মুফতির পরামর্শ নিন।</span></div>
+</section>
+<!-- Footer: .footer -->
+<footer class="footer">
+<div><strong>Mumin</strong><span>Learn. Practice. Grow.</span></div>
+<p>নামাজ শিক্ষা • সহজ ভাষা • ধাপে ধাপে শেখা</p>
+</footer>
+</main>
+<script src="js/common-nav.js"></script><script src="js/salah.js"></script>
+</body>
+</html>

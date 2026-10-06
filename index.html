@@ -1,0 +1,338 @@
+<!doctype html>
+<!--
+  index.html - Home
+  Styles : css/base.css, css/nav.css, css/theme.css, css/hero-images.css + the page file in css/pages/
+  Scripts: js/common-nav.js (shared header + theme) then this page's script in js/
+  Edit text here; edit colours in css/theme.css; edit pictures in css/hero-images.css.
+-->
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#061a21">
+<meta name="description" content="Mumin — সহজ, পরিচ্ছন্ন ও উৎস-সচেতন ইসলামিক শিক্ষা প্ল্যাটফর্ম।">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mumin">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/images/brand/logo-mark.png">
+<link rel="apple-touch-icon" href="assets/images/brand/icon-192.png">
+<title>Mumin | শিখি • বুঝি • আমল করি</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/pages/home.css">
+<link rel="stylesheet" href="css/theme.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mumin | শিখি • বুঝি • আমল করি">
+<meta property="og:description" content="Mumin — বাংলা ভাষায় কুরআন, নামাজ, দোয়া-যিকির, হাদিস ও দৈনন্দিন ইসলামী শিক্ষা।">
+<meta property="og:image" content="assets/images/heroes/home-hero.webp">
+  <link rel="stylesheet" href="css/hero-images.css">
+</head>
+<body>
+<div class="page-glow" aria-hidden="true"></div>
+
+<!-- Main content: .mumin-home #home -->
+<main class="mumin-home" id="home">
+  <!-- HERO -->
+  <section class="home-hero" aria-labelledby="heroTitle">
+    <div class="hero-visual" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-copy reveal">
+        <span class="hero-kicker"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-quran"/></svg> শিখি • বুঝি • আমল করি</span>
+        <div class="hero-arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+        <h1 id="heroTitle">ইসলামকে জানুন,<br><em>জীবনকে সুন্দর করুন</em></h1>
+        <p class="hero-lead">কুরআন, হাদিস, নামাজ, দোয়া ও দৈনন্দিন জীবনের প্রয়োজনীয় শিক্ষা — সহজ বাংলায়, ধাপে ধাপে।</p>
+        <div class="hero-source">“হে আমার রব, আমার জ্ঞান বৃদ্ধি করুন।” <b>সূরা ত্ব-হা, ২০:১১৪</b></div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="learning-path.html">শেখা শুরু করুন <span>→</span></a>
+          <button class="btn btn-soft install-app" id="heroInstallBtn" type="button"><span class="btn-icon"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-app"/></svg></span> Mumin App</button>
+        </div>
+
+        <div class="hero-trust">
+          <span><i><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg></i> কুরআন ও নির্ভরযোগ্য হাদিস থেকে</span>
+          <span><i><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg></i> সহজ বাংলায় ব্যাখ্যা</span>
+          <span><i><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-check"/></svg></i> ফোন ও কম্পিউটারে সহজ</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRAYER STRIP -->
+  <section class="prayer-strip-wrap" aria-label="আজকের নামাজের সময়">
+    <div class="prayer-widget reveal">
+      <div class="prayer-place">
+        <span class="mini-label">আজকের নামাজের সময়</span>
+        <h2 id="cityName">ঢাকা, বাংলাদেশ</h2>
+        <div class="prayer-date" id="prayerDate">আজকের সময়</div>
+        <p class="prayer-note" id="prayerNote" hidden>আনুমানিক সময় — ইন্টারনেট থেকে আজকের সময় আনা যায়নি</p>
+        <button class="loc-btn" id="locBtn" type="button" title="শহর পরিবর্তন করুন"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg> শহর বদলান</button>
+      </div>
+      <div class="prayer-list" id="prayers"></div>
+      <div class="next-prayer">
+        <div><small>পরবর্তী নামাজ</small><strong id="nextName">--</strong></div>
+        <b id="countdown">--:--:--</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section class="section home-modules" id="modules">
+    <div class="section-heading centered reveal">
+      <span class="eyebrow">শেখার জায়গাগুলো</span>
+      <h2>যে বিষয়টি দরকার, সেখান থেকেই শুরু করুন</h2>
+      <p>কুরআন, হাদিস, নামাজ, দোয়া, রমজান ও দৈনন্দিন জীবন — যেখান থেকে ইচ্ছা শুরু করুন।</p>
+    </div>
+
+    <div class="module-grid">
+      <a class="module-card reveal" href="quran.html">
+        <div class="module-image"></div>
+        <div class="module-body">
+          <div class="module-top"><span class="module-icon"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-quran"/></svg></span><span class="module-arrow"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+          <h3>কুরআন</h3>
+          <p class="module-hook">“এই কুরআন মানুষকে সবচেয়ে সঠিক পথের দিকে পথ দেখায়।”</p>
+          <small>সূরা আল-ইসরা, ১৭:৯</small>
+        </div>
+      </a>
+
+      <a class="module-card reveal reveal-delay" href="hadith.html">
+        <div class="module-image"></div>
+        <div class="module-body">
+          <div class="module-top"><span class="module-icon"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-hadith"/></svg></span><span class="module-arrow"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+          <h3>হাদিস</h3>
+          <p class="module-hook">“নিজের জন্য যা ভালোবাসেন, ভাইয়ের জন্যও তা ভালোবাসুন।”</p>
+          <small>সহিহ আল-বুখারি, ১৩</small>
+        </div>
+      </a>
+
+      <a class="module-card reveal" href="dua.html">
+        <div class="module-image"></div>
+        <div class="module-body">
+          <div class="module-top"><span class="module-icon"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-dua"/></svg></span><span class="module-arrow"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+          <h3>দোয়া ও যিকির</h3>
+          <p class="module-hook">“জেনে রাখ, আল্লাহর স্মরণেই অন্তর প্রশান্ত হয়।”</p>
+          <small>সূরা আর-রাদ, ১৩:২৮</small>
+        </div>
+      </a>
+
+      <a class="module-card reveal" href="salah.html">
+        <div class="module-image module-image-salah"></div>
+        <div class="module-body">
+          <div class="module-top"><span class="module-icon"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-salah"/></svg></span><span class="module-arrow"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+          <h3>নামাজ শিক্ষা</h3>
+          <p class="module-hook">নামাজ আল্লাহর স্মরণ ও ইবাদতের একটি গুরুত্বপূর্ণ মাধ্যম।</p>
+          <small>সূরা আল-আনকাবুত, ২৯:৪৫</small>
+        </div>
+      </a>
+
+      <a class="module-card reveal reveal-delay" href="ramadan.html">
+        <div class="module-image"></div>
+        <div class="module-body">
+          <div class="module-top"><span class="module-icon"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ramadan"/></svg></span><span class="module-arrow"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+          <h3>রমজান</h3>
+          <p class="module-hook">রোজা, সাহরি, ইফতার, তারাবি ও কুরআনকে ঘিরে পুরো মাসের শেখার পথ।</p>
+          <small>সূরা আল-বাকারা, ২:১৮৩ • রোজার বিধান</small>
+        </div>
+      </a>
+
+      <a class="module-card reveal" href="daily-life.html">
+        <div class="module-image"></div>
+        <div class="module-body">
+          <div class="module-top"><span class="module-icon"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-life"/></svg></span><span class="module-arrow"><svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+          <h3>দৈনন্দিন জীবন</h3>
+          <p class="module-hook">খাবার, কথা, পরিবার, আখলাক ও জীবনের ছোট ছোট সিদ্ধান্তেও ইসলামের সুন্দর নির্দেশনা।</p>
+          <small>প্রয়োজনীয় ইসলামিক নির্দেশনা</small>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- POPULAR HADITH -->
+  <section class="section popular-hadith" id="popular-hadith">
+    <div class="section-heading centered reveal">
+      <span class="eyebrow">সবচেয়ে পরিচিত হাদিস</span>
+      <h2>যে কথাগুলো জীবনের সঙ্গে মিলে যায়</h2>
+      <p>বুখারি ও মুসলিম থেকে বাছাই করা ছোট ছোট হাদিস — যা প্রতিদিনের কাজ, কথা আর আচরণে কাজে লাগে।</p>
+    </div>
+    <div class="hadith-grid">
+      <a class="hadith-card reveal" href="https://sunnah.com/bukhari:1" target="_blank" rel="noopener">
+        <div class="hadith-card-top"><span class="hadith-no">০১</span><span class="hadith-tag">নিয়ত</span></div>
+        <h3>নিয়ত ঠিক রাখুন</h3>
+        <div class="hadith-ar" lang="ar" dir="rtl">إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ</div>
+        <p>সব কাজের ফল নির্ভর করে নিয়তের ওপর।</p>
+        <div class="hadith-src"><b>সহিহ বুখারি ১</b><span>sunnah.com-এ পড়ুন <svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+      </a>
+      <a class="hadith-card reveal" href="https://sunnah.com/bukhari:13" target="_blank" rel="noopener">
+        <div class="hadith-card-top"><span class="hadith-no">০২</span><span class="hadith-tag">ভ্রাতৃত্ব</span></div>
+        <h3>ভাইয়ের জন্যও তা-ই চান</h3>
+        <div class="hadith-ar" lang="ar" dir="rtl">لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ</div>
+        <p>তোমাদের কেউ প্রকৃত মুমিন হবে না, যতক্ষণ না নিজের জন্য যা পছন্দ করে, ভাইয়ের জন্যও তা পছন্দ করে।</p>
+        <div class="hadith-src"><b>সহিহ বুখারি ১৩</b><span>sunnah.com-এ পড়ুন <svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+      </a>
+      <a class="hadith-card reveal" href="https://sunnah.com/bukhari:5027" target="_blank" rel="noopener">
+        <div class="hadith-card-top"><span class="hadith-no">০৩</span><span class="hadith-tag">কুরআন</span></div>
+        <h3>সর্বোত্তম মানুষ</h3>
+        <div class="hadith-ar" lang="ar" dir="rtl">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</div>
+        <p>তোমাদের মধ্যে সর্বোত্তম সে, যে কুরআন শেখে এবং অন্যকে শেখায়।</p>
+        <div class="hadith-src"><b>সহিহ বুখারি ৫০২৭</b><span>sunnah.com-এ পড়ুন <svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+      </a>
+      <a class="hadith-card reveal" href="https://sunnah.com/bukhari:6018" target="_blank" rel="noopener">
+        <div class="hadith-card-top"><span class="hadith-no">০৪</span><span class="hadith-tag">কথা</span></div>
+        <h3>ভালো কথা, নয়তো নীরবতা</h3>
+        <div class="hadith-ar" lang="ar" dir="rtl">فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</div>
+        <p>যে আল্লাহ ও আখিরাতে বিশ্বাস রাখে, সে যেন ভালো কথা বলে, নয়তো চুপ থাকে।</p>
+        <div class="hadith-src"><b>সহিহ বুখারি ৬০১৮</b><span>sunnah.com-এ পড়ুন <svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+      </a>
+      <a class="hadith-card reveal" href="https://sunnah.com/bukhari:6114" target="_blank" rel="noopener">
+        <div class="hadith-card-top"><span class="hadith-no">০৫</span><span class="hadith-tag">রাগ</span></div>
+        <h3>প্রকৃত শক্তিশালী কে?</h3>
+        <div class="hadith-ar" lang="ar" dir="rtl">لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ</div>
+        <p>প্রকৃত শক্তিশালী সে নয়, যে কুস্তিতে হারায়; বরং সে, যে রাগের সময় নিজেকে সামলে রাখে।</p>
+        <div class="hadith-src"><b>সহিহ বুখারি ৬১১৪</b><span>sunnah.com-এ পড়ুন <svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+      </a>
+      <a class="hadith-card reveal" href="https://sunnah.com/muslim:223" target="_blank" rel="noopener">
+        <div class="hadith-card-top"><span class="hadith-no">০৬</span><span class="hadith-tag">পবিত্রতা</span></div>
+        <h3>পবিত্রতা ঈমানের অংশ</h3>
+        <div class="hadith-ar" lang="ar" dir="rtl">الطُّهُورُ شَطْرُ الْإِيمَانِ</div>
+        <p>পবিত্রতা ঈমানের অর্ধেক।</p>
+        <div class="hadith-src"><b>সহিহ মুসলিম ২২৩</b><span>sunnah.com-এ পড়ুন <svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-ur"/></svg></span></div>
+      </a>
+    </div>
+    <p class="hadith-note reveal">অনুবাদ ভাবার্থভিত্তিক। পূর্ণ আরবি পাঠ ও সনদ দেখতে কার্ডে চাপ দিন।</p>
+    <div class="hadith-more reveal"><a class="btn btn-primary" href="hadith.html">আরও হাদিস পড়ুন <svg class="ic " viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow-r"/></svg></a></div>
+  </section>
+
+  <!-- FEATURED REMINDER -->
+  <section class="section featured-section" id="reminder">
+    <div class="featured-card reveal">
+      <div class="featured-image"></div>
+      <div class="featured-overlay"></div>
+      <div class="featured-copy">
+        <span class="featured-label">আজকের স্মরণ</span>
+        <h2>“প্রত্যেক প্রাণীকেই মৃত্যুর স্বাদ গ্রহণ করতে হবে।”</h2>
+        <p>এই আয়াত মনে করিয়ে দেয়, দুনিয়ার জীবন ক্ষণস্থায়ী। তাই আজকের জ্ঞান যেন আজকের আমলেও পৌঁছে যায়।</p>
+        <small>সূরা আলে ইমরান, ৩:১৮৫</small>
+        <a class="btn btn-light" href="islam-know.html">আরও জানুন <span>→</span></a>
+      </div>
+    </div>
+
+    <article class="quote-panel reveal reveal-delay">
+      <span class="eyebrow">আজকের দোয়া</span>
+      <div class="quote-arabic">رَّبِّ زِدْنِي عِلْمًا</div>
+      <p>হে আমার রব, আমার জ্ঞান বৃদ্ধি করুন।</p>
+      <small>সূরা ত্ব-হা, ২০:১১৪</small>
+      <a href="dua.html">দোয়া ও যিকির খুলুন →</a>
+    </article>
+  </section>
+
+  <!-- LEARNING PATH -->
+  <section class="section learning-section" id="learn">
+    <div class="section-heading reveal">
+      <span class="eyebrow">শিক্ষার পথ</span>
+      <h2>ধাপে ধাপে এগিয়ে যান</h2>
+      <p>একসাথে সব শেখার দরকার নেই। নিজের জায়গা থেকে শুরু করুন, তারপর ধীরে ধীরে পরের ধাপে যান।</p>
+    </div>
+
+    <div class="learning-path-card reveal">
+      <div class="learning-path-head">
+        <div><strong>আপনার শেখার যাত্রা</strong><span>যেকোনো ধাপ থেকে শুরু করতে পারেন</span></div>
+        <div class="progress-pill"><b id="progressPct">20%</b><small>অগ্রগতি</small></div>
+      </div>
+      <div class="path-track">
+        <a class="path-step" data-step="1" href="islam-know.html"><span>01</span><b>মৌলিক শিক্ষা</b><small>ইসলামকে জানা</small></a>
+        <i></i>
+        <a class="path-step" data-step="2" href="salah.html"><span>02</span><b>কুরআন ও নামাজ</b><small>ভিত্তি মজবুত করুন</small></a>
+        <i></i>
+        <a class="path-step" data-step="3" href="dua.html"><span>03</span><b>দোয়া ও আমল</b><small>দৈনন্দিন জীবনে</small></a>
+        <i></i>
+        <a class="path-step" data-step="4" href="hadith.html"><span>04</span><b>হাদিস ও সিরাত</b><small>আরও গভীরে</small></a>
+        <i></i>
+        <a class="path-step" data-step="5" href="deep-learning.html"><span>05</span><b>উচ্চতর জ্ঞান</b><small>আরও জানুন</small></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAVED -->
+  <section class="section saved-section" id="saved" hidden>
+    <div class="section-heading reveal">
+      <span class="eyebrow">সংরক্ষিত</span>
+      <h2>পরে আবার পড়ুন</h2>
+      <p>আপনি যেসব দোয়া বা সূরা সংরক্ষণ করেছেন, সেগুলো এখান থেকে দ্রুত খুলতে পারবেন।</p>
+    </div>
+    <div class="saved-home-grid" id="savedHomeGrid"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section home-cta reveal" id="app">
+    <div class="cta-image"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-copy">
+      <span class="eyebrow light">MUMIN APP</span>
+      <h2>জ্ঞানকে সঙ্গে রাখুন,<br>যেখানেই থাকুন।</h2>
+      <p>মোবাইলে Mumin-কে অ্যাপের মতো ব্যবহার করুন। হোমস্ক্রিনে রাখুন, দ্রুত খুলুন এবং প্রয়োজনীয় ইসলামিক জ্ঞান হাতের কাছেই রাখুন।</p>
+      <button class="btn btn-light install-app" id="ctaInstallBtn" type="button">Mumin App ইনস্টল করুন <span>→</span></button>
+    </div>
+  </section>
+
+  <!-- Footer: .home-footer -->
+  <footer class="home-footer">
+    <div class="footer-brand">
+      <img src="assets/images/brand/logo-mark.png" alt="Mumin">
+      <div><strong>Mumin</strong><span>শিখি • বুঝি • আমল করি</span></div>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">আমাদের সম্পর্কে</a>
+      <a href="dua.html">দোয়া ও যিকির</a>
+      <a href="hadith.html">হাদিস</a>
+      <a href="quran.html">কুরআন</a>
+    </div>
+    <p>কুরআন ও নির্ভরযোগ্য উৎস থেকে সহজ বাংলায় ইসলাম শেখার একটি জায়গা।</p>
+  </footer>
+</main>
+
+<!-- prayer city modal -->
+<div class="home-modal" id="prayerCityModal" aria-hidden="true">
+  <div class="home-modal-backdrop" data-prayer-city-close></div>
+  <div class="home-modal-card prayer-city-card" role="dialog" aria-modal="true" aria-labelledby="prayerCityTitle">
+    <button class="home-modal-close" type="button" data-prayer-city-close aria-label="বন্ধ করুন">×</button>
+    <div class="app-logo prayer-city-icon" aria-hidden="true">⌖</div>
+    <span class="eyebrow">PRAYER TIMES</span>
+    <h2 id="prayerCityTitle">শহর নির্বাচন করুন</h2>
+    <p>আপনার শহর ও দেশ দিলে আজকের নামাজের সময় আপডেট হবে।</p>
+    <div class="prayer-city-fields">
+      <label>শহর<input id="prayerCityInput" type="text" value="Dhaka" autocomplete="address-level2"></label>
+      <label>দেশ<input id="prayerCountryInput" type="text" value="Bangladesh" autocomplete="country-name"></label>
+    </div>
+    <div class="prayer-city-actions">
+      <button class="btn btn-soft" type="button" data-prayer-city-close>বাতিল</button>
+      <button class="btn btn-primary" id="prayerCityApply" type="button">সময় আপডেট করুন</button>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div class="home-modal" id="installModal" aria-hidden="true">
+  <div class="home-modal-backdrop" data-install-close></div>
+  <div class="home-modal-card" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+    <button class="home-modal-close" type="button" data-install-close aria-label="বন্ধ করুন">×</button>
+    <div class="app-logo"><img src="assets/images/brand/logo-mark.png" alt=""></div>
+    <span class="eyebrow">MUMIN APP</span>
+    <h2 id="installTitle">মোবাইলে Mumin ব্যবহার করুন</h2>
+    <p id="installText">ব্রাউজারের মেনু থেকে “Add to Home Screen” বা “Install app” নির্বাচন করলে Mumin হোমস্ক্রিনে অ্যাপের মতো ব্যবহার করতে পারবেন।</p>
+    <button class="btn btn-primary" id="installAction" type="button">অ্যাপ ইনস্টল করুন</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" aria-live="polite"></div>
+
+<script src="js/common-nav.js"></script>
+<script src="data/dua-data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

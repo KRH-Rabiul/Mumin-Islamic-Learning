@@ -1,0 +1,3127 @@
+/* ==========================================================================
+   theme.css — colour palette, type scale and light/dark themes
+   Starts with the --color-* palette tokens, then the shared dark/light rules and per-page theme tokens.
+   Loaded after base.css and nav.css so its tokens win. To change a colour, edit the token, not the rule.
+   Structure: @layer main = normal styles; @layer overrides = rules that must beat main.
+   Write new styles in "main". Do not use !important (see docs/CSS-GUIDE.md).
+   ========================================================================== */
+@layer main, overrides; /* "overrides" holds the rules that used to depend on the important flag */
+
+@layer main {
+  /* Root font-size = 17px (1rem = 17px) so every page scales with the reader's browser font setting. */
+  html {
+    font-size: 106.25%;
+  }
+
+  /* Native form controls and scrollbars follow the active theme. */
+  :root {
+    color-scheme: light;
+  }
+  :root:has(body.dark) {
+    color-scheme: dark;
+  }
+
+  /* Keyboard focus baseline: zero specificity, so any component style still wins. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--t-accent);
+    outline-offset: 2px;
+  }
+
+  /* Colour palette (primitives). Semantic tokens below reference these. */
+  :root {
+    --color-blue-8: #061923;
+    --color-blue-9: #061c2a;
+    --color-blue-14: #0a2633;
+    --color-blue-16: #0a2c3b;
+    --color-blue-20: #17324d;
+    --color-blue-32: #28506f;
+    --color-blue-48: #60758b;
+    --color-blue-52: #667e94;
+    --color-blue-92: #d9eafa;
+    --color-cyan-8: #061a21;
+    --color-cyan-10: #071e20;
+    --color-cyan-11: #06212b;
+    --color-cyan-13: #092528;
+    --color-cyan-15: #0d2933;
+    --color-cyan-17-b: #042f33;
+    --color-cyan-17: #102f39;
+    --color-cyan-19: #0d3342;
+    --color-cyan-22: #0d3a4a;
+    --color-cyan-24-c: #173f45;
+    --color-cyan-24-b: #073f53;
+    --color-cyan-24: #173f4b;
+    --color-cyan-28: #21484a;
+    --color-cyan-30: #264b57;
+    --color-cyan-32-b: #235064;
+    --color-cyan-32-c: #0a526b;
+    --color-cyan-32: #28515f;
+    --color-cyan-35: #355767;
+    --color-cyan-35-b: #2d5968;
+    --color-cyan-36: #075d77;
+    --color-cyan-37: #315e6b;
+    --color-cyan-40-b: #356474;
+    --color-cyan-40: #49636c;
+    --color-cyan-42: #356b7b;
+    --color-cyan-43: #0d6f8d;
+    --color-cyan-44: #536b75;
+    --color-cyan-45: #16748e;
+    --color-cyan-46: #5a727b;
+    --color-cyan-47: #34788b;
+    --color-cyan-48: #087e9f;
+    --color-cyan-49: #607983;
+    --color-cyan-51: #0d86a6;
+    --color-cyan-54-b: #71858e;
+    --color-cyan-54: #238eaa;
+    --color-cyan-58: #7b9099;
+    --color-cyan-60: #159fc3;
+    --color-cyan-61: #779ba0;
+    --color-cyan-64: #2fa9cc;
+    --color-cyan-69-b: #8faeb8;
+    --color-cyan-69: #36b9dc;
+    --color-cyan-72: #54bfdc;
+    --color-cyan-73: #9fb8c1;
+    --color-cyan-74: #63c5dd;
+    --color-cyan-75: #4fc7e8;
+    --color-cyan-77: #5bd0dc;
+    --color-cyan-78-b: #5fd0ea;
+    --color-cyan-78: #abc5ce;
+    --color-cyan-78-c: #aec7ca;
+    --color-cyan-79: #a8cbd5;
+    --color-cyan-80: #b5ccd4;
+    --color-cyan-81: #b8ced1;
+    --color-cyan-82: #67dfe1;
+    --color-cyan-83: #7eddf4;
+    --color-cyan-83-b: #8fdceb;
+    --color-cyan-84: #c3d5da;
+    --color-cyan-85: #9edfed;
+    --color-cyan-86: #8de4f7;
+    --color-cyan-88: #bfe4ed;
+    --color-cyan-89: #cfe4eb;
+    --color-cyan-90: #c9e7ef;
+    --color-cyan-91: #bdeefa;
+    --color-cyan-92: #d7edf3;
+    --color-cyan-96: #e3f7fb;
+    --color-gold-35: #5b5238;
+    --color-gold-41: #7a5a0e;
+    --color-gold-78: #e9b84f;
+    --color-gold-81: #e8c66b;
+    --color-gold-82: #f2c45a;
+    --color-gold-84: #dccfb2;
+    --color-gold-85: #ddd3c0;
+    --color-gold-87: #e5dac3;
+    --color-gold-88: #eadcb8;
+    --color-gold-93: #f1eadb;
+    --color-gray-43: #5c6a63;
+    --color-gray-47: #66736d;
+    --color-gray-59: #8b9088;
+    --color-gray-88: #cfe0d9;
+    --color-gray-90: #dfe5de;
+    --color-gray-91: #dce9ee;
+    --color-gray-92: #dcece5;
+    --color-gray-93: #e5eee8;
+    --color-gray-96: #eaf7ff;
+    --color-gray-97: #edf7fa;
+    --color-gray-97-d: #edf8f2;
+    --color-gray-97-c: #f4f8f5;
+    --color-gray-97-b: #fbf7ee;
+    --color-gray-98: #f6fbfd;
+    --color-gray-99: #fffdf8;
+    --color-gray-100: #ffffff;
+    --color-green-81: #8edc6d;
+    --color-green-90: #ebe3cf;
+    --color-green-93: #e3eddc;
+    --color-green-94: #f4ecd4;
+    --color-teal-10: #062016;
+    --color-teal-17: #062f2b;
+    --color-teal-20-b: #06372d;
+    --color-teal-20: #15372f;
+    --color-teal-22: #063b35;
+    --color-teal-24: #173f3b;
+    --color-teal-28: #2c4740;
+    --color-teal-30: #164e49;
+    --color-teal-31: #2d4f4a;
+    --color-teal-35-b: #3b5750;
+    --color-teal-35: #0a5e51;
+    --color-teal-40-b: #0a6b4f;
+    --color-teal-40: #4f645c;
+    --color-teal-42: #0a705d;
+    --color-teal-42-b: #566860;
+    --color-teal-46: #087b60;
+    --color-teal-46-b: #087b67;
+    --color-teal-46-c: #5d716b;
+    --color-teal-60: #84958f;
+    --color-teal-72: #9fb6ad;
+    --color-teal-75: #a9bdb5;
+    --color-teal-81: #7fdcbc;
+    --color-teal-81-b: #9ed7ba;
+    --color-teal-83-b: #71e59b;
+    --color-teal-83: #bfd4cb;
+    --color-teal-90: #cde9da;
+    --color-teal-95: #e3f4ea;
+  }
+
+  /* ==========================================================================
+   Mumin — shared theme layer (loaded LAST on every page)
+   1) One type scale for the whole project
+   2) Light / dark colour tokens
+   ========================================================================== */
+  :root {
+    /* Warm ivory paper — used instead of pure white everywhere */
+    --paper-solid: var(--color-gray-97-b);
+    --paper-glass: rgba(251, 247, 238, 0.94);
+
+    /* Type scale — constant across all pages */
+    --fs-meta: 0.8235rem; /* captions, chips, small labels */
+    --fs-small: 0.9412rem; /* secondary text, buttons, nav */
+    --fs-body: 1rem; /* main reading text */
+    --fs-lead: 1.1176rem; /* card titles, lead text */
+    --fs-h3: 1.2941rem; /* sub-headings */
+    --fs-h2: clamp(1.5294rem, 3vw, 2rem);
+    --fs-h1: clamp(2rem, 4.6vw, 3.2941rem);
+
+    /* Light tokens */
+    --t-bg: var(--color-gold-93);
+    --t-surface: var(--color-gray-97-b);
+    --t-surface-2: var(--color-green-90);
+    --t-ink: var(--color-teal-20);
+    --t-ink-2: var(--color-teal-35-b);
+    --t-muted: var(--color-teal-42-b);
+    --t-line: var(--color-gold-84);
+    --t-accent: var(--color-teal-42);
+    --t-accent-ink: #075847;
+    --t-gold: #9a6b12;
+  }
+  body {
+    font-size: var(--fs-body);
+  }
+
+  /* ==========================================================================
+   Per-page theme fixes
+   ========================================================================== */
+
+  /* ---------- Islam-know: headings sit directly on the page background ---------- */
+  body:not(.dark) .islam-main .section-heading h2 {
+    color: var(--t-ink);
+  }
+  body:not(.dark) .islam-main .section-heading p {
+    color: var(--t-muted);
+  }
+  body:not(.dark) .islam-main .eyebrow {
+    color: #8a6410;
+  }
+
+  /* ---------- Ramadan: full dark mode through its own tokens ---------- */
+
+  /* ---------- Daily-life: tokens + page background ---------- */
+  body:not(.dark) .life-main {
+    color: var(--life-ink);
+  }
+  body:not(.dark):has(.life-main) {
+    background: var(--color-gray-97-c);
+  }
+
+  /* Ramadan + Daily-life dark tokens */
+  body.dark {
+    --life-bad: #f08a8a;
+  }
+  body.dark .faq-list details,
+  body.dark .faq-list summary,
+  body.dark .faq-list summary b {
+    color: var(--r-ink);
+  }
+
+  /* ---------- Dua page (designed dark-first) — light theme values ---------- */
+  body:not(.dark) {
+    --dua-green: #0a7a55;
+    --dua-muted: var(--color-teal-40);
+    --dua-gold: #8a6410;
+    --dua-text: var(--color-teal-24);
+  }
+  body:not(.dark) .dua-search-wrap span,
+  body:not(.dark) .dua-bookmark {
+    color: #55736a;
+  }
+  body:not(.dark) .dua-list-item.active .dua-bookmark {
+    color: #0a7a55;
+  }
+  body:not(.dark) .detail-box h4 {
+    color: var(--color-teal-40-b);
+  }
+  body:not(.dark) .detail-box.benefit h4,
+  body:not(.dark) .meta-box h5 {
+    color: var(--color-gold-41);
+  }
+  body:not(.dark) .detail-box.source h4 {
+    color: #33564b;
+  }
+  body:not(.dark) .detail-box p,
+  body:not(.dark) .meta-box p {
+    color: var(--color-teal-35-b);
+  }
+  body:not(.dark) .detail-box small,
+  body:not(.dark) .detail-title p,
+  body:not(.dark) .panel-heading p {
+    color: var(--color-teal-40);
+  }
+  body:not(.dark) .detail-policy {
+    color: var(--color-teal-42-b);
+    background: rgba(138, 100, 16, 0.07);
+  }
+  body:not(.dark) .dua-count {
+    background: var(--color-teal-95);
+    border-color: #b9dfca;
+    color: var(--color-teal-40-b);
+  }
+
+  /* ---------- Quran page — dark mode ---------- */
+  body.dark .surah-item .bn {
+    color: var(--color-gray-93);
+  }
+  body.dark .surah-item .count,
+  body.dark .quran-search span {
+    color: var(--color-teal-75);
+  }
+  body.dark .info-card > div > div > *,
+  body.dark .intro-card div div {
+    color: inherit;
+  }
+  body.dark .info-card b {
+    color: var(--color-teal-81);
+  }
+  body.dark .info-card p {
+    color: var(--color-gray-88);
+  }
+
+  /* ---------- About page (dark) ---------- */
+  body.dark .about-page .feedback-form label {
+    color: var(--color-gray-88);
+  }
+  body:not(.dark) .about-page .form-title span {
+    color: #7a5410;
+  }
+  body:not(.dark) .about-page .feedback-form label small {
+    color: var(--color-gray-43);
+  }
+
+  /* ---------- Hadith page ---------- */
+  body:not(.dark) .hadith-hero ~ section .eyebrow,
+  body:not(.dark) .book-section .eyebrow {
+    color: var(--color-teal-40-b);
+  }
+
+  /* ---------- Quran intro boxes / breadcrumb ---------- */
+  body:not(.dark) .quran-breadcrumb b {
+    color: var(--color-gold-41);
+  }
+  body:not(.dark) .dua-list-sub,
+  body:not(.dark) .dua-list-item small {
+    color: var(--color-teal-42-b);
+  }
+
+  /* ---------- Icons (SVG, one consistent line style) ---------- */
+  .ic {
+    width: 1.25em;
+    height: 1.25em;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vertical-align: -0.2em;
+  }
+  /* ---------- Mumin ---------- */
+  .mumin-theme .ic {
+    width: 19px;
+    height: 19px;
+  }
+  .mumin-search .ic {
+    width: 18px;
+    height: 18px;
+  }
+  .mumin-install .ic {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ==========================================================================
+   HOME PAGE
+   ========================================================================== */
+  .mumin-home .home-hero {
+    min-height: 560px;
+  }
+  .mumin-home .hero-content {
+    grid-template-columns: 1fr;
+    min-height: 560px;
+    padding: 48px 0 116px;
+    align-content: center;
+  }
+  .mumin-home .hero-copy {
+    max-width: 680px;
+  }
+  .mumin-home .hero-kicker .ic {
+    width: 18px;
+    height: 18px;
+    color: var(--t-accent);
+  }
+  .mumin-home .hero-trust i {
+    width: 20px;
+    height: 20px;
+  }
+  .mumin-home .hero-trust i .ic {
+    width: 12px;
+    height: 12px;
+    stroke-width: 3.2;
+  }
+  .mumin-home .btn-icon .ic {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* hero text — readable on the light wash in light theme, on the dark wash in dark theme */
+  body:not(.dark) .mumin-home .hero-copy .hero-lead {
+    color: var(--color-teal-28);
+    font-weight: 500;
+  }
+  body:not(.dark) .mumin-home .hero-source {
+    color: #41554f;
+  }
+  body:not(.dark) .mumin-home .hero-trust {
+    color: var(--color-teal-28);
+  }
+  body.dark .mumin-home .hero-copy .hero-lead {
+    color: var(--color-gray-93);
+  }
+  body.dark .mumin-home .hero-source {
+    color: var(--color-gray-88);
+  }
+  body.dark .mumin-home .hero-source b {
+    color: var(--color-teal-81);
+  }
+  body.dark .mumin-home .hero-trust {
+    color: var(--color-gray-93);
+  }
+
+  /* ---------- prayer strip (below the picture, picture stays fully visible) ---------- */
+  .prayer-strip-wrap {
+    position: relative;
+    z-index: 6;
+    width: min(1180px, calc(100% - 40px));
+    margin: -76px auto 0;
+  }
+  .prayer-strip-wrap .prayer-widget {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr) 220px;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 18px 22px;
+    border-radius: 24px;
+    background: var(--t-surface);
+    border: 1px solid var(--t-line);
+    box-shadow: 0 22px 50px rgba(15, 45, 40, 0.18);
+    backdrop-filter: none;
+  }
+  .prayer-place .mini-label {
+    display: block;
+    font-size: var(--fs-meta);
+    font-weight: 700;
+    color: var(--t-muted);
+  }
+  .prayer-place h2 {
+    margin: 2px 0 0;
+    font-size: var(--fs-lead);
+    color: var(--t-ink);
+  }
+  .prayer-place .prayer-date {
+    margin-top: 2px;
+    font-size: var(--fs-meta);
+    color: var(--t-muted);
+  }
+  /* ---------- Loc ---------- */
+  .loc-btn {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--t-line);
+    background: var(--t-surface-2);
+    color: var(--t-accent-ink);
+    font: 700 var(--fs-meta) inherit;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .loc-btn:hover {
+    border-color: var(--t-accent);
+  }
+  .loc-btn .ic {
+    width: 16px;
+    height: 16px;
+  }
+  /* ---------- Prayer ---------- */
+  .prayer-strip-wrap .prayer-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .prayer-strip-wrap .prayer-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 0;
+    padding: 11px 4px;
+    border: 1px solid var(--t-line);
+    border-radius: 16px;
+    background: var(--t-surface-2);
+    color: var(--t-ink-2);
+    font-size: var(--fs-meta);
+    text-align: center;
+    margin: 0;
+  }
+  .prayer-strip-wrap .prayer-row .pr-ic .ic {
+    width: 22px;
+    height: 22px;
+    color: var(--t-accent);
+  }
+  .prayer-strip-wrap .prayer-row span {
+    font-weight: 700;
+  }
+  .prayer-strip-wrap .prayer-row time {
+    white-space: nowrap;
+    color: var(--t-ink);
+    font-weight: 800;
+  }
+  .prayer-strip-wrap .prayer-row.active {
+    background: var(--t-accent);
+    border-color: var(--t-accent);
+    color: var(--color-gray-100);
+  }
+  .prayer-strip-wrap .prayer-row.active time,
+  .prayer-strip-wrap .prayer-row.active .pr-ic .ic {
+    color: var(--color-gray-100);
+  }
+  body.dark .prayer-strip-wrap .prayer-row.active {
+    color: var(--color-teal-17);
+  }
+  body.dark .prayer-strip-wrap .prayer-row.active time,
+  body.dark .prayer-strip-wrap .prayer-row.active .pr-ic .ic {
+    color: var(--color-teal-17);
+  }
+  /* ---------- Prayer ---------- */
+  .prayer-strip-wrap .next-prayer {
+    margin: 0;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: var(--t-surface-2);
+    border: 1px solid var(--t-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .prayer-strip-wrap .next-prayer small {
+    display: block;
+    color: var(--t-muted);
+    font-size: var(--fs-meta);
+  }
+  .prayer-strip-wrap .next-prayer strong {
+    display: block;
+    color: var(--t-accent-ink);
+    font-size: var(--fs-lead);
+  }
+  .prayer-strip-wrap .next-prayer > b {
+    color: var(--t-ink);
+    font-size: var(--fs-h3);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  /* ---------- module cards: icons ---------- */
+  .mumin-home .module-icon .ic {
+    width: 20px;
+    height: 20px;
+  }
+  .mumin-home .module-arrow .ic {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ---------- popular hadith ---------- */
+  .popular-hadith .hadith-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 10px;
+  }
+  /* ---------- Hadith ---------- */
+  .hadith-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 22px;
+    border-radius: 22px;
+    background: var(--t-surface);
+    border: 1px solid var(--t-line);
+    color: var(--t-ink);
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(15, 45, 40, 0.07);
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .hadith-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--t-accent);
+    box-shadow: 0 18px 40px rgba(15, 45, 40, 0.14);
+  }
+  .hadith-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hadith-no {
+    font-weight: 800;
+    font-size: var(--fs-small);
+    color: var(--t-gold);
+  }
+  .hadith-tag {
+    padding: 4px 13px;
+    border-radius: 999px;
+    background: var(--t-surface-2);
+    border: 1px solid var(--t-line);
+    color: var(--t-accent-ink);
+    font-size: var(--fs-meta);
+    font-weight: 800;
+  }
+  .hadith-card h3 {
+    margin: 0;
+    font-size: var(--fs-h3);
+    color: var(--t-ink);
+  }
+  .hadith-ar {
+    font-family: 'Amiri', 'Scheherazade New', 'Noto Naskh Arabic', serif;
+    font-size: 1.5294rem;
+    line-height: 2;
+    color: var(--t-accent-ink);
+    text-align: right;
+  }
+  .hadith-card p {
+    margin: 0;
+    color: var(--t-ink-2);
+    font-size: var(--fs-body);
+    line-height: 1.85;
+  }
+  .hadith-src {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--t-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: var(--fs-meta);
+    color: var(--t-muted);
+  }
+  .hadith-src b {
+    color: var(--t-ink);
+  }
+  .hadith-src span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--t-accent-ink);
+    font-weight: 700;
+  }
+  .hadith-src .ic {
+    width: 14px;
+    height: 14px;
+  }
+  .hadith-note {
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: var(--fs-meta);
+    color: var(--t-muted);
+  }
+  .hadith-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+  }
+  .hadith-more .btn .ic {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media (max-width: 1050px) {
+    .mumin-home .home-hero {
+      min-height: 0;
+    }
+    .mumin-home .hero-content {
+      min-height: 0;
+      padding: 34px 0 104px;
+    }
+    .prayer-strip-wrap .prayer-widget {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .popular-hadith .hadith-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    .prayer-strip-wrap {
+      width: calc(100% - 24px);
+      margin-top: -70px;
+    }
+    .prayer-strip-wrap .prayer-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .popular-hadith .hadith-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .mumin-home .hero-kicker {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  @media (max-width: 1050px) {
+    .mumin-home .hero-trust span {
+      padding: 5px 12px 5px 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--color-teal-24);
+    }
+    body.dark .mumin-home .hero-trust span {
+      background: rgba(7, 31, 34, 0.82);
+      color: var(--color-gray-93);
+    }
+    .mumin-home .hero-shade {
+      background: linear-gradient(
+        180deg,
+        rgba(248, 249, 245, 0.97) 0%,
+        rgba(248, 249, 245, 0.92) 55%,
+        rgba(248, 249, 245, 0.55) 100%
+      );
+    }
+    body.dark .mumin-home .hero-shade {
+      background: linear-gradient(
+        180deg,
+        rgba(7, 31, 34, 0.95) 0%,
+        rgba(7, 31, 34, 0.88) 55%,
+        rgba(7, 31, 34, 0.5) 100%
+      );
+    }
+  }
+
+  /* final contrast fixes */
+  body:not(.dark) .path-step small {
+    color: var(--color-teal-40);
+  }
+  body.dark .quote-panel .eyebrow {
+    color: #5fd0aa;
+  }
+  body.dark .quote-panel .quote-arabic {
+    color: var(--color-gold-81);
+  }
+  body.dark .quote-panel p {
+    color: var(--color-gray-88);
+  }
+  body.dark .quote-panel small {
+    color: var(--color-teal-75);
+  }
+  body.dark .quote-panel a {
+    color: var(--color-teal-81);
+  }
+
+  /* ==========================================================================
+   PREMIUM LIGHT THEME — warm parchment + ivory cards + deep emerald ink
+   (one palette, mapped onto every page's own variables)
+   ========================================================================== */
+  body:not(.dark) {
+    --home-bg: var(--color-gold-93);
+    --home-paper: var(--color-gray-97-b);
+    --home-ink: var(--color-teal-20);
+    --home-muted: var(--color-teal-42-b);
+    --home-soft: var(--color-green-90);
+    --home-line: var(--color-gold-84);
+    --home-shadow: 0 16px 45px rgba(60, 48, 20, 0.1);
+    --r-bg: var(--color-gold-93);
+    --r-surface: var(--color-gray-97-b);
+    --r-ink: var(--color-teal-20);
+    --r-muted: var(--color-teal-42-b);
+    --r-line: var(--color-gold-84);
+    --r-tint: var(--color-green-93);
+    --r-note: var(--color-green-94);
+    --r-text-2: var(--color-teal-35-b);
+    --r-nav-bg: rgba(251, 247, 238, 0.94);
+    --life-page: var(--color-gold-93);
+    --life-surface: var(--color-gray-97-b);
+    --life-soft: var(--color-green-90);
+    --life-line: var(--color-gold-84);
+    --life-ink: var(--color-teal-20);
+    --life-muted: var(--color-teal-42-b);
+    --life-tint: var(--color-green-93);
+    --life-note: var(--color-green-94);
+    --life-note-line: #e2d3a6;
+    --life-text-2: var(--color-teal-35-b);
+    --life-nav-bg: rgba(251, 247, 238, 0.94);
+    --h-bg: var(--color-gold-93);
+    --h-surface: var(--color-gray-97-b);
+    --h-surface-2: var(--color-green-90);
+    --h-line: var(--color-gold-84);
+    --h-muted: var(--color-teal-42-b);
+    --h-text: var(--color-teal-20);
+    --cream: var(--color-gold-93);
+    --paper: var(--color-gray-97-b);
+    --ink: var(--color-teal-20);
+    --muted: var(--color-teal-42-b);
+    --line: var(--color-gold-84);
+  }
+  body:not(.dark) {
+    background-color: var(--t-bg);
+  }
+  body:not(.dark):has(.learn-main),
+  body:not(.dark):has(.life-main) {
+    background: var(--t-bg);
+  }
+  body:not(.dark) .learn-main {
+    --bg: var(--color-gold-93);
+    --panel: var(--color-gray-97-b);
+    --line: var(--color-gold-84);
+  }
+  body:not(.dark) .learn-main .hero-card,
+  body:not(.dark) .learn-main .info-card,
+  body:not(.dark) .learn-main .level-card {
+    background: var(--color-gray-97-b);
+    border-color: var(--color-gold-84);
+    box-shadow: 0 10px 30px rgba(60, 48, 20, 0.09);
+  }
+  body:not(.dark) .prayer-strip-wrap .prayer-widget {
+    background: var(--color-gray-97-b);
+  }
+  body:not(.dark) .hadith-card {
+    box-shadow: 0 10px 30px rgba(60, 48, 20, 0.09);
+  }
+
+  /* ==========================================================================
+   QURAN MODULE — readable Bangla pronunciation, ayah numbers and labels
+   The official Bangla pronunciation is a dark-ink PNG (quran.gov.bd). On a dark card
+   it disappears, so it sits on a soft parchment plate in BOTH themes.
+   ========================================================================== */
+  .pronunciation-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: var(--color-gold-93);
+    border: 1px solid #e0d3b0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .pronunciation-fallback {
+    display: block;
+    margin-top: 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--t-surface-2);
+    color: var(--t-ink-2);
+  }
+  .pronunciation-fallback a {
+    color: var(--t-accent-ink);
+    font-weight: 700;
+  }
+  .pronunciation-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .pronunciation-label,
+  .meaning-label {
+    font-weight: 800;
+    font-size: var(--fs-meta);
+  }
+  /* ---------- Dark ---------- */
+  body:not(.dark) .pronunciation-label,
+  body:not(.dark) .meaning-label {
+    color: var(--color-teal-40-b);
+  }
+  body:not(.dark) .pronunciation-head a {
+    color: var(--color-gold-41);
+  }
+  body.dark .pronunciation-label,
+  body.dark .meaning-label {
+    color: var(--color-teal-81);
+  }
+  body.dark .pronunciation-head a {
+    color: var(--color-gold-81);
+  }
+  body.dark .pronunciation-box {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(127, 220, 188, 0.28);
+  }
+  .ayah-no {
+    background: var(--color-gold-88);
+    color: #4b3608;
+    font-weight: 800;
+  }
+  /* ---------- Dark ---------- */
+  body.dark .ayah-ar {
+    color: var(--color-green-94);
+  }
+  body.dark .ayah-meaning p {
+    color: var(--color-gray-93);
+    line-height: 1.95;
+  }
+  body:not(.dark) .ayah-ar {
+    color: var(--color-teal-20);
+  }
+  body:not(.dark) .ayah-meaning p {
+    color: var(--color-teal-28);
+  }
+  body.dark .ayah-book,
+  body.dark .ayah-book:hover {
+    color: var(--color-gold-81);
+  }
+  .ayah-card .ayah-top {
+    align-items: center;
+  }
+  .quran-tabs button .ic,
+  .quran-search .ic,
+  .reader-meta .ic,
+  #readerMeta .ic,
+  .learning-icon .ic {
+    width: 18px;
+    height: 18px;
+  }
+  .learning-icon .ic {
+    width: 22px;
+    height: 22px;
+  }
+  .detail-box h4 .ic,
+  .detail-actions .ic,
+  .form-title .ic,
+  .do h3 .ic,
+  .gateway-note .ic {
+    width: 18px;
+    height: 18px;
+    vertical-align: -0.25em;
+  }
+  /* leftover near-white surfaces */
+  body:not(.dark) .path-step {
+    background: var(--color-gold-93);
+  }
+  body:not(.dark) .about-page input,
+  body:not(.dark) .about-page select,
+  body:not(.dark) .about-page textarea {
+    background: var(--color-gold-93);
+    border-color: var(--color-gold-84);
+    color: var(--color-teal-20);
+  }
+  .pronunciation-image[hidden],
+  .pronunciation-fallback[hidden] {
+    /* stylelint-disable-next-line declaration-no-important -- JS sets inline display on this element */
+    display: none !important;
+  }
+
+  /* last small-text contrast fixes (light theme) */
+  body:not(.dark) .module-body small,
+  body:not(.dark) .source-line {
+    color: var(--color-teal-42-b);
+  }
+
+  /* ==========================================================================
+   MUMIN UNIFIED DARK THEME — project-wide visual system
+   Inspired by the blue dome / cyan architectural tones of the Home hero.
+   Loaded last so every page uses the same dark language without rewriting
+   each module's original layout. Gold remains a secondary Islamic accent.
+   ========================================================================== */
+  body.dark {
+    --mumin-bg: var(--color-cyan-8);
+    --mumin-bg-2: var(--color-cyan-11);
+    --mumin-surface: var(--color-cyan-15);
+    --mumin-surface-2: var(--color-cyan-22);
+    --mumin-surface-3: var(--color-cyan-24);
+    --mumin-border: var(--color-cyan-32);
+    --mumin-border-soft: rgba(104, 190, 211, 0.18);
+    --mumin-blue: var(--color-cyan-72);
+    --mumin-blue-strong: #35aeca;
+    --mumin-blue-soft: var(--color-cyan-85);
+    --mumin-mint: #8fe0d2;
+    --mumin-gold: var(--color-gold-81);
+    --mumin-text: var(--color-gray-97);
+    --mumin-text-2: var(--color-cyan-89);
+    --mumin-muted: var(--color-cyan-73);
+  }
+
+  /* Shared navigation shell */
+  body.dark .mumin-sidebar {
+    color: var(--mumin-text);
+  }
+  body.dark .mumin-brand {
+    border-bottom-color: rgba(84, 191, 220, 0.12);
+  }
+  body.dark .mumin-brand small {
+    color: var(--color-cyan-73);
+  }
+  body.dark .mumin-topbar {
+    color: var(--mumin-text);
+  }
+  body.dark .mumin-search {
+    background: var(--color-cyan-15);
+  }
+  body.dark .mumin-theme,
+  body.dark .mumin-menu {
+    background: var(--color-cyan-15);
+  }
+  body.dark .mumin-theme:hover,
+  body.dark .mumin-menu:hover {
+    border-color: #3b8398;
+  }
+  body.dark .mumin-install {
+    background: var(--color-cyan-22);
+    border-color: var(--color-cyan-40-b);
+    color: var(--color-cyan-91);
+  }
+
+  /* Common page canvas and readable text */
+  body.dark .mumin-app,
+  body.dark main,
+  body.dark .page,
+  body.dark .quran-page,
+  body.dark .learn-main,
+  body.dark .islam-main,
+  body.dark .life-main,
+  body.dark .ramadan-main,
+  body.dark .salah-page,
+  body.dark .about-page,
+  body.dark .dua-page-main {
+    color: var(--mumin-text);
+  }
+  body.dark .section-heading h2,
+  body.dark .section-title h2,
+  body.dark .section-head h2,
+  body.dark .panel-head h2,
+  body.dark .detail-title h2,
+  body.dark .form-title h2 {
+    color: var(--mumin-text);
+  }
+  body.dark .section-heading p,
+  body.dark .section-title p,
+  body.dark .section-desc,
+  body.dark .hero-lead,
+  body.dark .hero-source,
+  body.dark .source,
+  body.dark .source-line,
+  body.dark .form-note {
+    color: var(--mumin-muted);
+  }
+  body.dark .eyebrow::before {
+    background: currentColor;
+  }
+
+  /* Shared content cards */
+  body.dark .info-card,
+  body.dark .learning-card,
+  body.dark .level-card,
+  body.dark .book-card,
+  body.dark .purpose-card,
+  body.dark .creator-card,
+  body.dark .feedback-form,
+  body.dark .contact-email-card,
+  body.dark .gateway-note,
+  body.dark .note,
+  body.dark .reference-panel,
+  body.dark .wide-note,
+  body.dark .detail-card,
+  body.dark .detail-box,
+  body.dark .meta-box,
+  body.dark .content-section,
+  body.dark .article-stack,
+  body.dark .feature-panel,
+  body.dark .feature-card,
+  body.dark .highlight-panel,
+  body.dark .explain-box,
+  body.dark .next-box {
+    background: var(--mumin-surface);
+    border-color: var(--mumin-border);
+    color: var(--mumin-text);
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.18);
+  }
+  body.dark .info-card h3,
+  body.dark .learning-card h3,
+  body.dark .level-card h3,
+  body.dark .book-card h3,
+  body.dark .detail-box h4,
+  body.dark .detail-card h3,
+  body.dark .feature-panel h3,
+  body.dark .highlight-panel h3 {
+    color: var(--mumin-text);
+  }
+  body.dark .info-card p,
+  body.dark .learning-card p,
+  body.dark .level-card p,
+  body.dark .book-card p,
+  body.dark .detail-box p,
+  body.dark .detail-card p,
+  body.dark .feature-panel p,
+  body.dark .highlight-panel p {
+    color: var(--mumin-muted);
+  }
+
+  /* Unified accent buttons */
+  body.dark .btn-primary,
+  body.dark .primary-btn,
+  body.dark .btn:not(.secondary):not(.btn-soft),
+  body.dark .lesson-actions .next:not(:disabled) {
+    box-shadow: 0 10px 28px rgba(52, 174, 202, 0.2);
+  }
+  body.dark .btn-primary:hover,
+  body.dark .primary-btn:hover,
+  body.dark .btn:not(.secondary):not(.btn-soft):hover,
+  body.dark .lesson-actions .next:not(:disabled):hover {
+    filter: brightness(1.06);
+  }
+
+  /* Learning path family */
+  body.dark .learn-main .hero-card,
+  body.dark .learn-main .info-card,
+  body.dark .learn-main .level-card {
+    color: var(--color-gray-97);
+  }
+  body.dark .learn-main .hero-card h1,
+  body.dark .learn-main h1,
+  body.dark .learn-main h2,
+  body.dark .learn-main h3 {
+    color: var(--color-gray-97);
+  }
+
+  /* Islam basics */
+  body.dark .islam-main {
+    --page-bg: var(--color-cyan-8);
+    --panel: var(--color-cyan-15);
+    --panel2: var(--color-cyan-22);
+    --line2: var(--color-cyan-32);
+    --muted2: var(--color-cyan-73);
+    --gold2: var(--color-gold-81);
+  }
+  body.dark .islam-main .detail-card,
+  body.dark .islam-main .wide-card,
+  body.dark .islam-main .next-box {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+    color: var(--color-gray-97);
+  }
+  body.dark .islam-main h1,
+  body.dark .islam-main h2,
+  body.dark .islam-main h3 {
+    color: var(--color-gray-97);
+  }
+  body.dark .islam-main .hero-source,
+  body.dark .islam-main .source {
+    color: var(--color-cyan-73);
+  }
+
+  /* Quran */
+  body.dark .surah-panel,
+  body.dark .reader-panel,
+  body.dark .quran-search,
+  body.dark .quran-icon-btn,
+  body.dark .reader-tabs button,
+  body.dark .surah-item,
+  body.dark .ayah-card,
+  body.dark .source-grid article {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+  }
+  body.dark .surah-item .ar,
+  body.dark .ayah-ar {
+    color: var(--color-gray-97);
+  }
+  body.dark .surah-item .bn,
+  body.dark .quran-title-wrap h1,
+  body.dark .panel-head h2 {
+    color: var(--color-gray-97);
+  }
+  body.dark .surah-item .en,
+  body.dark .surah-item .count,
+  body.dark .quran-title-wrap p,
+  body.dark .quran-breadcrumb,
+  body.dark .ayah-meaning p,
+  body.dark .learning-card p {
+    color: var(--color-cyan-73);
+  }
+  body.dark .surah-item .arrow,
+  body.dark .learning-icon,
+  body.dark .source-grid a,
+  body.dark .reader-content a {
+    color: var(--color-cyan-74);
+  }
+  body.dark .source-notice,
+  body.dark .empty-source-card,
+  body.dark .pronunciation-box,
+  body.dark .pronunciation-official {
+    background: var(--color-cyan-17);
+    border-color: var(--color-cyan-32);
+    color: var(--color-cyan-80);
+  }
+  body.dark .intro-detail-grid > div {
+    background: var(--color-cyan-17);
+    border-color: var(--color-cyan-35-b);
+  }
+  body.dark .intro-detail-grid b {
+    color: var(--color-cyan-74);
+  }
+  body.dark .intro-detail-grid p {
+    color: var(--color-cyan-84);
+  }
+
+  /* Hadith */
+  body.dark.hadith-page,
+  body.dark .hadith-page {
+    color: var(--color-gray-97);
+  }
+  body.dark .hadith-page {
+    --h-bg: var(--color-cyan-8);
+    --h-surface: var(--color-cyan-15);
+    --h-surface-2: var(--color-cyan-22);
+    --h-text: var(--color-gray-97);
+    --h-muted: var(--color-cyan-73);
+    --h-green: var(--color-cyan-72);
+    --h-green-2: var(--color-cyan-85);
+    --h-gold: var(--color-gold-81);
+    --h-line: var(--color-cyan-32);
+    --h-hero: var(--color-cyan-8);
+    --h-hero-2: var(--color-cyan-19);
+  }
+  body.dark .hadith-page .book-card,
+  body.dark .hadith-page .gateway-note,
+  body.dark .hadith-page .note {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+  }
+  body.dark .hadith-page .book-card:hover {
+    background: var(--color-cyan-24);
+    border-color: var(--color-cyan-47);
+  }
+  body.dark .hadith-page .hero-search {
+    border-color: var(--color-cyan-42);
+    background: rgba(5, 25, 32, 0.72);
+  }
+  body.dark .hadith-page .hero-search:focus-within {
+    border-color: var(--color-cyan-72);
+  }
+  body.dark .hadith-page .outline-btn {
+    background: var(--color-cyan-15);
+    color: var(--color-cyan-90);
+    border-color: var(--color-cyan-40-b);
+  }
+
+  /* Dua */
+  body.dark .dua-page-main {
+    --dua-green: var(--color-cyan-72);
+    --dua-green-2: #35aeca;
+    --dua-gold: var(--color-gold-81);
+    --dua-deep: var(--color-cyan-8);
+    --dua-panel: var(--color-cyan-15);
+    --dua-panel-2: var(--color-cyan-22);
+    --dua-border: rgba(84, 191, 220, 0.2);
+    --dua-text: var(--color-gray-97);
+    --dua-muted: var(--color-cyan-73);
+    --dua-soft: var(--color-gray-91);
+  }
+  body.dark .dua-search-wrap,
+  body.dark .dua-list-panel,
+  body.dark .dua-detail-panel,
+  body.dark .dua-list-item,
+  body.dark .detail-box,
+  body.dark .meta-box {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+    color: var(--color-gray-97);
+  }
+  body.dark .dua-list-item.active {
+    background: var(--color-cyan-24);
+    border-color: var(--color-cyan-47);
+  }
+  body.dark .dua-search-wrap input {
+    color: var(--color-gray-97);
+  }
+  body.dark .dua-search-wrap span,
+  body.dark .dua-list-sub {
+    color: var(--color-cyan-73);
+  }
+  body.dark .dua-hero-modern {
+    border-color: var(--color-cyan-32);
+  }
+  body.dark .hero-icon {
+    background: rgba(84, 191, 220, 0.1);
+    border-color: rgba(84, 191, 220, 0.25);
+  }
+  body.dark .hero-copy h2 {
+    color: var(--color-cyan-92);
+  }
+  body.dark .hero-copy p {
+    color: var(--color-cyan-78);
+  }
+  body.dark .quote-overlay {
+    background:
+      linear-gradient(90deg, var(--color-cyan-8) 0%, rgba(6, 26, 33, 0.62) 35%, rgba(6, 26, 33, 0.16) 100%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.4), transparent);
+  }
+  body.dark .arabic-quote {
+    color: var(--color-cyan-83-b);
+  }
+  body.dark .dua-detail-arabic {
+    color: var(--color-cyan-83-b);
+  }
+
+  /* Ramadan */
+  body.dark .ramadan-main {
+    --r-bg: var(--color-cyan-8);
+    --r-surface: var(--color-cyan-15);
+    --r-ink: var(--color-gray-97);
+    --r-muted: var(--color-cyan-73);
+    --r-green: var(--color-cyan-72);
+    --r-green2: var(--color-cyan-83-b);
+    --r-gold: var(--color-gold-81);
+    --r-line: var(--color-cyan-32);
+    --r-dark: var(--color-cyan-8);
+    --r-tint: var(--color-cyan-22);
+    --r-note: #1a3031;
+    --r-note-ink: #d8cfad;
+    --r-nav-bg: rgba(5, 23, 30, 0.94);
+    --r-text-2: var(--color-cyan-84);
+  }
+  body.dark .ramadan-main .detail-card,
+  body.dark .ramadan-main .feature-panel,
+  body.dark .ramadan-main .info-block,
+  body.dark .ramadan-main .reference-panel,
+  body.dark .ramadan-main .wide-note {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+    color: var(--color-gray-97);
+  }
+  body.dark .ramadan-main .section-heading p,
+  body.dark .ramadan-main .source-line {
+    color: var(--color-cyan-73);
+  }
+  body.dark .ramadan-main .tag {
+    background: var(--color-cyan-24);
+    border-color: var(--color-cyan-47);
+    color: var(--color-cyan-85);
+  }
+
+  /* Daily life */
+  body.dark .life-main {
+    --life-green: var(--color-cyan-72);
+    --life-deep: var(--color-cyan-15);
+    --life-ink: var(--color-gray-97);
+    --life-muted: var(--color-cyan-73);
+    --life-line: var(--color-cyan-32);
+    --life-surface: var(--color-cyan-15);
+    --life-soft: var(--color-cyan-22);
+    --life-gold: var(--color-gold-81);
+    --life-tint: var(--color-cyan-22);
+    --life-note: #1a3031;
+    --life-note-line: #4d4c39;
+    --life-note-ink: #ddd5b4;
+    --life-nav-bg: rgba(5, 23, 30, 0.94);
+    --life-on-green: var(--color-cyan-8);
+    --life-text-2: var(--color-cyan-84);
+  }
+  body.dark .life-main .info-block,
+  body.dark .life-main .rule-stack,
+  body.dark .life-main .danger-grid,
+  body.dark .life-main .reference-panel,
+  body.dark .life-main .explain-box {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+    color: var(--color-gray-97);
+  }
+  body.dark .life-main .do {
+    background: var(--color-teal-24);
+    border-color: #2d665c;
+  }
+  body.dark .life-main .dont {
+    background: #3a2b2e;
+    border-color: #65444b;
+  }
+  body.dark .life-main .topic-nav {
+    background: rgba(5, 23, 30, 0.94);
+    border-color: var(--color-cyan-32);
+  }
+
+  /* Salah */
+  body.dark .salah-page .lesson-shell,
+  body.dark .salah-page .lesson-sidebar,
+  body.dark .salah-page .lesson-content,
+  body.dark .salah-page .lesson-note,
+  body.dark .salah-page .info-card,
+  body.dark .salah-page .dua-item {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+    color: var(--color-gray-97);
+  }
+  body.dark .salah-page .lesson-sidebar {
+    background: var(--color-cyan-15);
+  }
+  body.dark .salah-page .module-tab.active {
+    background: var(--color-cyan-24);
+    color: var(--color-cyan-85);
+    border-color: var(--color-cyan-47);
+  }
+  body.dark .salah-page .lesson-progress {
+    background: var(--color-cyan-22);
+  }
+  body.dark .salah-page .counter {
+    color: var(--color-cyan-74);
+  }
+  body.dark .salah-page .source-strip {
+    background: var(--color-cyan-17);
+    border-color: var(--color-cyan-32);
+  }
+
+  /* About */
+  body.dark .about-page {
+    --about-green: var(--color-cyan-72);
+    --about-gold: var(--color-gold-81);
+    color: var(--color-gray-97);
+  }
+  body.dark .about-hero {
+    border-color: var(--color-cyan-32);
+  }
+  body.dark .purpose-card,
+  body.dark .creator-card,
+  body.dark .feedback-form {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+  }
+  body.dark .about-footer {
+    color: var(--color-cyan-69-b);
+  }
+
+  /* Inputs, tabs, notices, tables */
+  body.dark input,
+  body.dark textarea,
+  body.dark select {
+    color: var(--mumin-text);
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+  }
+  body.dark input::placeholder,
+  body.dark textarea::placeholder {
+    color: #78939c;
+  }
+  body.dark input:focus,
+  body.dark textarea:focus,
+  body.dark select:focus {
+    border-color: var(--mumin-blue);
+    box-shadow: 0 0 0 3px rgba(84, 191, 220, 0.11);
+    outline: none;
+  }
+  body.dark .tabs button,
+  body.dark .reader-tabs button,
+  body.dark .module-tab {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-32);
+    color: var(--color-cyan-80);
+  }
+  body.dark .tabs button.active,
+  body.dark .reader-tabs button.active,
+  body.dark .module-tab.active {
+    background: var(--color-cyan-24);
+    border-color: var(--color-cyan-47);
+    color: var(--color-cyan-85);
+  }
+  body.dark table {
+    background: var(--color-cyan-15);
+    color: var(--color-gray-97);
+    border-color: var(--color-cyan-32);
+  }
+  body.dark th {
+    background: var(--color-cyan-22);
+    color: var(--color-gray-97);
+  }
+  body.dark td {
+    border-color: var(--color-cyan-32);
+  }
+  body.dark .toast {
+    background: #0d3541;
+    color: var(--color-gray-97);
+    border: 1px solid var(--color-cyan-42);
+  }
+
+  /* Home inherits the exact same project palette */
+  body.dark.mumin-home-shell {
+    --home-bg: var(--color-cyan-8);
+    --home-paper: var(--color-cyan-15);
+    --home-ink: var(--color-gray-97);
+    --home-muted: var(--color-cyan-73);
+    --home-green: var(--color-cyan-72);
+    --home-green-dark: var(--color-cyan-85);
+    --home-line: var(--color-cyan-32);
+    --home-soft: var(--color-cyan-22);
+    --home-gold: var(--color-gold-81);
+    --home-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  }
+  body.dark.mumin-home-shell .mumin-topnav a:hover,
+  body.dark.mumin-home-shell .mumin-topnav a.active {
+    color: var(--color-cyan-72);
+  }
+  body.dark.mumin-home-shell .mumin-topnav a::after {
+    background: var(--color-cyan-72);
+  }
+  body.dark.mumin-home-shell .hero-kicker {
+    color: var(--color-cyan-85);
+    border-color: var(--color-cyan-42);
+    background: rgba(12, 48, 61, 0.9);
+  }
+  body.dark.mumin-home-shell .hero-arabic {
+    color: var(--color-cyan-74);
+  }
+  body.dark.mumin-home-shell .hero h1 em {
+    color: var(--color-cyan-74);
+  }
+  body.dark.mumin-home-shell .prayer-row.active {
+    background: var(--color-cyan-24);
+    border-color: var(--color-cyan-47);
+    color: var(--color-cyan-91);
+  }
+
+  @media (max-width: 760px) {
+    body.dark .mumin-sidebar {
+      box-shadow: 12px 0 35px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  /* ==========================================================================
+   Mumin — unified BLUE NIGHT theme
+   Dark mode only: shared visual identity across every module.
+   Palette is derived from the blue/cyan tones of the Mumin hero mosque.
+   ========================================================================== */
+  body.dark {
+    --t-bg: var(--color-blue-8);
+    --t-surface: var(--color-blue-14);
+    --t-surface-2: var(--color-cyan-19);
+    --t-ink: var(--color-gray-97);
+    --t-ink-2: var(--color-cyan-89);
+    --t-muted: var(--color-cyan-73);
+    --t-line: var(--color-cyan-32-b);
+    --t-accent: var(--color-cyan-75);
+    --t-accent-ink: var(--color-cyan-86);
+    --t-gold: var(--color-gold-81);
+
+    --blue-bg: var(--color-blue-8);
+    --blue-surface: var(--color-blue-14);
+    --blue-surface-2: var(--color-cyan-19);
+    --blue-accent: var(--color-cyan-75);
+    --blue-accent-2: var(--color-cyan-86);
+    --blue-line: var(--color-cyan-32-b);
+  }
+
+  /* Shared shell */
+  body.dark .mumin-sidebar {
+    background: linear-gradient(
+      180deg,
+      var(--color-blue-8) 0%,
+      var(--color-blue-14) 52%,
+      var(--color-blue-8) 100%
+    );
+    border-right: 1px solid rgba(79, 199, 232, 0.12);
+  }
+  body.dark .mumin-nav {
+    color: var(--color-gray-91);
+  }
+  body.dark .mumin-nav:hover {
+    background: rgba(79, 199, 232, 0.1);
+    color: var(--color-cyan-86);
+  }
+  body.dark .mumin-nav.active {
+    background: linear-gradient(90deg, var(--color-cyan-75), var(--color-cyan-54));
+    color: var(--color-cyan-11);
+    box-shadow: 0 8px 22px rgba(38, 166, 201, 0.24);
+  }
+  body.dark .mumin-topbar {
+    background: rgba(5, 27, 38, 0.97);
+    border-bottom-color: rgba(79, 199, 232, 0.14);
+  }
+  body.dark .mumin-topnav a {
+    color: var(--color-cyan-92);
+  }
+  body.dark .mumin-topnav a:hover,
+  body.dark .mumin-topnav a.active {
+    color: var(--color-cyan-78-b);
+  }
+  body.dark .mumin-topnav a::after {
+    background: var(--color-cyan-75);
+  }
+  body.dark .mumin-search {
+    border-color: rgba(79, 199, 232, 0.2);
+    color: #7faebb;
+  }
+  body.dark .mumin-search:focus-within {
+    border-color: var(--color-cyan-75);
+  }
+  body.dark .mumin-search input {
+    color: var(--color-gray-97);
+  }
+  body.dark .mumin-search input::placeholder {
+    color: #7598a6;
+  }
+  body.dark .mumin-theme,
+  body.dark .mumin-menu {
+    border-color: rgba(79, 199, 232, 0.2);
+    color: var(--color-cyan-92);
+  }
+  body.dark .mumin-theme:hover,
+  body.dark .mumin-menu:hover {
+    background: rgba(79, 199, 232, 0.1);
+  }
+
+  /* Global dark page canvas */
+  body.dark,
+  body.dark .mumin-app,
+  body.dark .mumin-main {
+    background: var(--color-blue-8);
+    color: var(--color-gray-97);
+  }
+  body.dark a {
+    color: inherit;
+  }
+
+  /* Generic legacy tokens used by style.css */
+  body.dark {
+    --cream: var(--color-blue-8);
+    --paper: var(--color-blue-14);
+    --ink: var(--color-gray-97);
+    --muted: var(--color-cyan-73);
+    --line: var(--color-cyan-32-b);
+    --bg: var(--color-blue-8);
+  }
+  body.dark .module-card,
+  body.dark .dua-card,
+  body.dark .life-card,
+  body.dark .saved-card,
+  body.dark .popular-card,
+  body.dark .daily-card,
+  body.dark .modal-dialog {
+    background: var(--color-blue-14);
+    color: var(--color-gray-97);
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .section-head h2,
+  body.dark .module-card h3 {
+    color: var(--color-gray-97);
+  }
+
+  /* Learning-path / Islam basics / Deep learning */
+  body.dark .learn-main {
+    --bg: var(--color-blue-8);
+    --panel: var(--color-blue-14);
+    --text: var(--color-gray-97);
+    --muted: var(--color-cyan-73);
+    --accent: var(--color-cyan-75);
+    --line: var(--color-cyan-32-b);
+    color: var(--color-gray-97);
+  }
+  body.dark:has(.learn-main) {
+    background: var(--color-blue-8);
+    color: var(--color-gray-97);
+  }
+  body.dark .learn-main .hero-card,
+  body.dark .learn-main .info-card,
+  body.dark .learn-main .level-card {
+    background: linear-gradient(145deg, var(--color-blue-14), var(--color-blue-14));
+    border-color: var(--color-cyan-32-b);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  }
+  body.dark .learn-main h1,
+  body.dark .learn-main h2,
+  body.dark .learn-main h3 {
+    color: var(--color-gray-97);
+  }
+  body.dark .learn-main .hero p,
+  body.dark .learn-main .section-title p,
+  body.dark .learn-main .level-card p,
+  body.dark .learn-main .info-card p {
+    color: var(--color-cyan-73);
+  }
+  body.dark .learn-main .btn {
+    background: var(--color-cyan-75);
+    color: var(--color-cyan-11);
+  }
+  body.dark .learn-main .btn.secondary {
+    background: transparent;
+    color: var(--color-cyan-92);
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .learn-main .num {
+    background: var(--color-cyan-75);
+    color: var(--color-cyan-11);
+  }
+  body.dark .learn-main .eyebrow {
+    color: #69d8ef;
+  }
+  body.dark .learn-main .level-card:hover {
+    border-color: var(--color-cyan-75);
+  }
+  body.dark .learn-main .source {
+    color: var(--color-cyan-78);
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .learn-main .source a {
+    color: var(--color-cyan-86);
+  }
+  body.dark .learn-main .note {
+    background: #163143;
+    border-color: var(--color-cyan-35);
+    color: var(--color-gray-91);
+  }
+
+  /* Quran */
+  body.dark .quran-page {
+    background: var(--color-blue-8);
+  }
+  body.dark .quran-title-wrap h1,
+  body.dark .quran-title-wrap h2,
+  body.dark .panel-head h2,
+  body.dark .surah-item .ar,
+  body.dark .ayah-ar {
+    color: var(--color-gray-97);
+  }
+  body.dark .surah-panel,
+  body.dark .reader-panel,
+  body.dark .quran-search,
+  body.dark .quran-icon-btn,
+  body.dark .reader-tabs button,
+  body.dark .surah-item,
+  body.dark .ayah-card,
+  body.dark .source-grid article {
+    background: var(--color-blue-14);
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .quran-title-wrap p,
+  body.dark .quran-breadcrumb,
+  body.dark .ayah-meaning p,
+  body.dark .surah-item .en,
+  body.dark .info-card p,
+  body.dark .learning-card p {
+    color: var(--color-cyan-78);
+  }
+  body.dark .surah-item:hover,
+  body.dark .surah-item.active {
+    background: var(--color-cyan-19);
+    border-color: var(--color-cyan-75);
+  }
+  body.dark .quran-search input {
+    color: var(--color-gray-97);
+  }
+  body.dark .quran-search span,
+  body.dark .surah-item .count {
+    color: var(--color-cyan-73);
+  }
+  body.dark .surah-item .arrow,
+  body.dark .learning-icon {
+    color: var(--color-cyan-75);
+  }
+  body.dark .info-card {
+    background: var(--color-blue-16);
+    border-color: var(--color-cyan-35);
+  }
+  body.dark .learning-card {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-35-b);
+  }
+  body.dark .source-notice,
+  body.dark .empty-source-card,
+  body.dark .pronunciation-box {
+    background: var(--color-cyan-15);
+    border-color: #28566a;
+    color: var(--color-cyan-80);
+  }
+  body.dark .source-grid a,
+  body.dark .reader-content a {
+    color: var(--color-cyan-86);
+  }
+  body.dark .quran-book-mark {
+    background: var(--color-cyan-19);
+    border-color: var(--color-cyan-75);
+    color: var(--color-cyan-86);
+  }
+  body.dark .info-card b,
+  body.dark .intro-detail-grid b {
+    color: var(--color-cyan-86);
+  }
+  body.dark .info-card p,
+  body.dark .intro-detail-grid p {
+    color: var(--color-cyan-84);
+  }
+  body.dark .pronunciation-head a,
+  body.dark .pronunciation-fallback a {
+    color: var(--color-cyan-86);
+  }
+
+  /* Hadith */
+  body.hadith-page.dark {
+    --h-bg: var(--color-blue-8);
+    --h-surface: var(--color-blue-14);
+    --h-surface-2: var(--color-cyan-19);
+    --h-text: var(--color-gray-97);
+    --h-muted: var(--color-cyan-73);
+    --h-green: var(--color-cyan-75);
+    --h-green-2: var(--color-cyan-86);
+    --h-gold: var(--color-gold-81);
+    --h-line: rgba(79, 199, 232, 0.2);
+    --h-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+    --h-hero: var(--color-blue-9);
+    --h-hero-2: var(--color-cyan-19);
+    --h-on-dark: var(--color-gray-97);
+    background: var(--color-blue-8);
+  }
+  body.hadith-page.dark .hero-shade {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(3, 17, 27, 0.98),
+        rgba(4, 29, 43, 0.88) 38%,
+        rgba(5, 30, 43, 0.52) 68%,
+        rgba(5, 24, 35, 0.25)
+      ),
+      linear-gradient(0deg, rgba(2, 13, 21, 0.92), transparent 65%);
+  }
+  body.hadith-page.dark .book-card,
+  body.hadith-page.dark .hadith-card,
+  body.hadith-page.dark .book-section article {
+    border-color: var(--color-cyan-32-b);
+  }
+  body.hadith-page.dark .outline-btn {
+    border-color: var(--color-cyan-32-b);
+    color: var(--color-cyan-88);
+  }
+  body.hadith-page.dark .book-card:hover {
+    border-color: var(--color-cyan-75);
+  }
+
+  /* Dua & Zikir */
+  body.dark {
+    --dua-green: var(--color-cyan-75);
+    --dua-green-2: var(--color-cyan-60);
+    --dua-gold: var(--color-gold-81);
+    --dua-deep: var(--color-blue-8);
+    --dua-panel: var(--color-blue-14);
+    --dua-panel-2: var(--color-cyan-19);
+    --dua-border: rgba(79, 199, 232, 0.2);
+    --dua-text: var(--color-gray-97);
+    --dua-muted: var(--color-cyan-73);
+    --dua-soft: var(--color-gray-91);
+  }
+  body.dark .dua-hero-modern {
+    background: linear-gradient(120deg, rgba(5, 25, 38, 0.97), rgba(7, 43, 57, 0.86));
+  }
+  body.dark .dua-hero-modern::after {
+    background:
+      radial-gradient(circle at 22% 20%, rgba(79, 199, 232, 0.14), transparent 32%),
+      linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.3));
+  }
+  body.dark .dua-hero-modern .hero-icon {
+    background: rgba(79, 199, 232, 0.1);
+    border-color: rgba(79, 199, 232, 0.24);
+  }
+  body.dark .dua-page-main .hero-copy h2 {
+    color: var(--color-cyan-92);
+  }
+  body.dark .dua-page-main .hero-copy p {
+    color: var(--color-cyan-78);
+  }
+
+  /* Salah */
+  body.dark.salah-page {
+    background: var(--color-blue-8);
+    color: var(--color-gray-97);
+  }
+  body.dark .salah-wrap .module-tab,
+  body.dark .source-strip {
+    background: var(--color-blue-14);
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .module-tab b {
+    color: var(--color-gray-97);
+  }
+  body.dark .module-tab small {
+    color: var(--color-cyan-73);
+  }
+  body.dark .source-strip {
+    color: var(--color-cyan-78);
+  }
+  body.dark .module-tab.active,
+  body.dark .module-tab:hover {
+    border-color: var(--color-cyan-75);
+  }
+  body.dark .source-strip strong {
+    color: var(--color-gold-81);
+  }
+  body.dark .lesson-actions .next,
+  body.dark .lesson-actions .next:not(:disabled) {
+    background: var(--color-cyan-75);
+    border-color: var(--color-cyan-75);
+    color: var(--color-cyan-11);
+  }
+
+  /* Ramadan */
+  body.dark {
+    --r-bg: var(--color-blue-8);
+    --r-surface: var(--color-blue-14);
+    --r-ink: var(--color-gray-97);
+    --r-muted: var(--color-cyan-73);
+    --r-green: var(--color-cyan-75);
+    --r-green2: var(--color-cyan-86);
+    --r-gold: var(--color-gold-81);
+    --r-line: var(--color-cyan-32-b);
+    --r-dark: var(--color-blue-14);
+    --r-tint: var(--color-cyan-19);
+    --r-note: #182f3a;
+    --r-note-ink: var(--color-gray-91);
+    --r-nav-bg: rgba(6, 27, 38, 0.94);
+    --r-text-2: var(--color-cyan-80);
+  }
+  body.dark:has(.ramadan-main) {
+    background: var(--color-blue-8);
+  }
+  body.dark .ramadan-hero {
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .ramadan-hero-overlay {
+    background: linear-gradient(90deg, #031a29fa 0%, #073247e8 45%, #07324755 100%);
+  }
+  body.dark .ramadan-verse {
+    border-color: var(--color-cyan-75);
+    background: #072f3fe8;
+  }
+  body.dark .ramadan-hero h1 em {
+    color: var(--color-cyan-83);
+  }
+
+  /* Daily life */
+  body.dark {
+    --life-green: var(--color-cyan-75);
+    --life-deep: #073246;
+    --life-ink: var(--color-gray-97);
+    --life-muted: var(--color-cyan-73);
+    --life-line: var(--color-cyan-32-b);
+    --life-surface: var(--color-blue-14);
+    --life-soft: var(--color-cyan-19);
+    --life-gold: var(--color-gold-81);
+    --life-tint: var(--color-cyan-19);
+    --life-note: var(--color-cyan-17);
+    --life-note-line: var(--color-cyan-35);
+    --life-note-ink: var(--color-gray-91);
+    --life-nav-bg: rgba(6, 27, 38, 0.94);
+    --life-on-green: var(--color-cyan-11);
+    --life-text-2: var(--color-cyan-80);
+    --life-page: var(--color-blue-8);
+  }
+  body.dark:has(.life-main) {
+    background: var(--color-blue-8);
+  }
+  body.dark .life-hero {
+    background: var(--color-blue-16);
+  }
+  body.dark .life-hero .hero-overlay {
+    background: linear-gradient(90deg, #031a29f2 0%, #073247e8 42%, #07324755 100%);
+  }
+  body.dark .topic-nav {
+    background: #071f2ce8;
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .topic-nav a {
+    color: var(--color-cyan-80);
+  }
+  body.dark .topic-nav a:hover {
+    background: var(--color-cyan-22);
+    color: var(--color-cyan-86);
+  }
+  body.dark .section-heading h2,
+  body.dark .principle-grid b,
+  body.dark .rule-grid h3,
+  body.dark .rule-stack h3,
+  body.dark .info-block h3,
+  body.dark .timeline h3,
+  body.dark .faq-list summary {
+    color: var(--color-gray-97);
+  }
+  body.dark .section-heading p,
+  body.dark .principle-grid p,
+  body.dark .rule-grid p,
+  body.dark .info-block p,
+  body.dark .rule-stack p,
+  body.dark .do-dont li,
+  body.dark .explain-box p,
+  body.dark .faq-list p {
+    color: var(--color-cyan-78);
+  }
+  body.dark .principle-grid article,
+  body.dark .rule-grid article,
+  body.dark .rule-stack article,
+  body.dark .info-block,
+  body.dark .do-dont > div,
+  body.dark .faq-list details,
+  body.dark .timeline article {
+    background: var(--color-blue-14);
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .explain-box {
+    background: var(--color-cyan-17);
+    border-color: var(--color-cyan-35);
+  }
+  body.dark .explain-box strong {
+    color: var(--color-gold-81);
+  }
+  body.dark .timeline::before {
+    background: var(--color-cyan-32-b);
+  }
+  body.dark .reference-panel {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.38);
+  }
+  body.dark .hero-verse {
+    border-color: var(--color-cyan-75);
+    background: #073247dd;
+  }
+
+  /* About */
+  body.dark .about-page {
+    --about-bg: var(--color-blue-8);
+    --about-card: var(--color-blue-14);
+    --about-ink: var(--color-gray-97);
+    --about-muted: var(--color-cyan-73);
+    --about-line: rgba(79, 199, 232, 0.18);
+    background: var(--color-blue-8);
+  }
+  body.dark .about-hero {
+    background: linear-gradient(135deg, #073246, var(--color-blue-14));
+  }
+  body.dark .about-hero-pills span,
+  body.dark .creator-tags span {
+    background: var(--color-cyan-19);
+    border-color: var(--color-cyan-32-b);
+    color: var(--color-cyan-92);
+  }
+  body.dark .contact-email-card {
+    background: var(--color-cyan-19);
+    border-color: var(--color-cyan-32-b);
+  }
+  body.dark .feedback-form input,
+  body.dark .feedback-form select,
+  body.dark .feedback-form textarea {
+    background: #071f2b;
+    border-color: var(--color-cyan-35);
+    color: var(--color-gray-97);
+  }
+  body.dark .about-page .purpose-card span,
+  body.dark .about-page .contact-email-card a {
+    color: var(--color-cyan-86);
+  }
+
+  /* Shared blue focus/selection accents */
+  body.dark :focus-visible {
+    outline: 2px solid var(--color-cyan-75);
+    outline-offset: 2px;
+  }
+  body.dark ::selection {
+    background: rgba(79, 199, 232, 0.28);
+    color: var(--color-gray-100);
+  } /* ========================================================================== 
+   Mumin — FINAL UI SYSTEM v38
+   --------------------------------------------------------------------------
+   This file is loaded last on every page. It is the single source of truth
+   for the shared header, global palette, typography, motion and cross-module
+   readability. Module content/layout remains scoped to its own stylesheet.
+   ========================================================================== */
+
+  :root {
+    --mumin-blue-950: var(--color-blue-8);
+    --mumin-blue-900: var(--color-cyan-15);
+    --mumin-blue-850: var(--color-cyan-19);
+    --mumin-blue-700: var(--color-cyan-43);
+    --mumin-cyan: var(--color-cyan-69);
+    --mumin-cyan-bright: var(--color-cyan-78-b);
+    --mumin-light-bg: var(--color-gray-98);
+    --mumin-light-surface: var(--color-gray-100);
+    --mumin-light-soft: var(--color-gray-97);
+    --mumin-light-line: var(--color-cyan-92);
+    --mumin-light-ink: var(--color-cyan-24);
+    --mumin-light-body: var(--color-cyan-40);
+    --mumin-dark-bg: var(--color-blue-8);
+    --mumin-dark-surface: var(--color-cyan-15);
+    --mumin-dark-soft: var(--color-cyan-22);
+    --mumin-dark-line: var(--color-cyan-32);
+    --mumin-dark-ink: var(--color-gray-97);
+    --mumin-dark-body: var(--color-cyan-78);
+  }
+
+  /* ========================================================================== 
+   1. Shared page shell
+   ========================================================================== */
+  body.mumin-has-shell,
+  body.mumin-top-only-shell {
+    margin: 0;
+    min-height: 100vh;
+  }
+  body:not(.dark) {
+    color: var(--mumin-light-ink);
+  }
+  body.dark {
+    color: var(--mumin-dark-ink);
+  }
+  body,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: 'Noto Sans Bengali', 'Hind Siliguri', system-ui, sans-serif;
+  }
+  body:not(.dark) main {
+    color: var(--mumin-light-ink);
+  }
+  body.dark main {
+    color: var(--mumin-dark-ink);
+  }
+  body:not(.dark) main p {
+    color: var(--mumin-light-body);
+  }
+  body:not(.dark) main h1,
+  body:not(.dark) main h2,
+  body:not(.dark) main h3,
+  body:not(.dark) main h4 {
+    color: var(--mumin-light-ink);
+  }
+  body.dark main h1,
+  body.dark main h2,
+  body.dark main h3,
+  body.dark main h4 {
+    color: var(--mumin-dark-ink);
+  }
+  .arabic,
+  .dua-arabic,
+  .ayah-ar,
+  .verse-ar,
+  .hadith-ar,
+  .quote-arabic,
+  .arabic-inline,
+  [lang='ar'],
+  .arabic-surah-name {
+    font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+  }
+
+  /* Every page gets the same canvas. */
+
+  /* ========================================================================== 
+   2. Motion system
+   ========================================================================== */
+  .mumin-motion-ready .mumin-app {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .mumin-motion-ready.mumin-page-ready .mumin-app {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.42s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .mumin-page-leaving .mumin-app {
+    opacity: 0;
+    transform: translateY(-7px);
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease;
+  }
+  .mumin-scroll-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.62s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.62s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .mumin-scroll-reveal.mumin-scroll-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ========================================================================== 
+   3. Home light theme: remove the old cream/green visual language
+   ========================================================================== */
+  body:not(.dark).mumin-home-shell .home-hero {
+    background: var(--color-blue-16);
+  }
+  body:not(.dark).mumin-home-shell .hero-trust {
+    color: var(--color-cyan-92);
+  }
+
+  /* ========================================================================== 
+   4. Image heroes: identical readable text treatment in light + dark mode
+   ========================================================================== */
+
+  /* Home hero also uses the same readable image-first treatment. */
+
+  /* ========================================================================== 
+   5. Dua: bring the remaining green palette into the blue/cyan system
+   ========================================================================== */
+  body:not(.dark):has(.dua-page-main) {
+    --dua-green: var(--color-cyan-60);
+    --dua-green-2: var(--color-cyan-51);
+    --dua-gold: var(--color-cyan-60);
+    --dua-deep: var(--color-cyan-15);
+    --dua-panel: var(--color-gray-100);
+    --dua-panel-2: var(--color-gray-97);
+    --dua-border: var(--color-cyan-92);
+    --dua-text: var(--color-cyan-24);
+    --dua-muted: var(--color-cyan-49);
+    --dua-soft: var(--color-cyan-92);
+  }
+  body:not(.dark) .dua-page-main {
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark) .dua-page-main .hero-icon {
+    background: rgba(99, 213, 239, 0.12);
+    border-color: rgba(99, 213, 239, 0.28);
+  }
+  body:not(.dark) .dua-page-main .quote-content {
+    background: rgba(5, 31, 43, 0.72);
+    border-color: rgba(99, 213, 239, 0.25);
+  }
+  body:not(.dark) .dua-page-main .arabic-quote {
+    color: var(--color-cyan-91);
+  }
+  body:not(.dark) .dua-page-main .quote-content p {
+    color: var(--color-gray-97);
+  }
+  body:not(.dark) .dua-page-main .quote-content small {
+    color: #b9d9e2;
+  }
+
+  /* ========================================================================== 
+   6. About: finish blue/cyan light theme
+   ========================================================================== */
+  body:not(.dark) .about-page {
+    --about-bg: var(--color-gray-98);
+    --about-card: var(--color-gray-100);
+    --about-ink: var(--color-cyan-24);
+    --about-muted: var(--color-cyan-46);
+    --about-line: var(--color-cyan-92);
+    --about-green: var(--color-cyan-60);
+    --about-gold: var(--color-cyan-60);
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark) .about-page .about-hero {
+    background: linear-gradient(135deg, var(--color-gray-100), var(--color-gray-97));
+    border-color: var(--color-cyan-92);
+  }
+  body:not(.dark) .about-page .about-eyebrow,
+  .about-page .about-kicker {
+    color: var(--color-cyan-48);
+  }
+  body:not(.dark) .about-page .about-hero-pills span,
+  .about-page .creator-tags span {
+    background: var(--color-gray-97);
+    border-color: var(--color-cyan-92);
+    color: var(--color-cyan-37);
+  }
+  body:not(.dark) .about-page .about-hero-mark {
+    background: linear-gradient(155deg, var(--color-cyan-22), var(--color-cyan-43));
+  }
+  body:not(.dark) .about-page .about-hero-mark::before,
+  .about-page .about-hero-mark::after {
+    border-color: rgba(79, 199, 232, 0.22);
+  }
+  body:not(.dark) .about-page .about-moon {
+    color: var(--color-cyan-86);
+  }
+  body:not(.dark) .about-page .about-arch {
+    border-color: var(--color-cyan-60);
+  }
+  body:not(.dark) .about-page .about-arch span {
+    color: var(--color-cyan-91);
+  }
+
+  /* ========================================================================== 
+   7. Dark theme: shared contrast floor
+   ========================================================================== */
+  body.dark main p {
+    color: var(--color-cyan-78);
+  }
+
+  /* ========================================================================== 
+   8. Responsive and accessibility
+   ========================================================================== */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid rgba(54, 185, 220, 0.34);
+    outline-offset: 3px;
+  }
+
+  /* ========================================================================== 
+   MUMIN v39 — FINAL VISUAL HARDENING
+   --------------------------------------------------------------------------
+   One visual contract for the whole site:
+   1) identical blue top bar on every page
+   2) centered desktop navigation
+   3) blue/white light theme, deep-blue dark theme
+   4) readable text over every image hero
+   5) no legacy home-specific header styling
+   6) no global sidebar
+   ========================================================================== */
+
+  /* ---------- Unified palette ---------- */
+  :root {
+    --m9-bg: var(--color-gray-98);
+    --m9-surface: var(--color-gray-100);
+    --m9-surface-soft: var(--color-gray-97);
+    --m9-line: var(--color-cyan-92);
+    --m9-ink: var(--color-cyan-24);
+    --m9-body: var(--color-cyan-40);
+    --m9-muted: #66808a;
+    --m9-blue: var(--color-cyan-60);
+    --m9-blue-strong: var(--color-cyan-48);
+    --m9-cyan: var(--color-cyan-69);
+    --m9-dark: var(--color-cyan-15);
+    --m9-dark-2: var(--color-cyan-22);
+    --m9-dark-3: var(--color-cyan-24);
+    --m9-dark-line: var(--color-cyan-32);
+  }
+
+  /* ---------- Header: identical on every page ---------- */
+
+  /* Legacy home-only header controls are intentionally disabled. */
+
+  /* ---------- Home: no double header gap + readable hero ---------- */
+
+  /* Home cards follow the same blue/white light system. */
+
+  /* ---------- Every image hero: never let text disappear ---------- */
+
+  /* ---------- Common content contrast ---------- */
+  body:not(.dark) .life-main,
+  body:not(.dark) .ramadan-main,
+  body:not(.dark) .hadith-page,
+  body:not(.dark) .about-page,
+  body:not(.dark) .quran-page,
+  body:not(.dark) .salah-page,
+  body:not(.dark) .dua-page-main {
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark) .life-main p,
+  body:not(.dark) .ramadan-main p,
+  body:not(.dark) .hadith-page p,
+  body:not(.dark) .about-page p {
+    color: var(--color-cyan-40);
+  }
+
+  /* ---------- Mobile header remains one top bar, never a sidebar ---------- */
+
+  /* ==========================================================================
+   v40 — Light theme: text on dark image heroes stays light
+   --------------------------------------------------------------------------
+   Why: the global rule `body:not(.dark) main h1/p` paints text dark ink in the
+   light theme, and a few older hero rules never matched the real markup
+   (e.g. `.hero h1` instead of `.home-hero h1`, `.salah-page` as a descendant
+   although it is a <body> class). Those hero images are dark in BOTH themes,
+   so their text must be light in both. Scoped to the hero containers only;
+   dark theme and every non-hero element are untouched.
+   ========================================================================== */
+  /* Small "eyebrow" labels on dark hero images need a lighter cyan than the
+   page-level eyebrow colour to stay readable. */
+
+  /* ==========================================================================
+   v40 — Home: compact hero on desktop so the first screen is not all hero
+   --------------------------------------------------------------------------
+   Only trims empty space (padding, margins, line-height). Font sizes, content
+   and the mobile / tablet layout (<= 980px) are unchanged.
+   ========================================================================== */
+  @media (min-width: 1051px) {
+    .mumin-home .home-hero {
+      min-height: 0;
+    }
+    .mumin-home .hero-content {
+      min-height: 0;
+      padding: 28px 0 88px;
+    }
+    .mumin-home .hero-arabic {
+      margin-top: 12px;
+    }
+    .mumin-home .home-hero h1 {
+      margin: 8px 0 12px;
+      line-height: 1.35;
+    }
+    .mumin-home .hero-actions {
+      margin-top: 16px;
+    }
+    .mumin-home .hero-trust {
+      margin-top: 14px;
+    }
+  }
+
+  /* ==========================================================================
+   v40 — Home prayer card, light theme: one blue palette, readable active row
+   --------------------------------------------------------------------------
+   Before: beige rows (#eee6d1 from the old cream theme) clashed with the blue
+   palette, and the active row showed WHITE time text on a pale-blue box
+   (contrast ~1.1:1). Light theme only; dark theme is untouched.
+   ========================================================================== */
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .next-prayer strong {
+    color: var(--color-cyan-43);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .next-prayer > b {
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .loc-btn {
+    background: var(--color-gray-97);
+    border-color: var(--color-cyan-92);
+    color: var(--color-cyan-43);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .loc-btn:hover {
+    border-color: var(--color-cyan-69);
+  }
+
+  /* v40 — Home prayer card, dark theme: the active row has a dark-teal fill, but
+   an older rule painted its time/icon dark green (#062f2b) => unreadable.
+   Light text restores the contrast. Dark theme + home only. */
+  body.dark.mumin-home-shell .prayer-strip-wrap .prayer-row.active,
+  body.dark.mumin-home-shell .prayer-strip-wrap .prayer-row.active span,
+  body.dark.mumin-home-shell .prayer-strip-wrap .prayer-row.active time,
+  body.dark.mumin-home-shell .prayer-strip-wrap .prayer-row.active .pr-ic .ic {
+    color: var(--color-cyan-96);
+  }
+}
+
+@layer overrides {
+  /* ---------- Dark ---------- */
+  body:not(.dark) .detail-box small {
+    color: var(--color-teal-40);
+  }
+  body.dark .eyebrow {
+    color: var(--mumin-blue);
+  }
+  body.dark .btn-primary,
+  body.dark .primary-btn,
+  body.dark .btn:not(.secondary):not(.btn-soft),
+  body.dark .lesson-actions .next:not(:disabled) {
+    background: linear-gradient(135deg, var(--color-cyan-69), var(--color-cyan-60));
+    border-color: var(--color-cyan-69);
+    color: var(--color-cyan-8);
+  }
+  body.dark .outline-btn,
+  body.dark .btn.secondary,
+  body.dark .btn-soft {
+    background: var(--color-cyan-15);
+    border-color: var(--color-cyan-40-b);
+    color: var(--color-cyan-90);
+  }
+  body.dark .outline-btn:hover,
+  body.dark .btn.secondary:hover,
+  body.dark .btn-soft:hover {
+    background: var(--color-cyan-24);
+    border-color: #4a8799;
+  }
+  body.dark .learn-main,
+  body.dark:has(.learn-main) {
+    background: var(--color-cyan-8);
+  }
+  body.dark .learn-main .eyebrow {
+    color: var(--color-cyan-72);
+  }
+  body.dark .islam-main,
+  body.dark:has(.islam-main) {
+    background: var(--color-cyan-8);
+  }
+  body.dark .quran-page {
+    background: var(--color-cyan-8);
+  }
+  body.dark.hadith-page,
+  body.dark .hadith-page {
+    background: var(--color-cyan-8);
+  }
+  body.dark .dua-page-main,
+  body.dark:has(.dua-page-main) {
+    background: var(--color-cyan-8);
+  }
+  body.dark .ramadan-main,
+  body.dark:has(.ramadan-main) {
+    background: var(--color-cyan-8);
+  }
+  body.dark .life-main,
+  body.dark:has(.life-main) {
+    background: var(--color-cyan-8);
+  }
+  body.dark.salah-page {
+    background: var(--color-cyan-8);
+  }
+  body.dark.mumin-home-shell .btn-primary {
+    background: linear-gradient(135deg, var(--color-cyan-69), var(--color-cyan-60));
+    color: var(--color-cyan-8);
+  }
+  body.mumin-has-shell,
+  body.mumin-top-only-shell {
+    padding-left: 0;
+  }
+  body:not(.dark) {
+    background: var(--mumin-light-bg);
+  }
+  body.dark {
+    background: var(--mumin-dark-bg);
+  }
+  body.mumin-home-shell,
+  body:has(.quran-page),
+  body:has(.salah-page),
+  body:has(.dua-page-main),
+  body:has(.life-main),
+  body:has(.ramadan-main),
+  body:has(.hadith-page),
+  body:has(.about-page),
+  body:has(.learn-main),
+  body:has(.ik-main) {
+    background: var(--mumin-light-bg);
+  }
+  /* ---------- Dark ---------- */
+  body.dark.mumin-home-shell,
+  body.dark:has(.quran-page),
+  body.dark:has(.salah-page),
+  body.dark:has(.dua-page-main),
+  body.dark:has(.life-main),
+  body.dark:has(.ramadan-main),
+  body.dark:has(.hadith-page),
+  body.dark:has(.about-page),
+  body.dark:has(.learn-main),
+  body.dark:has(.ik-main) {
+    background: var(--mumin-dark-bg);
+  }
+  body:not(.dark).mumin-home-shell .hero h1,
+  body:not(.dark).mumin-home-shell .hero-lead,
+  body:not(.dark).mumin-home-shell .hero-source {
+    color: var(--color-gray-97);
+  }
+  body:not(.dark).mumin-home-shell .prayer-widget,
+  body:not(.dark).mumin-home-shell .module-card,
+  body:not(.dark).mumin-home-shell .learning-path-card,
+  body:not(.dark).mumin-home-shell .quote-panel,
+  body:not(.dark).mumin-home-shell .home-modal-card {
+    background: var(--color-gray-100);
+    border-color: var(--color-cyan-92);
+    box-shadow: 0 14px 34px rgba(19, 88, 110, 0.08);
+  }
+  body:not(.dark).mumin-home-shell .section-heading p,
+  body:not(.dark).mumin-home-shell .module-hook,
+  body:not(.dark).mumin-home-shell .quote-panel p,
+  body:not(.dark).mumin-home-shell .home-modal-card p {
+    color: var(--color-cyan-40);
+  }
+  body:not(.dark).mumin-home-shell .module-body small,
+  body:not(.dark).mumin-home-shell .learning-path-head span,
+  body:not(.dark).mumin-home-shell .path-step small,
+  body:not(.dark).mumin-home-shell .home-footer {
+    color: var(--color-cyan-49);
+  }
+  body:not(.dark).mumin-home-shell .path-step.active {
+    background: var(--color-gray-97);
+    border-color: #a9ddea;
+  }
+  body:not(.dark).mumin-home-shell .prayer-row {
+    border-color: var(--color-cyan-92);
+    color: var(--color-cyan-46);
+  }
+  body:not(.dark).mumin-home-shell .prayer-row.active {
+    background: var(--color-gray-97);
+    color: var(--color-cyan-43);
+  }
+  body:not(.dark).mumin-home-shell .next-prayer {
+    background: var(--color-gray-97);
+  }
+  body:not(.dark).mumin-home-shell .home-footer > p {
+    border-color: var(--color-cyan-92);
+  }
+  body.dark .life-main .hero-overlay,
+  body.dark .ramadan-main .ramadan-hero-overlay,
+  body.dark.hadith-page .hero-shade,
+  body.dark .salah-page .hero-overlay,
+  body.dark .quran-page .reader-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(3, 20, 29, 0.98) 0%,
+      rgba(4, 42, 57, 0.93) 48%,
+      rgba(5, 70, 90, 0.58) 100%
+    );
+  }
+  body:not(.dark) .life-main .hero-verse,
+  body:not(.dark) .ramadan-main .ramadan-verse,
+  body:not(.dark).hadith-page .hero-quote {
+    background: rgba(3, 29, 41, 0.76);
+    border-color: rgba(99, 213, 239, 0.35);
+  }
+  body:not(.dark) .life-main .hero-verse p,
+  body:not(.dark) .ramadan-main .ramadan-verse p,
+  body:not(.dark).hadith-page .hero-quote small,
+  body:not(.dark).hadith-page .hero-quote em {
+    color: var(--color-cyan-92);
+  }
+  body:not(.dark) .life-main .hero-verse .verse-ar,
+  body:not(.dark) .ramadan-main .ramadan-verse .verse-ar,
+  body:not(.dark).hadith-page .hero-quote strong {
+    color: var(--color-cyan-91);
+  }
+  body:not(.dark) .salah-page .hero-badges span {
+    background: rgba(5, 37, 49, 0.76);
+    color: var(--color-cyan-96);
+    border-color: rgba(99, 213, 239, 0.35);
+  }
+  body:not(.dark) .quran-page .reader-hero-actions button,
+  body:not(.dark) .quran-page .reader-hero-actions select {
+    color: var(--color-cyan-24);
+  }
+  body.dark.mumin-home-shell .hero-shade {
+    background: linear-gradient(
+      90deg,
+      rgba(3, 20, 29, 0.98),
+      rgba(4, 42, 57, 0.93) 46%,
+      rgba(5, 70, 90, 0.58) 100%
+    );
+  }
+  body:not(.dark) .dua-hero-modern {
+    background: linear-gradient(120deg, var(--color-cyan-19), var(--color-cyan-32-c));
+    border-color: var(--color-cyan-64);
+  }
+  body:not(.dark) .dua-hero-modern::after {
+    background:
+      radial-gradient(circle at 22% 20%, rgba(99, 213, 239, 0.16), transparent 32%),
+      linear-gradient(90deg, transparent 40%, rgba(0, 0, 0, 0.25));
+  }
+  body:not(.dark) .dua-page-main .hero-copy h1 {
+    color: var(--color-gray-100);
+  }
+  body:not(.dark) .dua-page-main .hero-copy h2 {
+    color: #d8f4fb;
+  }
+  body:not(.dark) .dua-page-main .hero-copy p {
+    color: var(--color-cyan-90);
+  }
+  body:not(.dark) .dua-page-main .quote-overlay {
+    background: linear-gradient(
+      90deg,
+      var(--color-blue-8) 0%,
+      rgba(5, 32, 44, 0.64) 42%,
+      rgba(5, 32, 44, 0.18) 100%
+    );
+  }
+  body:not(.dark) .dua-page-main .dua-list-panel,
+  body:not(.dark) .dua-page-main .dua-detail-panel {
+    background: var(--color-gray-100);
+    border-color: var(--color-cyan-92);
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark) .dua-page-main .dua-search-wrap,
+  body:not(.dark) .dua-page-main .dua-clear,
+  body:not(.dark) .dua-page-main .dua-list-item,
+  body:not(.dark) .dua-page-main .detail-box,
+  body:not(.dark) .dua-page-main .meta-box,
+  body:not(.dark) .dua-page-main .detail-nav button {
+    background: var(--color-gray-98);
+    border-color: var(--color-cyan-92);
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark) .dua-page-main .detail-box p,
+  body:not(.dark) .dua-page-main .meta-box p {
+    color: var(--color-cyan-40);
+  }
+  body:not(.dark) .about-page {
+    background:
+      radial-gradient(circle at 85% 8%, rgba(54, 185, 220, 0.12), transparent 28%), var(--color-gray-98);
+  }
+  body.dark .mumin-topbar {
+    background: rgba(5, 27, 37, 0.98);
+    border-bottom-color: rgba(99, 213, 239, 0.2);
+  }
+  body.dark .mumin-top-brand small {
+    color: var(--color-cyan-79);
+  }
+  body.dark .mumin-topnav a {
+    color: var(--color-cyan-92);
+  }
+  body.dark .mumin-topnav a:hover,
+  body.dark .mumin-topnav a.active {
+    color: var(--color-cyan-78-b);
+  }
+  body.dark .mumin-theme {
+    color: var(--color-cyan-92);
+    border-color: rgba(95, 208, 234, 0.28);
+    background: rgba(255, 255, 255, 0.025);
+  }
+  @media (max-width: 900px) {
+    body:not(.dark) .life-main .hero-content h1,
+    body:not(.dark) .ramadan-main .ramadan-hero h1,
+    body:not(.dark) .salah-page .salah-hero-copy h1 {
+      color: var(--color-gray-100);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+      scroll-behavior: auto;
+    }
+    .mumin-motion-ready .mumin-app,
+    .mumin-motion-ready.mumin-page-ready .mumin-app,
+    .mumin-page-leaving .mumin-app,
+    .mumin-scroll-reveal,
+    .mumin-scroll-reveal.mumin-scroll-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+  /* ---------- Mumin ---------- */
+  .mumin-app {
+    padding-top: 72px;
+  }
+  .mumin-topbar,
+  body.mumin-home-shell .mumin-topbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1200;
+    width: 100%;
+    height: 72px;
+    min-height: 72px;
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
+    align-items: center;
+    gap: 24px;
+    padding: 0 clamp(20px, 4vw, 64px);
+    background: rgba(6, 42, 56, 0.97);
+    color: var(--color-gray-97);
+    border-bottom: 1px solid rgba(99, 213, 239, 0.2);
+    box-shadow: 0 7px 26px rgba(5, 48, 64, 0.16);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .mumin-top-brand,
+  body.mumin-home-shell .mumin-top-brand {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-gray-97);
+    min-width: 0;
+  }
+  .mumin-top-brand img,
+  body.mumin-home-shell .mumin-top-brand img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: var(--color-gray-97);
+  }
+  .mumin-top-brand strong,
+  body.mumin-home-shell .mumin-top-brand strong {
+    color: var(--color-gray-100);
+    font-size: 1.2353rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .mumin-top-brand small,
+  body.mumin-home-shell .mumin-top-brand small {
+    color: var(--color-cyan-79);
+    font-size: 0.6471rem;
+    font-weight: 600;
+  }
+  .mumin-topnav,
+  body.mumin-home-shell .mumin-topnav {
+    justify-self: center;
+    align-self: stretch;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: max-content;
+    max-width: min(100%, calc(100vw - 520px));
+    height: 100%;
+    margin: 0;
+    gap: 2px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .mumin-topnav::-webkit-scrollbar {
+    display: none;
+  }
+  .mumin-topnav a,
+  body.mumin-home-shell .mumin-topnav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    padding: 0 11px;
+    color: var(--color-cyan-92);
+    font:
+      700 14px/1.2 'Noto Sans Bengali',
+      'Hind Siliguri',
+      system-ui,
+      sans-serif;
+    text-decoration: none;
+    transform: none;
+  }
+  .mumin-topnav a::after,
+  body.mumin-home-shell .mumin-topnav a::after {
+    left: 9px;
+    right: 9px;
+    bottom: 10px;
+    height: 2px;
+    background: var(--color-cyan-78-b);
+  }
+  .mumin-topnav a:hover,
+  .mumin-topnav a.active,
+  body.mumin-home-shell .mumin-topnav a:hover,
+  body.mumin-home-shell .mumin-topnav a.active {
+    color: var(--color-cyan-78-b);
+  }
+  .mumin-top-actions,
+  body.mumin-home-shell .mumin-top-actions {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+  }
+  .mumin-theme,
+  body.mumin-home-shell .mumin-theme {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(95, 208, 234, 0.3);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--color-cyan-92);
+  }
+  .mumin-theme:hover {
+    background: rgba(54, 185, 220, 0.12);
+    border-color: rgba(95, 208, 234, 0.58);
+  }
+  body.mumin-home-shell .mumin-install,
+  body.mumin-home-shell .mumin-menu {
+    display: none;
+  }
+  body.mumin-home-shell .mumin-sidebar {
+    display: none;
+  }
+  .mumin-home {
+    padding-top: 0;
+  }
+  body.mumin-home-shell .home-hero {
+    margin-top: 0;
+    background: var(--color-blue-16);
+  }
+  /* ---------- Dark ---------- */
+  body:not(.dark).mumin-home-shell .hero-shade {
+    background: linear-gradient(
+      90deg,
+      rgba(3, 27, 39, 0.98) 0%,
+      rgba(4, 45, 60, 0.94) 38%,
+      rgba(6, 66, 84, 0.72) 68%,
+      rgba(6, 66, 84, 0.3) 100%
+    );
+  }
+  body:not(.dark).mumin-home-shell .hero h1,
+  body:not(.dark).mumin-home-shell .hero-lead,
+  body:not(.dark).mumin-home-shell .hero-source,
+  body:not(.dark).mumin-home-shell .hero-trust {
+    color: var(--color-gray-97);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+  }
+  body:not(.dark).mumin-home-shell .hero h1 em {
+    color: var(--color-cyan-78-b);
+  }
+  body:not(.dark).mumin-home-shell .hero-arabic {
+    color: var(--color-cyan-86);
+  }
+  body:not(.dark).mumin-home-shell .hero-source b {
+    color: #aeeaf7;
+  }
+  body:not(.dark).mumin-home-shell .hero-kicker {
+    background: rgba(6, 50, 65, 0.84);
+    border-color: rgba(99, 213, 239, 0.38);
+    color: var(--color-cyan-91);
+  }
+  body:not(.dark).mumin-home-shell .hero-kicker span {
+    color: var(--color-cyan-78-b);
+  }
+  body:not(.dark).mumin-home-shell .hero-trust i {
+    background: var(--color-gray-97);
+    color: var(--color-cyan-48);
+  }
+  body:not(.dark).mumin-home-shell .prayer-widget,
+  body:not(.dark).mumin-home-shell .module-card,
+  body:not(.dark).mumin-home-shell .learning-path-card,
+  body:not(.dark).mumin-home-shell .quote-panel,
+  body:not(.dark).mumin-home-shell .home-modal-card,
+  body:not(.dark).mumin-home-shell .featured-card,
+  body:not(.dark).mumin-home-shell .home-cta {
+    background: var(--color-gray-100);
+    border-color: var(--color-cyan-92);
+    box-shadow: 0 14px 36px rgba(20, 100, 125, 0.09);
+  }
+  body:not(.dark).mumin-home-shell .section-heading h2,
+  body:not(.dark).mumin-home-shell .module-body h3,
+  body:not(.dark).mumin-home-shell .learning-path-head strong,
+  body:not(.dark).mumin-home-shell .home-modal-card h2 {
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark).mumin-home-shell .section-heading p,
+  body:not(.dark).mumin-home-shell .module-hook,
+  body:not(.dark).mumin-home-shell .module-body p,
+  body:not(.dark).mumin-home-shell .module-body small,
+  body:not(.dark).mumin-home-shell .path-step small {
+    color: var(--color-cyan-40);
+  }
+  body:not(.dark).mumin-home-shell .path-step {
+    background: var(--color-gray-98);
+    border-color: var(--color-cyan-92);
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark) .life-main .hero-overlay,
+  body:not(.dark) .ramadan-main .ramadan-hero-overlay,
+  body:not(.dark).hadith-page .hero-shade,
+  body:not(.dark) .salah-page .hero-overlay,
+  body:not(.dark) .quran-page .reader-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(3, 27, 39, 0.98) 0%,
+      rgba(4, 48, 64, 0.93) 44%,
+      rgba(7, 77, 98, 0.62) 100%
+    );
+  }
+  body:not(.dark) .life-main .hero-content h1,
+  body:not(.dark) .life-main .hero-content h2,
+  body:not(.dark) .life-main .hero-content p,
+  body:not(.dark) .ramadan-main .ramadan-hero h1,
+  body:not(.dark) .ramadan-main .ramadan-hero h2,
+  body:not(.dark) .ramadan-main .ramadan-hero p,
+  body:not(.dark).hadith-page .hero-title-row h1,
+  body:not(.dark).hadith-page .hero-title-row p,
+  body:not(.dark).hadith-page .hero-meta,
+  body:not(.dark) .salah-page .salah-hero-copy h1,
+  body:not(.dark) .salah-page .salah-hero-copy p,
+  body:not(.dark) .quran-page .reader-hero-copy h2,
+  body:not(.dark) .quran-page .reader-hero-copy p {
+    color: var(--color-gray-97);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  }
+  @media (max-width: 1240px) {
+    .mumin-topbar,
+    body.mumin-home-shell .mumin-topbar {
+      grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+      gap: 12px;
+      padding-inline: 18px;
+    }
+    .mumin-topnav,
+    body.mumin-home-shell .mumin-topnav {
+      max-width: min(100%, calc(100vw - 360px));
+    }
+    .mumin-topnav a,
+    body.mumin-home-shell .mumin-topnav a {
+      padding-inline: 8px;
+      font-size: 0.7647rem;
+    }
+  }
+  @media (max-width: 900px) {
+    .mumin-topbar,
+    body.mumin-home-shell .mumin-topbar {
+      height: 64px;
+      min-height: 64px;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 8px;
+      padding-inline: 10px;
+    }
+    .mumin-app {
+      padding-top: 64px;
+    }
+    .mumin-top-brand img,
+    body.mumin-home-shell .mumin-top-brand img {
+      width: 38px;
+      height: 38px;
+    }
+    .mumin-top-brand span {
+      display: none;
+    }
+    .mumin-topnav,
+    body.mumin-home-shell .mumin-topnav {
+      justify-self: stretch;
+      justify-content: flex-start;
+      width: 100%;
+      max-width: none;
+      overflow-x: auto;
+    }
+    .mumin-topnav a,
+    body.mumin-home-shell .mumin-topnav a {
+      padding-inline: 9px;
+      font-size: 0.7353rem;
+    }
+    .mumin-theme,
+    body.mumin-home-shell .mumin-theme {
+      width: 38px;
+      height: 38px;
+    }
+  }
+  @media (max-width: 520px) {
+    .mumin-topnav a,
+    body.mumin-home-shell .mumin-topnav a {
+      padding-inline: 8px;
+      font-size: 0.7059rem;
+    }
+    .mumin-topnav a::after {
+      left: 7px;
+      right: 7px;
+      bottom: 8px;
+    }
+  }
+  body:not(.dark) .home-hero h1,
+  body:not(.dark) .salah-hero-copy h1,
+  body:not(.dark) .ik-hero-content h1 {
+    color: var(--color-gray-97);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
+  }
+  body:not(.dark) .home-hero h1 em {
+    color: var(--color-cyan-78-b);
+  }
+  body:not(.dark) .ik-hero-content h1 em {
+    color: var(--color-cyan-82);
+  }
+  body:not(.dark) .salah-hero-copy p,
+  body:not(.dark) .ik-hero-content p {
+    color: var(--color-cyan-96);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.28);
+  }
+  body:not(.dark) .life-hero .eyebrow,
+  body:not(.dark) .ramadan-hero .eyebrow,
+  body:not(.dark) .hadith-hero .eyebrow,
+  body:not(.dark) .dua-hero-modern .eyebrow {
+    color: var(--color-cyan-86);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .prayer-row {
+    background: var(--color-gray-97);
+    border-color: var(--color-cyan-92);
+    color: var(--color-cyan-40);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .prayer-row time {
+    color: var(--color-cyan-24);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .prayer-row .pr-ic .ic {
+    color: var(--color-cyan-43);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .prayer-row.active {
+    background: var(--color-cyan-43);
+    border-color: var(--color-cyan-43);
+    color: var(--color-gray-100);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .prayer-row.active time,
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .prayer-row.active span,
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .prayer-row.active .pr-ic .ic {
+    color: var(--color-gray-100);
+  }
+  body:not(.dark).mumin-home-shell .prayer-strip-wrap .next-prayer {
+    background: var(--color-gray-97);
+    border-color: var(--color-cyan-92);
+  }
+}
+
+/* Image clarity pass: retain only a restrained text-legibility gradient. */
+body.mumin-home-shell .mumin-home .hero-shade,
+body.dark.mumin-home-shell .mumin-home .hero-shade,
+body:not(.dark).mumin-home-shell .mumin-home .hero-shade {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 34, 0.78) 0%,
+    rgba(4, 35, 47, 0.62) 34%,
+    rgba(5, 42, 54, 0.25) 58%,
+    rgba(5, 42, 54, 0.04) 100%
+  );
+}
+body.dark .life-main .hero-overlay,
+body:not(.dark) .life-main .hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 34, 0.78) 0%,
+    rgba(4, 39, 49, 0.58) 38%,
+    rgba(5, 48, 58, 0.2) 72%,
+    rgba(5, 48, 58, 0.04) 100%
+  );
+}
+body.dark .ramadan-main .ramadan-hero-overlay,
+body:not(.dark) .ramadan-main .ramadan-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 34, 0.78) 0%,
+    rgba(4, 39, 49, 0.58) 38%,
+    rgba(5, 48, 58, 0.2) 72%,
+    rgba(5, 48, 58, 0.04) 100%
+  );
+}
+body.dark.hadith-page .hero-shade,
+body:not(.dark).hadith-page .hero-shade {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 34, 0.76) 0%,
+    rgba(4, 35, 47, 0.54) 38%,
+    rgba(5, 42, 54, 0.18) 72%,
+    rgba(5, 42, 54, 0.03) 100%
+  );
+}
+body.dark .salah-page .hero-overlay,
+body:not(.dark) .salah-page .hero-overlay,
+body.dark .quran-page .reader-hero-overlay,
+body:not(.dark) .quran-page .reader-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 34, 0.76) 0%,
+    rgba(4, 35, 47, 0.52) 40%,
+    rgba(5, 42, 54, 0.17) 75%,
+    rgba(5, 42, 54, 0.03) 100%
+  );
+}
+body.dark .ik-hero-overlay,
+body:not(.dark) .ik-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 34, 0.78) 0%,
+    rgba(4, 39, 49, 0.56) 40%,
+    rgba(5, 48, 58, 0.18) 74%,
+    rgba(5, 48, 58, 0.03) 100%
+  );
+}
+body.dark:has(.learn-main) .learn-main .hero-art,
+body:not(.dark):has(.learn-main) .learn-main .hero-art {
+  background: url('../assets/images/scenes/study-with-books.webp') center/cover no-repeat;
+}
+body.dark .dua-page-main .quote-overlay,
+body:not(.dark) .dua-page-main .quote-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(3, 24, 34, 0.7) 0%,
+    rgba(4, 35, 47, 0.42) 42%,
+    rgba(5, 42, 54, 0.12) 100%
+  );
+}
