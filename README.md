@@ -1,67 +1,218 @@
-# Mumin — শিখি • বুঝি • আমল করি
+<div align="center">
 
-সহজ, পরিচ্ছন্ন ও উৎস-সচেতন বাংলা ইসলামিক শিক্ষা ওয়েবসাইট (PWA)। Plain HTML/CSS/JavaScript — কোনো build step লাগে না।
+# 🕌 Mumin
 
-*Mumin is a Bangla Islamic-learning PWA built with plain HTML, CSS and JavaScript (no framework, no build step).*
+### Islamic Learning Platform for Everyone
 
-## মডিউল
-ইসলামের মৌলিক বিষয় · নামাজ ও ওযু শিক্ষা · কুরআন (জুযউ আম্মা) · দোয়া ও যিকির · রমজান · হাদিস · দৈনন্দিন জীবন · গভীর শিক্ষা
+**Learn • Understand • Practice**
 
-## ফোল্ডার structure
-```
-mumin/
-├── index.html, quran.html, salah.html, ...   সব পেজ (root-এ)
-├── css/
-│   ├── base.css, nav.css, theme.css          সব পেজে load হয়
-│   ├── hero-images.css                       সব পেজের hero/banner ছবি এক জায়গায়
-│   └── pages/                                প্রতিটা পেজের নিজস্ব CSS
-├── js/
-│   ├── common-nav.js                         সব পেজ: header, menu, dark/light theme
-│   ├── common.js                             content পেজের ছোট helper (toast, reveal, search)
-│   └── script.js, quran.js, salah.js, ...    প্রতিটা পেজের নিজস্ব script
-├── data/dua-data.js                          সব দোয়ার ডেটা
-├── data/hadith-data.js                       হাদিস গ্রন্থ ও অধ্যায়ের সূচি (পাঠ অনলাইনে আসে)
-├── assets/images/
-│   ├── brand/    logo, icon, profile
-│   ├── heroes/   hero ও banner ছবি
-│   ├── scenes/   section-এর illustration
-│   └── namaz/, wudu/                         নামাজ ও ওযুর ধাপের ছবি
-├── sw.js, manifest.webmanifest               PWA (root-এ থাকতে হবে)
-├── tools/                                    CSS report ও minify script
-└── docs/                                     CSS-GUIDE, content audit, পুরোনো notes
-```
+A clean and accessible Bengali Islamic learning platform designed to make
+Quran, Hadith, Salah, Dua & Dhikr, Ramadan, and everyday Islamic guidance
+easier to explore in one place.
 
-## কোথায় কী বদলাবেন
-| কাজ | ফাইল |
+<br>
+
+<a href="https://krh-rabiul.github.io/Mumin-Islamic-Learning/">
+  <img src="https://img.shields.io/badge/🌐%20Live%20Website-Visit%20Mumin-00B8E6?style=for-the-badge">
+</a>
+
+<a href="https://github.com/KRH-Rabiul/Mumin-Islamic-Learning">
+  <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github">
+</a>
+
+<a href="https://www.linkedin.com/in/khandakar-rabiul-hasan">
+  <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin">
+</a>
+
+</div>
+
+---
+
+## 🌙 About Mumin
+
+**Mumin** is a Bengali Islamic learning platform created to make
+reliable Islamic knowledge easier to access, understand, and practice.
+
+The platform brings essential Islamic topics together through a clean,
+simple, and distraction-free interface.
+
+Instead of presenting information in a complicated way, Mumin focuses on
+structured learning and practical everyday guidance.
+
+### What you can explore
+
+- 📖 Quran
+- 📚 Hadith
+- 🕌 Salah & Purification
+- 🤲 Dua & Dhikr
+- 🌙 Ramadan
+- ☀️ Everyday Islamic Life
+- 🧭 Structured Learning Path
+- 🔎 Easy topic navigation
+- 🌗 Light & Dark Theme
+- 📱 Responsive interface
+
+---
+
+## ✨ Why Mumin?
+
+Mumin was designed around three simple principles:
+
+> **Authentic knowledge.  
+> Simple presentation.  
+> Practical learning.**
+
+The goal is to create a platform where Bengali-speaking users can
+comfortably explore Islamic knowledge without unnecessary complexity.
+
+---
+
+# 🚀 Key Features
+
+| Feature | Description |
 |---|---|
-| লেখা / কনটেন্ট | সংশ্লিষ্ট `*.html` (সবার উপরে comment আছে) |
-| রঙ | `css/theme.css` (শুরুর `--color-*` token) |
-| ছবি বদলানো | `css/hero-images.css` (url) আর `assets/images/` |
-| নতুন দোয়া | `data/dua-data.js` (ফাইলের উপরের comment দেখুন) |
-| হাদিস গ্রন্থ/অধ্যায় সূচি | `data/hadith-data.js` (উপরের comment দেখুন) |
-| মেনুর লিংক | `js/common-nav.js` → `PAGES` |
-| নামাজ / ওযুর ধাপ | `js/salah.js` |
-| সূরা / ভূমিকা | `js/quran.js` → `SURAH`, `INTRO` |
+| 📖 Quran | Juz Amma learning with Arabic, pronunciation and Bengali meaning |
+| 📚 Hadith | Organized Hadith library with source references |
+| 🕌 Salah | Structured Salah and purification learning |
+| 🤲 Dua & Dhikr | Daily duas and authentic remembrance |
+| 🌙 Ramadan | Fasting, Sehri, Iftar, Taraweeh and Ramadan guidance |
+| ☀️ Daily Life | Practical Islamic guidance for everyday situations |
+| 🧭 Learning Path | Organized learning journey for beginners |
+| 🔎 Search | Quickly find relevant topics |
+| 🔖 Bookmark | Save useful content for later |
+| 🌗 Theme | Light and dark mode |
+| 📱 Responsive | Designed for desktop, tablet and mobile |
+| 🕰️ Prayer Times | Prayer time integration with fallback support |
 
-## Local-এ চালানো
-```bash
-python3 -m http.server 8000
-# তারপর http://localhost:8000 খুলুন
-```
-Service worker শুধু `https` বা `localhost`-এ কাজ করে, তাই `file://` দিয়ে না খুলে server দিয়ে চালান।
+---
 
-## নতুন ফাইল যোগ করলে
-1. `sw.js`-এর `CORE` তালিকায় path যোগ করুন।
-2. `CACHE_NAME` বদলান (যেমন `mumin-v51` → `mumin-v52`), নাহলে ফিরে আসা ইউজার পুরোনো cache দেখবে।
+# 📚 Learning Modules
 
-## ইন্টারনেট লাগে যেখানে
-- নামাজের সময়: `api.aladhan.com` (fail করলে "আনুমানিক সময়" লেখা দেখায়)
-- হাদিসের আরবি/বাংলা পাঠ: jsDelivr (`hadith-api`), নেট না থাকলে "আবার চেষ্টা করুন" দেখায়
-- কুরআনের আরবি: jsDelivr (`quran-json`), বাংলা উচ্চারণ ছবি: `quran.gov.bd`
-- ফিডব্যাক ফর্ম: `formsubmit.co`
-- ফন্ট: Google Fonts
+### 01 · ইসলামকে জানুন
 
-## কনটেন্ট নীতি
-শুধু কুরআন ও হাদিস-ভিত্তিক, উৎস উল্লেখসহ কনটেন্ট। দোয়া বা আয়াত যোগ করার আগে আরবি ও সূত্র (যেমন sunnah.com-এ) মিলিয়ে নিন।
+Fundamental Islamic concepts including:
 
-লাইসেন্স: `LICENSE`
+- Islam
+- Iman
+- Ihsan
+- Tawhid
+- Shirk
+- Quran
+- Sunnah
+
+---
+
+### 02 · শিক্ষাপথ
+
+A structured learning path that helps users gradually explore
+important Islamic topics.
+
+---
+
+### 03 · নামাজ শিক্ষা
+
+Covers essential topics related to:
+
+- Wudu
+- Salah
+- Rak'ah
+- Salah requirements
+- Common mistakes
+- Sajdah Sahw
+- Practical guidance
+
+---
+
+### 04 · কুরআন
+
+The Quran section currently focuses on **Juz Amma**.
+
+Includes:
+
+- Arabic text
+- Bengali pronunciation
+- Bengali meaning
+- Surah introduction
+- Surah information
+
+---
+
+### 05 · দোয়া ও যিকির
+
+Daily Islamic remembrance including:
+
+- Morning & evening adhkar
+- Daily duas
+- Travel dua
+- Istikhara
+- Istighfar
+- Protection duas
+- Three Quls
+- Various authentic adhkar
+
+---
+
+### 06 · রমজান
+
+Includes essential Ramadan guidance:
+
+- Fasting
+- Sehri
+- Iftar
+- Taraweeh
+- Laylatul Qadr
+- Ramadan duas
+- Important practices
+
+---
+
+### 07 · দৈনন্দিন জীবন
+
+Practical Islamic guidance related to:
+
+- Food
+- Speech
+- Family
+- Social behaviour
+- Personal conduct
+- Everyday manners
+
+---
+
+### 08 · হাদিস লাইব্রেরি
+
+A structured Hadith section with references from major Hadith collections.
+
+---
+
+# 🛠️ Technology Stack
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github">
+<img src="https://img.shields.io/badge/Responsive%20Design-00A98F?style=for-the-badge">
+
+</div>
+
+### Architecture
+
+Mumin is intentionally built as a **frontend-focused static web platform**.
+
+```text
+Frontend
+├── HTML
+├── CSS
+└── JavaScript
+
+Storage
+└── Browser LocalStorage
+
+External Services
+├── Prayer Times API
+└── Hadith API
+
+Deployment
+└── GitHub Pages
