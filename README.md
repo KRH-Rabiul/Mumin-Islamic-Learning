@@ -1,218 +1,189 @@
 <div align="center">
 
-# 🕌 Mumin
-
-### Islamic Learning Platform for Everyone
-
-**Learn • Understand • Practice**
-
-A clean and accessible Bengali Islamic learning platform designed to make
-Quran, Hadith, Salah, Dua & Dhikr, Ramadan, and everyday Islamic guidance
-easier to explore in one place.
+<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:071A2B,50:063B52,100:00B8D9&text=MUMIN&fontColor=FFFFFF&fontSize=62&fontAlignY=38&desc=Islamic%20Learning%20Platform%20for%20Everyone&descAlignY=60&descSize=18&animation=fadeIn" width="100%"/>
 
 <br>
 
 <a href="https://krh-rabiul.github.io/Mumin-Islamic-Learning/">
-  <img src="https://img.shields.io/badge/🌐%20Live%20Website-Visit%20Mumin-00B8E6?style=for-the-badge">
+<img src="https://img.shields.io/badge/EXPLORE%20MUMIN-00B8D9?style=for-the-badge&logo=googlechrome&logoColor=white">
 </a>
-
+&nbsp;
 <a href="https://github.com/KRH-Rabiul/Mumin-Islamic-Learning">
-  <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github">
+<img src="https://img.shields.io/badge/SOURCE%20CODE-111827?style=for-the-badge&logo=github&logoColor=white">
+</a>
+&nbsp;
+<a href="https://www.linkedin.com/in/khandakar-rabiul-hasan">
+<img src="https://img.shields.io/badge/CONNECT-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white">
 </a>
 
-<a href="https://www.linkedin.com/in/khandakar-rabiul-hasan">
-  <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin">
-</a>
+<br><br>
+
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=111827">
+<img src="https://img.shields.io/badge/GitHub%20Pages-181717?style=flat-square&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/Responsive-00B8D9?style=flat-square">
 
 </div>
 
----
-
-## 🌙 About Mumin
-
-**Mumin** is a Bengali Islamic learning platform created to make
-reliable Islamic knowledge easier to access, understand, and practice.
-
-The platform brings essential Islamic topics together through a clean,
-simple, and distraction-free interface.
-
-Instead of presenting information in a complicated way, Mumin focuses on
-structured learning and practical everyday guidance.
-
-### What you can explore
-
-- 📖 Quran
-- 📚 Hadith
-- 🕌 Salah & Purification
-- 🤲 Dua & Dhikr
-- 🌙 Ramadan
-- ☀️ Everyday Islamic Life
-- 🧭 Structured Learning Path
-- 🔎 Easy topic navigation
-- 🌗 Light & Dark Theme
-- 📱 Responsive interface
+<br>
 
 ---
-
-## ✨ Why Mumin?
-
-Mumin was designed around three simple principles:
-
-> **Authentic knowledge.  
-> Simple presentation.  
-> Practical learning.**
-
-The goal is to create a platform where Bengali-speaking users can
-comfortably explore Islamic knowledge without unnecessary complexity.
-
----
-
-# 🚀 Key Features
-
-| Feature | Description |
-|---|---|
-| 📖 Quran | Juz Amma learning with Arabic, pronunciation and Bengali meaning |
-| 📚 Hadith | Organized Hadith library with source references |
-| 🕌 Salah | Structured Salah and purification learning |
-| 🤲 Dua & Dhikr | Daily duas and authentic remembrance |
-| 🌙 Ramadan | Fasting, Sehri, Iftar, Taraweeh and Ramadan guidance |
-| ☀️ Daily Life | Practical Islamic guidance for everyday situations |
-| 🧭 Learning Path | Organized learning journey for beginners |
-| 🔎 Search | Quickly find relevant topics |
-| 🔖 Bookmark | Save useful content for later |
-| 🌗 Theme | Light and dark mode |
-| 📱 Responsive | Designed for desktop, tablet and mobile |
-| 🕰️ Prayer Times | Prayer time integration with fallback support |
-
----
-
-# 📚 Learning Modules
-
-### 01 · ইসলামকে জানুন
-
-Fundamental Islamic concepts including:
-
-- Islam
-- Iman
-- Ihsan
-- Tawhid
-- Shirk
-- Quran
-- Sunnah
-
----
-
-### 02 · শিক্ষাপথ
-
-A structured learning path that helps users gradually explore
-important Islamic topics.
-
----
-
-### 03 · নামাজ শিক্ষা
-
-Covers essential topics related to:
-
-- Wudu
-- Salah
-- Rak'ah
-- Salah requirements
-- Common mistakes
-- Sajdah Sahw
-- Practical guidance
-
----
-
-### 04 · কুরআন
-
-The Quran section currently focuses on **Juz Amma**.
-
-Includes:
-
-- Arabic text
-- Bengali pronunciation
-- Bengali meaning
-- Surah introduction
-- Surah information
-
----
-
-### 05 · দোয়া ও যিকির
-
-Daily Islamic remembrance including:
-
-- Morning & evening adhkar
-- Daily duas
-- Travel dua
-- Istikhara
-- Istighfar
-- Protection duas
-- Three Quls
-- Various authentic adhkar
-
----
-
-### 06 · রমজান
-
-Includes essential Ramadan guidance:
-
-- Fasting
-- Sehri
-- Iftar
-- Taraweeh
-- Laylatul Qadr
-- Ramadan duas
-- Important practices
-
----
-
-### 07 · দৈনন্দিন জীবন
-
-Practical Islamic guidance related to:
-
-- Food
-- Speech
-- Family
-- Social behaviour
-- Personal conduct
-- Everyday manners
-
----
-
-### 08 · হাদিস লাইব্রেরি
-
-A structured Hadith section with references from major Hadith collections.
-
----
-
-# 🛠️ Technology Stack
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github">
-<img src="https://img.shields.io/badge/Responsive%20Design-00A98F?style=for-the-badge">
+## 🕌 Mumin
+
+### **Learn. Understand. Practice.**
+
+*A Bengali Islamic learning platform built to make essential Islamic
+knowledge easier to explore, understand, and practice.*
 
 </div>
 
-### Architecture
+<br>
 
-Mumin is intentionally built as a **frontend-focused static web platform**.
+<table align="center">
+<tr>
+<td width="50%" valign="top">
+
+### The Idea
+
+Mumin brings essential Islamic learning resources together in one
+clean and accessible platform.
+
+Instead of navigating through scattered information, users can explore
+Quran, Hadith, Salah, Dua & Dhikr, Ramadan, and everyday Islamic
+guidance through a structured interface.
+
+</td>
+
+<td width="50%" valign="top">
+
+### The Vision
+
+> **Make Islamic learning simple, accessible, and organized for everyone.**
+
+The platform is designed for Bengali-speaking learners of different
+ages and backgrounds, with an emphasis on readability, clarity, and
+responsible sourcing.
+
+</td>
+</tr>
+</table>
+
+<br>
+
+---
+
+## ✦ What Mumin Offers
+
+<table>
+<tr>
+<td width="25%" align="center">
+
+### 📖
+
+**Quran**
+
+Juz Amma with Arabic, pronunciation and Bengali meaning.
+
+</td>
+
+<td width="25%" align="center">
+
+### 📚
+
+**Hadith**
+
+Organized Hadith resources with source references.
+
+</td>
+
+<td width="25%" align="center">
+
+### 🕌
+
+**Salah**
+
+Structured learning for Salah and purification.
+
+</td>
+
+<td width="25%" align="center">
+
+### 🤲
+
+**Dua & Dhikr**
+
+Daily duas and authentic remembrance.
+
+</td>
+</tr>
+
+<tr>
+<td width="25%" align="center">
+
+### 🌙
+
+**Ramadan**
+
+Fasting, Sehri, Iftar, Taraweeh and more.
+
+</td>
+
+<td width="25%" align="center">
+
+### ☀️
+
+**Daily Life**
+
+Practical Islamic guidance for everyday life.
+
+</td>
+
+<td width="25%" align="center">
+
+### 🧭
+
+**Learning Path**
+
+A structured journey through essential topics.
+
+</td>
+
+<td width="25%" align="center">
+
+### 🌗
+
+**Modern UI**
+
+Responsive interface with light & dark themes.
+
+</td>
+</tr>
+</table>
+
+<br>
+
+---
+
+# ◈ Learning Experience
+
+Mumin is organized around a progressive and practical learning
+experience.
 
 ```text
-Frontend
-├── HTML
-├── CSS
-└── JavaScript
-
-Storage
-└── Browser LocalStorage
-
-External Services
-├── Prayer Times API
-└── Hadith API
-
-Deployment
-└── GitHub Pages
+                    MUMIN
+                      │
+        ┌─────────────┼─────────────┐
+        │             │             │
+      LEARN        UNDERSTAND      PRACTICE
+        │             │             │
+     Quran         Hadith          Salah
+     Basics        Concepts        Dua
+     Learning      Guidance        Daily Life
+        │             │             │
+        └─────────────┼─────────────┘
+                      │
+                 BETTER PRACTICE
